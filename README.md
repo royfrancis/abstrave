@@ -1,5 +1,7 @@
 # abstrave <span><a href="https://github.com/royfrancis/abstrave"><img src="assets/logo.png" style="height:40px;vertical-align:middle;"></a></span> 
 
+[![ci_badge](https://github.com/royfrancis/abstrave/workflows/deploy/badge.svg)](https://github.com/royfrancis/abstrave/actions?workflow=deploy)    [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 Quarto website template.
 
 ![Report preview](preview-report.png)
