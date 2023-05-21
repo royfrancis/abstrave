@@ -1,4 +1,4 @@
-# abstrave <span><a href="https://github.com/royfrancis/abstrave"><img src="assets/logos/logo.png" style="height:40px;vertical-align:middle;"></a></span> 
+# abstrave <span><a href="https://github.com/royfrancis/abstrave"><img src="assets/logo.png" style="height:40px;vertical-align:middle;"></a></span> 
 
 Quarto website template.
 

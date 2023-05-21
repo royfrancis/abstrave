@@ -4,7 +4,7 @@ project:
 
 website:
   image: "assets/abstrave.png"
-  favicon: "assets/favicon.svg"
+  favicon: "assets/favicon.png"
   navbar:
     logo: "assets/abstrave.png"
     logo-alt: "logo"

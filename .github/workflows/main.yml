@@ -23,7 +23,7 @@ jobs:
             any::tidyr
             any::stringr
             any::htmlTable
-	          any::kableExtra
+            any::kableExtra
             any::formattable
             any::DT
             any::reactable
@@ -51,4 +51,3 @@ jobs:
           render: true
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
