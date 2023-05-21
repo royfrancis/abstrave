@@ -4,6 +4,8 @@
 
 Quarto website template.
 
+![Report home](preview-home.png)
+
 ![Report preview](preview-report.png)
 
 ![Slide preview](preview-slide.png)
