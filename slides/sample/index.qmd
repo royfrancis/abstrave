@@ -17,10 +17,5 @@ More content
 ##  {background-image="../../assets/images/cover.jpg"}
 ### Thank you! Questions?
 
-```{r}
-#| echo: false
-R.version[c("platform","os","major","minor")]
-```
-
 [2023 • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
 
