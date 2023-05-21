@@ -1,0 +1,13 @@
+**/.Rhistory
+*.Rproj*
+*.code-workspace
+**/.ipynb_checkpoints
+/.luarc.json
+/.quarto/
+.DS_Store
+to-do.txt
+notes.txt
+**/*_cache/
+**/__pycache__
+slides/**/*_files
+labs/**/*_files

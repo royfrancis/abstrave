@@ -1,0 +1,1148 @@
+---
+title: "Demo Lab"
+author: "Roy Francis"
+description: "This is a demo quarto lab document to showcase the theme, style and usage."
+image: "assets/featured.jpg"
+format: html
+---
+
+```{r}
+#| echo: false
+
+# data handling
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+# tables
+library(htmlTable) # enchanced markdown table
+library(kableExtra) # complete table
+library(formattable) # table with conditional formatting
+library(DT) # interactive table
+library(reactable) # interactive table
+
+# graphics
+library(ggplot2) # static graphics
+
+# interactive graphics
+library(highcharter)
+library(plotly)
+library(ggiraph) # convert ggplot to interactive
+library(dygraphs) # time series
+library(networkD3) # network graph
+library(leaflet) # interactive maps
+library(crosstalk) # linking plots
+
+# extras
+library(fontawesome) # icons
+
+# custom ggplot theme
+theme_report <- function (basesize=12) {
+    theme_bw(base_size=basesize) %+replace%
+        theme(
+            panel.border=element_blank(),
+            panel.grid.minor=element_blank(),
+            panel.grid.major.x=element_blank(),
+            legend.position="top",
+            legend.direction="horizontal"
+        )
+}
+```
+
+## Quarto & RMarkdown
+
+-   This is a [quarto](https://quarto.org/) document with RMarkdown.
+-   Markdown basics are covered [here](https://quarto.org/docs/authoring/markdown-basics.html).
+-   In RStudio, you create a `.qmd` text file, then click the **Render** button.
+-   `.qmd` documents can also be rendered as such:
+
+```{r}
+#| echo: true
+#| eval: false
+
+quarto::quarto_render("report.qmd")
+```
+
+## Layout
+
+### Inner columns
+
+Organisation of content into columns within the body container.
+
+```         
+:::: {.columns}
+::: {.column style="background-color: aliceblue"}
+Content is left.
+:::
+::: {.column style="background-color:  #f5b7b1"}
+Content is right.
+:::
+::::
+```
+
+::: columns
+::: {.column style="background-color: aliceblue"}
+Content in left column.
+:::
+
+::: {.column style="background-color:  #f5b7b1"}
+Content in right column.
+:::
+:::
+
+<br>
+
+This is an example of nested columns.
+
+```         
+:::: {.columns}
+
+::: {.column style="background-color: aliceblue"}
+Content in left column.
+:::
+
+::: {.column}
+Content in right column.
+
+:::: {.columns}
+::: {.column style="background-color: #d0ece7"}
+Nested left.
+:::
+::: {.column style="background-color: #f2d7d5"}
+Nested right.
+:::
+::::
+
+:::
+
+::::
+```
+
+::: columns
+::: {.column style="background-color: aliceblue"}
+Content in left column.
+:::
+
+::: column
+Content in right column.
+
+::: columns
+::: {.column style="background-color: #d0ece7"}
+Nested left.
+:::
+
+::: {.column style="background-color: #f2d7d5"}
+Nested right.
+:::
+:::
+:::
+:::
+
+### Outer columns
+
+Extending content outside the body container.
+
+```         
+::: {.column-body style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body
+:::
+
+::: {.column-body-outset style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body-outset
+:::
+
+::: {.column-page-inset style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-inset
+:::
+
+::: {.column-page style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page
+:::
+
+::: {.column-screen-inset style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-inset
+:::
+
+::: {.column-screen style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen
+:::
+
+::: {.column-body-outset-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body-outset-right
+:::
+
+::: {.column-page-inset-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-inset-right
+:::
+
+::: {.column-page-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-right
+:::
+
+::: {.column-screen-inset-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-inset-right
+:::
+
+::: {.column-screen-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-right
+:::
+
+::: {.column-body-outset-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body-outset-left
+:::
+
+::: {.column-page-inset-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-inset-left
+:::
+
+::: {.column-page-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-left
+:::
+
+::: {.column-screen-inset-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-inset-left
+:::
+
+::: {.column-screen-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-left
+:::
+
+::: {.column-margin style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-margin
+:::
+```
+
+::: {.column-body style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body
+:::
+
+::: {.column-body-outset style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body-outset
+:::
+
+::: {.column-page-inset style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-inset
+:::
+
+::: {.column-page style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page
+:::
+
+::: {.column-screen-inset style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-inset
+:::
+
+::: {.column-screen style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen
+:::
+
+::: {.column-body-outset-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body-outset-right
+:::
+
+::: {.column-page-inset-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-inset-right
+:::
+
+::: {.column-page-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-right
+:::
+
+::: {.column-screen-inset-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-inset-right
+:::
+
+::: {.column-screen-right style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-right
+:::
+
+::: {.column-body-outset-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-body-outset-left
+:::
+
+::: {.column-page-inset-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-inset-left
+:::
+
+::: {.column-page-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-page-left
+:::
+
+::: {.column-screen-inset-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-inset-left
+:::
+
+::: {.column-screen-left style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-screen-left
+:::
+
+::: {.column-margin style="background-color: lightgray; margin-bottom:0.5em;"}
+.column-margin
+:::
+
+### Panel layout
+
+```         
+::: {.panel-tabset}
+#### Sub topic 1
+
+This is some material for topic 1.
+
+#### Sub topic 2
+
+This is some material for topic 2.
+
+:::
+```
+
+::: panel-tabset
+#### Sub topic 1
+
+This is some material for topic 1.
+
+#### Sub topic 2
+
+This is some material for topic 2.
+:::
+
+More layout settings are described [here](https://quarto.org/docs/authoring/article-layout.html) and [here](https://quarto.org/docs/output-formats/page-layout.html).
+
+## Text formatting
+
+Headings can be defined as shown below.
+
+```         
+## Level 2 heading  
+### Level 3 heading  
+#### Level 4 heading  
+##### Level 5 heading  
+###### Level 6 heading
+```
+
+### Level 3 heading
+
+#### Level 4 heading
+
+##### Level 5 heading
+
+###### Level 6 heading
+
+Character styles can be set as below.
+
+```         
+[Largest text]{.largest}  
+[Larger text]{.larger}  
+[Large text]{.large}  
+Normal text  
+[Small text]{.small}  
+[Smaller text]{.smaller}  
+[Smallest text]{.smallest}  
+```
+
+[Largest text]{.largest}  
+[Larger text]{.larger}  
+[Large text]{.large}  
+Normal text  
+[Small text]{.small}  
+[Smaller text]{.smaller}  
+[Smallest text]{.smallest}
+
+A horizontal line can be created using three or more `*` or `-`.
+
+`***`
+
+------------------------------------------------------------------------
+
+`This is __Bold text__` This is **Bold text**\
+`This is _Italic text_` This is *Italic text*\
+`~~Strikethrough~~ text` ~~Strikethrough~~ text\
+This is Subscript `H~2~O` displayed as H~2~O\
+This is Superscript `2^10^` displayed as 2^10^\
+`This is a [link](r-project.org)` This is a [link](r-project.org)\
+An example of footnote reference [^1]
+
+[^1]: That reference refers to this footnote.
+
+```         
+> This is a block quote. This
+> paragraph has two lines.
+>
+> 1. This is a list inside a block quote.
+> 2. Second item.
+```
+
+> This is a block quote. This paragraph has two lines.
+>
+> 1.  This is a list inside a block quote.
+> 2.  Second item.
+
+`[This content lives in the right margin]{.aside}`
+
+[This content lives in the right margin]{.aside}
+
+## Code formatting
+
+Code can be defined inline where `` `this` `` looks like `this`. R code can be executed inline `` `r "\u0060r Sys.Date()\u0060"` `` producing `r Sys.Date()`. Code can also be defined inside code blocks.
+
+````{=html}
+<pre>
+```
+This is code
+```
+</pre>
+````
+
+```         
+This is code
+```
+
+R code is executed inside code blocks like this
+
+````
+```{{r}}
+Sys.Date()
+```
+````
+
+which shows the code and output.
+
+```{r}
+Sys.Date()
+```
+
+The code and results can be hidden while sill executing the code.
+
+````         
+```{{r}}
+#| eval: true
+#| echo: false
+#| results: hide
+Sys.Date()
+```
+````
+
+Here is another example of executed R code with input and output.
+
+```{r}
+data(iris)
+head(iris[,1:2])
+```
+
+## Lists
+
+### Bulleted List
+
+Unordered lists are created using asterisks.
+
+-   Bullet 1\
+-   Bullet 2
+    -   Sub-bullet 2.1\
+    -   Sub-bullet 2.2\
+-   Bullet 3
+
+Ordered lists are created using numbers.
+
+1.  Point 1
+2.  Point 2
+3.  Point 3
+
+## Images
+
+### Using Markdown
+
+Using regular markdown.
+
+```         
+![](assets/featured.jpg)
+```
+
+![](assets/featured.jpg)
+
+The dimensions are based on image and/or fill up the entire available space. You can control the dimension as shown below.
+
+```         
+![This is a caption](assets/featured.jpg){width=30%}  
+```
+
+![This is a caption](assets/featured.jpg){width="30%"}
+
+This image above is now 30% of it's original width.
+
+Figure layout.
+
+```         
+::: {#fig1 layout-ncol=2}
+![Caption for figure 1](assets/featured.jpg){#subfig1 width="40%"}
+
+![Caption for figure 2](assets/featured.jpg){#subfig2 width="40%"}
+
+These figures are interesting.
+:::
+```
+
+::: {#fig1 layout-ncol="2"}
+![Caption for figure 1](assets/featured.jpg){#subfig1 width="40%"}
+
+![Caption for figure 2](assets/featured.jpg){#subfig2 width="40%"}
+
+These figures are interesting.
+:::
+
+More figure options and layouts are described [here](https://quarto.org/docs/authoring/figures.html). Cross referencing described [here](https://quarto.org/docs/authoring/cross-references.html).
+
+### Using HTML
+
+This image below is 30% size.\
+`<img src="assets/featured.jpg" style="width:30%;"/>`
+
+<img src="assets/featured.jpg" style="width:30%;"/>
+
+### Using R
+
+R chunks in RMarkdown can be used to control image display size using the argument `out.width`.
+
+This image below is displayed at a size of 300 pixels.
+
+````         
+```{{r}}
+#| out-width: 300px
+knitr::include_graphics("assets/featured.jpg")
+```
+````
+
+```{r}
+#| echo: false
+#| out-width: "300px"
+knitr::include_graphics("assets/featured.jpg")
+```
+
+This image below is displayed at a size of 75 pixels and a caption added.
+
+````         
+```{{r}}
+#| out-width: 75px
+#| fig-cap: This is a caption
+knitr::include_graphics("assets/featured.jpg")
+```
+````
+
+```{r}
+#| echo: false
+#| out-width: "75px"
+#| fig-cap: This is a caption
+knitr::include_graphics("assets/featured.jpg")
+```
+
+For more information on figures, see [here](https://quarto.org/docs/authoring/figures.html). For plots generated through R, see section further below.
+
+## Math expressions
+
+Some examples of rendering equations.
+
+```         
+$e^{i\pi} + 1 = 0$
+```
+
+$e^{i\pi} + 1 = 0$
+
+```         
+$$\frac{E \times X^2 \prod I}{2+7} = 432$$
+```
+
+$$\frac{E \times X^2 \prod I}{2+7} = 432$$
+
+```         
+$$\sum_{i=1}^n X_i$$
+```
+
+$$\sum_{i=1}^n X_i$$
+
+```         
+$$\int_0^{2\pi} \sin x~dx$$
+```
+
+$$\int_0^{2\pi} \sin x~dx$$
+
+```         
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+```
+
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+
+```         
+$\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
+```
+
+$\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
+
+```         
+$\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\mathbb{E}\left[|X-\mu|^2\right]}{k^2}\\ & \leq & \frac{\mathrm{Var}[X]}{k^2} \end{eqnarray}$
+```
+
+$\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\mathbb{E}\left[|X-\mu|^2\right]}{k^2}\\ & \leq & \frac{\mathrm{Var}[X]}{k^2} \end{eqnarray}$
+
+## Tables
+
+### Manual
+
+For simple cases, tables can be manually created in markdown.
+
+```         
+|speed|dist|
+|-----|----|
+|4    |   2|
+|4    |  10|
+|7    |   4|
+```
+
+| speed | dist |
+|-------|------|
+| 4     | 2    |
+| 4     | 10   |
+| 7     | 4    |
+
+### htmlTable
+
+Markdown tables can be enhanced using the R package [htmlTable](https://github.com/gforge/htmlTable).
+
+```{r}
+library(htmlTable)
+
+iris1 <- iris[c(1:4,51:53,105:108),]
+htmlTable(iris1, rgroup=unique(iris1$Species), n.rgroup=rle(as.character(iris1$Species))$lengths)
+```
+
+### kable
+
+Simple table using `kable` from R package `knitr`. This is the default output for quarto.
+
+```{r}
+head(iris)
+```
+
+#### Margin table
+
+````
+```{{{r}}}
+#| fig-caption: This table is in the margin.
+#| column: margin
+
+head(cars)
+```
+````
+
+```{r}
+#| fig-caption: This table is in the margin.
+#| column: margin
+#| echo: false
+
+head(cars)
+```
+
+### kableExtra
+
+More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and [`formattable`](https://cran.r-project.org/web/packages/formattable/vignettes/formattable-data-frame.html).
+
+```{r}
+#| tbl-cap: Table using kableextra.
+library(kableExtra)
+
+iris[c(1:4,51:53,105:108),] %>%
+  mutate(Sepal.Length=color_bar("lightsteelblue")(Sepal.Length)) %>%
+  mutate(Sepal.Width=color_tile("white","orange")(Sepal.Width)) %>%
+  mutate(Species=cell_spec(Species,"html",color="white",bold=T,
+    background=c("#8dd3c7","#fb8072","#bebada")[factor(.$Species)])) %>%
+  kable("html",escape=F) %>%
+  kable_styling(bootstrap_options=c("striped","hover","responsive"),
+                full_width=F,position="left") %>%
+  column_spec(5,width="3cm")
+```
+
+### DT
+
+Interactive table using R package [`DT`](https://rstudio.github.io/DT/).
+
+```{r}
+#| tbl-cap: Table using datatable.
+library(DT)
+
+iris %>%
+  slice(1:15) %>%
+  datatable(options=list(pageLength=7))
+```
+
+### reactable
+
+Advanced interactive tables with [reactable](https://glin.github.io/reactable/index.html).
+
+```{r}
+library(reactable)
+
+reactable(iris[sample(1:150,10),],
+  columns = list(
+    Sepal.Length = colDef(name = "Sepal Length"),
+    Sepal.Width = colDef(name = "Sepal Width"),
+    Petal.Width = colDef(name = "Petal Width"),
+    Petal.Width = colDef(name = "Petal Width")
+  ),
+  striped = TRUE,
+  highlight = TRUE,
+  filterable = TRUE
+)
+```
+
+reactable creation can be simplified as well as enhanced by using [reactablefmtr](https://github.com/kcuilla/reactablefmtr/).
+
+## Static plots
+
+### Base plot
+
+-   Plots using base R are widely used and may be good enough for most situations.
+-   But they lack a consistent coding framework.
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+#| label: plot-base
+#| fig-cap: Static plot using base plot.
+
+{plot(x=iris$Sepal.Length,y=iris$Sepal.Width,
+      col=c("coral","steelblue","forestgreen")[iris$Species],
+      xlab="Sepal Length",ylab="Sepal Width",pch=19)
+legend(x=7,y=4.47,legend=c("setosa","versicolor","virginica"),
+       col=c("coral","steelblue","forestgreen"),pch=19)}
+```
+
+Refer to @plot-base to see an example of base plot.
+
+#### Multiple plots
+
+````
+```{{r}}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+
+plot(cars)
+plot(iris)
+plot(pressure)
+```
+````
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+#| echo: false
+
+plot(cars)
+plot(iris)
+plot(pressure)
+```
+
+#### Margin plot
+
+```{{{r}}}
+#| column: margin
+
+plot(cars)
+```
+
+```{r}
+#| column: margin
+
+plot(cars)
+```
+
+### ggplot2
+
+R package [`ggplot2`](http://ggplot2.org/) is one of the most versatile and complete plotting solutions.
+
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+#| label: plot-ggplot
+#| fig-cap: Static plot using ggplot2.
+#| cap-location: margin
+library(ggplot2)
+
+iris %>%
+  ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
+  geom_point(size=2)+
+  labs(x="Sepal Length",y="Sepal Width")+
+  theme_report()
+```
+
+## Interactive plots
+
+### rbokeh
+
+R package [rbokeh](https://hafen.github.io/rbokeh/index.html) is an easy and convenient option to get started with interactive plots.
+
+```{r}
+#| label: plot-rbokeh
+#| fig-cap: Interactive scatterplot using rbokeh.
+library(rbokeh)
+
+figure(height=400,width=600,xlab="Sepal Length",ylab="Sepal Width") %>%
+  ly_points(Sepal.Length,Sepal.Width,data=iris,
+  color=Species,glyph=Species,hover=list(Sepal.Length,Sepal.Width))
+```
+
+### highcharter
+
+R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
+
+```{r}
+#| label: plot-highcharter
+#| fig-cap: Interactive scatterplot using highcharter.
+library(highcharter)
+
+h <- iris %>%
+  hchart(.,"scatter",hcaes(x="Sepal.Length",y="Sepal.Width",group="Species")) %>%
+  hc_xAxis(title=list(text="Sepal Length"),crosshair=TRUE) %>%
+  hc_yAxis(title=list(text="Sepal Width"),crosshair=TRUE) %>%
+  hc_chart(zoomType="xy",inverted=FALSE) %>%
+  hc_legend(verticalAlign="top",align="right") %>%
+  hc_size(height=400)
+
+htmltools::tagList(list(h))
+```
+
+### plotly
+
+R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
+
+```{r}
+#| fig-cap: Interactive scatterplot using plotly.
+library(plotly)
+
+p <- iris %>%
+  plot_ly(x=~Sepal.Length,y=~Sepal.Width,color=~Species,width=500,height=400) %>%
+  add_markers()
+p
+```
+
+### ggplotly
+
+`plotly` also has a function called `ggplotly` which converts a static ggplot2 object into an interactive plot.
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+#| fig-cap: Interactive scatterplot using ggplotly.
+library(plotly)
+
+p <- iris %>%
+  ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
+  geom_point()+
+  labs(x="Sepal Length",y="Sepal Width")+
+  theme_bw(base_size=12)
+
+ggplotly(p,width=500,height=400)
+```
+
+### ggiraph
+
+`ggiraph` is also an R package that can be used to convert a static ggplot2 object into an interactive plot.
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+#| fig-cap: Interactive scatterplot using ggiraph.
+library(ggiraph)
+
+p <- ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+
+      geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=2)+
+  theme_bw()
+
+tooltip_css <- "background-color:#e7eef3;font-family:Roboto;padding:10px;border-style:solid;border-width:2px;border-color:#125687;border-radius:5px;"
+
+ggiraph(code=print(p),hover_css="cursor:pointer;stroke:black;fill-opacity:0.3",zoom_max=5,tooltip_extra_css=tooltip_css,tooltip_opacity=0.9)
+```
+
+### dygraphs
+
+R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings for javascript library [dygraphs](http://dygraphs.com/) for time series data.
+
+```{r}
+#| fig-height: 5
+#| fig-width: 9
+#| fig-cap: Interactive time series plot using dygraph.
+library(dygraphs)
+
+lungDeaths <- cbind(ldeaths, mdeaths, fdeaths)
+dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") %>%
+  dyOptions(colors=c("#66C2A5","#FC8D62","#8DA0CB"))
+```
+
+### Network graph
+
+R package `networkD3` allows the use of interactive network graphs from the [D3.js](https://d3js.org/) javascript library.
+
+```{r}
+#| fig-cap: Interactive network plot.
+library(networkD3)
+
+data(MisLinks,MisNodes)
+forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
+             Target="target",Value="value",NodeID="name",
+             Group="group",opacity=0.4)
+```
+
+### leaflet
+
+R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
+
+```{r}
+#| fig-cap: Interactive map using leaflet.
+library(leaflet)
+
+leaflet(height=500,width=700) %>%
+  addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+  #addProviderTiles(providers$Esri.NatGeoWorldMap) %>%
+  addMarkers(lat=57.639327,lng=18.288534,popup="RaukR") %>%
+  setView(lat=57.639327,lng=18.288534,zoom=15)
+```
+
+### crosstalk
+
+R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows `crosstalk` enabled plotting libraries to be linked. Through the shared 'key' variable, data points can be manipulated simultaneously on two independent plots.
+
+```{r}
+#| fig-height: 8
+#| fig-cap: Linking independent plots using crosstalk.
+library(crosstalk)
+
+shared_quakes <- SharedData$new(quakes[sample(nrow(quakes), 100),])
+lf <- leaflet(shared_quakes,height=300) %>%
+        addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+        addMarkers()
+py <- plot_ly(shared_quakes,x=~depth,y=~mag,size=~stations,height=300) %>%
+        add_markers()
+
+htmltools::div(lf,py)
+```
+
+## ObservableJS
+
+- Quarto supports [ObservableJS](https://observablehq.com/) for interactive visualisations in the browser.
+
+Pass data from R to OJS
+
+```{r}
+irism <- iris
+colnames(irism) <- gsub("[.]","_",tolower(colnames(irism)))
+ojs_define(ojsd = irism)
+```
+
+```{ojs}
+ojsdata = transpose(ojsd)
+```
+
+Display as a table
+
+```{ojs}
+viewof filtered_table = Inputs.table(ojsdata)
+```
+
+Define inputs
+
+```{ojs}
+viewof x = Inputs.select(Object.keys(ojsdata[0]), {value: "sepal_length", multiple: false, label: "X axis"})
+```
+
+```{ojs}
+viewof y = Inputs.select(Object.keys(ojsdata[0]), {value: "sepal_width", multiple: false, label: "Y axis"})
+```
+
+Display plot
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.dot(ojsdata, {
+      x: x,
+      y: y,
+      fill: "species",
+      title: (d) =>
+        `${d.species} \n Petal length: ${d.petal_length} \n Sepal length: ${d.sepal_length}`
+    })
+  ],
+  grid: true
+})
+```
+
+ObservableJS in quarto [documentation](https://quarto.org/docs/interactive/index.html#observable-js).
+
+## Diagrams
+
+````
+```{{mermaid}}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+````
+
+```{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+Diagram [documentation](https://quarto.org/docs/authoring/diagrams.html).
+
+## Icons
+
+To use [fontawesome](https://fontawesome.com/search?m=free) icons as shortcodes, quarto extension [fontawesome](https://github.com/quarto-ext/fontawesome) needs to be installed.
+
+Icons can be placed using shortcodes.
+
+`{{{< fa lightbulb >}}}`      {{< fa lightbulb >}}     
+`{{{< fa exclamation >}}}`    {{< fa exclamation >}}   
+`{{{< fa clipboard-list >}}}` {{< fa clipboard-list >}}  
+`{{{< fa comments >}}}`       {{< fa comments >}}      
+`{{{< fa desktop >}}}`        {{< fa desktop >}}       
+`{{{< fa cloud >}}}`          {{< fa cloud >}}         
+`{{{< fa check >}}}`          {{< fa check >}}         
+`{{{< fa times >}}}`          {{< fa times >}}         
+`{{{< fa skull >}}}`          {{< fa skull >}}         
+`{{{< fa skull size=2x >}}}`  {{< fa skull size=2x >}}   
+`{{{< fa brands github >}}}`  {{< fa brands github >}}
+
+Icons can be displayed using the HTML `<i>` tag. Note that not all icons may work.
+
+`Here is a <i class='fa fa-calendar'></i> calendar and a <i class='fa fa-couch'></i> couch.`
+
+Here is a <i class='fa fa-calendar'></i> calendar and a <i class='fa fa-couch'></i> couch.
+
+Icons can also be placed programatically through R using the R package `fontawesome`.
+
+`` `r "\u0060r fontawesome::fa('lightbulb')\u0060"` ``
+
+`r fontawesome::fa("lightbulb")`
+
+Optional arguments are height and fill.
+
+`` `r "\u0060r fontawesome::fa('lightbulb',height='30px',fill='steelblue')\u0060"` ``
+
+`r fontawesome::fa("lightbulb",height='30px',fill='steelblue')`
+
+For full list of icons check out [FontAwesome](https://fontawesome.com/search?m=free).
+
+## Call-Outs
+
+Call-Out blocks are explained [here](https://quarto.org/docs/authoring/callouts.html).
+
+```         
+::: {.callout-note}
+This is a call-out.
+:::
+
+::: {.callout-warning}
+This is a call-out.
+:::
+
+::: {.callout-important}
+This is a call-out.
+:::
+
+::: {.callout-tip}
+This is a call-out.
+:::
+
+::: {.callout-caution}
+This is a call-out.
+:::
+
+::: {.callout-tip collapse="true"}
+## Call-out with collapse
+
+This content is hidden by default.
+:::
+```
+
+::: callout-note
+This is a call-out.
+:::
+
+::: callout-warning
+This is a call-out.
+:::
+
+::: callout-important
+This is a call-out.
+:::
+
+::: callout-tip
+This is a call-out.
+:::
+
+::: callout-caution
+This is a call-out.
+:::
+
+::: {.callout-tip collapse="true"}
+## Call-out with collapse
+
+This content is hidden by default.
+:::
+
+## Alerts
+
+```         
+::: {.alert .alert-primary}
+**Note:** This is an alert!
+:::
+::: {.alert .alert-secondary}
+**Note:** This is an alert!
+:::
+::: {.alert .alert-success}
+**Note:** This is a success alert!
+:::
+::: {.alert .alert-danger}
+**Note:** This is a danger alert!
+:::
+::: {.alert .alert-warning}
+**Note:** This is a warning alert!
+:::
+::: {.alert .alert-info}
+**Note:** This is an info alert!
+:::
+```
+
+::: {.alert .alert-primary}
+**Note:** This is an alert!
+:::
+
+::: {.alert .alert-secondary}
+**Note:** This is an alert!
+:::
+
+::: {.alert .alert-success}
+**Note:** This is a success alert!
+:::
+
+::: {.alert .alert-danger}
+**Note:** This is a danger alert!
+:::
+
+::: {.alert .alert-warning}
+**Note:** This is a warning alert!
+:::
+
+::: {.alert .alert-info}
+**Note:** This is an info alert!
+:::
+
+## General tips
+
+-   Use level 2 heading as the highest level
+-   Use quarto style chunk options
+-   warnings and messages has been turned off in chunks globally
+-   Declare all libraries at the beginning of the document
+-   Add custom css under YAML if needed `css: "my-theme.css"`
+-   Check out the [Quarto](https://quarto.org/) website

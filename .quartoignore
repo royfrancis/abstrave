@@ -1,0 +1,14 @@
+**/*_cache/
+**/__pycache__
+**/*_cache
+**/*_files
+README.md
+.git
+.github
+.gitignore
+.Rhistory
+preview*
+docs
+reports/demo/
+slides/demo/
+.nojekyll
