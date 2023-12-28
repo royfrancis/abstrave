@@ -890,19 +890,6 @@ iris %>%
   theme_bw(base_size=18)
 ```
 
-## Interactive plots • rbokeh
-
-R package [rbokeh](https://hafen.github.io/rbokeh/index.html) is an easy and convenient option to get started with interactive plots.
-
-```{r}
-#| label: plot-rbokeh
-library(rbokeh)
-
-figure(height=400,width=600,xlab="Sepal Length",ylab="Sepal Width") %>%
-  ly_points(Sepal.Length,Sepal.Width,data=iris,
-  color=Species,glyph=Species,hover=list(Sepal.Length,Sepal.Width))
-```
-
 ## Interactive plots • highcharter
 
 R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
