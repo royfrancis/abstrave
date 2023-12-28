@@ -18,6 +18,7 @@ library(stringr)
 library(htmlTable) # enchanced markdown table
 library(kableExtra) # complete table
 library(formattable) # table with conditional formatting
+library(gt) # enchanced tables
 library(DT) # interactive table
 library(reactable) # interactive table
 
@@ -37,14 +38,14 @@ library(crosstalk) # linking plots
 library(fontawesome) # icons
 
 # custom ggplot theme
-theme_report <- function (basesize=12) {
-    theme_bw(base_size=basesize) %+replace%
+theme_report <- function(basesize = 12) {
+    theme_bw(base_size = basesize) %+replace%
         theme(
-            panel.border=element_blank(),
-            panel.grid.minor=element_blank(),
-            panel.grid.major.x=element_blank(),
-            legend.position="top",
-            legend.direction="horizontal"
+            panel.border = element_blank(),
+            panel.grid.minor = element_blank(),
+            panel.grid.major.x = element_blank(),
+            legend.position = "top",
+            legend.direction = "horizontal"
         )
 }
 ```
@@ -427,20 +428,6 @@ iris %>%
 ```
 
 ## Interactive plots
-
-### rbokeh
-
-R package [rbokeh](https://hafen.github.io/rbokeh/index.html) is an easy and convenient option to get started with interactive plots.
-
-```{r}
-#| label: plot-rbokeh
-#| fig-cap: Interactive scatterplot using rbokeh.
-library(rbokeh)
-
-figure(height=400,width=600,xlab="Sepal Length",ylab="Sepal Width") %>%
-  ly_points(Sepal.Length,Sepal.Width,data=iris,
-  color=Species,glyph=Species,hover=list(Sepal.Length,Sepal.Width))
-```
 
 ### highcharter
 

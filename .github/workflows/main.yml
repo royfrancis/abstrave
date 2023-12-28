@@ -29,7 +29,6 @@ jobs:
             any::gt
             any::reactable
             any::ggplot2
-            any::rbokeh
             any::highcharter
             any::plotly
             any::ggiraph
