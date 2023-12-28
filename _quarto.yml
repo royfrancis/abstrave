@@ -8,23 +8,32 @@ website:
   navbar:
     logo: "assets/abstrave.png"
     logo-alt: "logo"
-    left:
-      - text: "HOME"
-        href: "index.html"
     right:
+      - text: "Home"
+        href: "index.html"
+      - text: "Schedule"
+        href: "home_schedule.html"
+      - text: "Contents"
+        href: "home_contents.html"
+      - text: "Syllabus"
+        href: "home_syllabus.html"
+      - text: "Precourse"
+        href: "home_precourse.html"
       - icon: "twitter"
         href: "https://twitter.com"
   page-footer:
     border: false
-    left: "2023 Roy Francis | [GPL-3 License](https://choosealicense.com/licenses/gpl-3.0/)"
+    left: "2024 Roy Francis | [GPL-3 License](https://choosealicense.com/licenses/gpl-3.0/)"
     right: "Published with [Quarto](https://quarto.org/) v<?quarto.version?>"
   site-url: "https://royfrancis.github.io/abstrave/"
 
 format:
   html:
-    quarto-required: ">=1.2.2"
-    include-in-header: "assets/fonts/head.html"
-    theme: "assets/css/custom.scss"
+    quarto-required: ">=1.3.4"
+    include-in-header: "assets/include_head.html"
+    include-before-body: "assets/include_body_before.html"
+    include_after_body: "assets/include_body_after.html"
+    theme: "assets/css/styles.scss"
     smooth-scroll: true
     toc: true
     toc-depth: 4
@@ -35,37 +44,46 @@ format:
     code-tools: false
     code-copy: true
     code-overflow: wrap
-    df-print: kable
+    df-print: paged
     standalone: false
     fig-align: left
     title-block-banner: "assets/images/banner.jpg"
     subtitle: "Abstrave quarto theme"
+    callout-icon: true
     date:  last-modified
     date-format: "DD-MMM-YYYY"
     lightbox: 
       match: auto
   revealjs:
-    quarto-required: ">=1.2.269"
-    include-in-header: "assets/fonts/head.html"
-    theme: ["default","assets/css/custom.scss"]
+    quarto-required: ">=1.3.4"
+    include-in-header: "assets/include_head.html"
+    include-before-body: "assets/include_body_before.html"
+    include_after_body: "assets/include_body_after.html"
+    theme: ["default","assets/css/slides.scss"]
+    df-print: kable
     width: 1280
     height: 720
     transition: "fade"
     transition-speed: "fast"
     smaller: false
+    incremental: true
+    scrollable: false
     slide-number: true
     progress: true
     date:  last-modified
     date-format: "DD-MMM-YYYY"
     fig-align: left
     chalkboard: true
+    callout-icon: true
     title-slide-attributes:
       data-background-image: "assets/images/cover.jpg"
       data-background-size: "cover"
       data-background-opacity: "1"
     subtitle: "Abstrave quarto theme"
     header-logo-left: ../../assets/abstrave.png
+    header-logo-left-url: https://royfrancis.github.io/abstrave/home_contents.html
     header-logo-right: ../../assets/abstrave.png
+    header-logo-right-url: https://royfrancis.github.io/abstrave/home_contents.html
 
 knitr:
   opts_chunk:
@@ -80,5 +98,7 @@ execute:
 
 filters:
   - assets/custom.lua
-  - reveal-header
+  - reveal-logo
   - lightbox
+  - fontawesome
+

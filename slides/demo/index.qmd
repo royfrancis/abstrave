@@ -1,5 +1,5 @@
 ---
-title: "Demo Slides"
+title: "Quarto Presentation"
 author: "Roy Francis"
 image: "assets/featured.jpg"
 format: revealjs
@@ -36,14 +36,13 @@ library(crosstalk) # linking plots
 
 ## Introduction
 
-::: {.callout-note}
-This is a demo to showcase the **RaukR presentation design guide**, **usage** and capabilities of this presentation system. This presentation is created using **[quarto](https://quarto.org/)**. This presentation uses the javascript library **[revealjs](https://revealjs.com)** as the underlying framework.
+::: {.large}
+This is a [Quarto](https://quarto.org/) [revealjs](https://revealjs.com) presentation with Abstrave theme. This demo showcases the usage and capabilities of this system. Revealjs in Quarto is documented [here](https://quarto.org/docs/presentations/revealjs/).
 :::
 
-## RMarkdown
+## Getting started
 
-- This is a quarto presentation using RMarkdown.
-- In RStudio, create a `.qmd` text file.
+- In RStudio, **File** > **New File** > **Quarto Presentation**
 - Add YAML matter to the top if not already there.
 
 ```         
@@ -74,7 +73,7 @@ quarto render slide.qmd
 #### Slide separators
 
 Slides are separated by `##`.
-Incremental content on same slide is separated by `. . .` like below.
+Incremental content on is separated by `. . .` like below.
 
 Hide or not count a slide:
 
@@ -93,10 +92,7 @@ Any content inside class `.notes` on a slide are notes. This is only visible in 
 
 #### Keyboard shortcuts
 
-- Press **f** for full-screen view.
-- Press **o** for overview.
-- Press **s** for speaker view.
-- Press **?** for help.
+- Press {{< kbd ? >}} for help.
 
 ::: {.notes}
 Here are some slide notes. Press **s** again to exit presenter mode.
@@ -234,7 +230,7 @@ Normal text\
 ## Text Formatting
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="40%"}
 Horizontal alignment of text can be adjusted as shown below.
 
 ```         
@@ -259,7 +255,7 @@ This line is quoted
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 
 A horizontal line can be created using `---`
 
@@ -269,20 +265,17 @@ A horizontal line can be created using `---`
 
 `This is *Italic text*`  This is *Italic text*
 
-`~~Strikethrough~~ text`  
-~~Strikethrough~~ text
+`~~Strikethrough~~ text`  ~~Strikethrough~~ text
 
-This is Subscript `H<sub>2</sub>O`  
-H<sub>2</sub>O
+This is subscript `H~2~O`  H~2~O
 
-This is Superscript `2<sup>10</sup>`  
-2<sup>10</sup>
+This is superscript `2^10`  2^10^
 
-`[Highlighted text]{.highlight}`  
-[Highlighted text]{.highlight}
+`[This is a badge]{.badge-primary}`  [This is a badge]{.badge-primary}
 
-`This is a [link](r-project.org)`  
-This is a [link](r-project.org)
+`[This is a badge]{.badge-secondary}`  [This is a badge]{.badge-secondary}
+
+`This is a [link](r-project.org)`  This is a [link](r-project.org)
 :::
 ::::
 
@@ -302,22 +295,16 @@ Attention
 
 ## Text formatting
 
-Content here
+In reports, `.aside` pushes content into the margin while in revealjs, it is pushed to the bottom.
 
-```         
+```
 ::: {.aside}
-This content is in here.
+Content inside aside.
 :::
 ```
 
 ::: {.aside}
-This content is in here.
-:::
-
-More content here
-
-::: {.callout-tip}
-In reports, **aside** pushes content right into the margin while, in revealjs presentation, it is pushed to the bottom left.
+Content inside aside.
 :::
 
 ## Lists
@@ -325,7 +312,7 @@ In reports, **aside** pushes content right into the margin while, in revealjs pr
 :::: {.columns}
 ::: {.column width="50%"}
 
-**Bulleted List**
+**Unordered List**
 
 ```         
 - Bullet 1
@@ -336,26 +323,31 @@ In reports, **aside** pushes content right into the margin while, in revealjs pr
 - Bullet 1
 - Bullet 2
   - Sub-bullet 2.1
+
 :::
 
 ::: {.column width="50%"}
-**Incremental Bullets**
+
+**Incremental List**
 
 ```         
 :::{.incremental}
-- Incremental Bullet 1
-- Incremental Bullet 2
-- Incremental Bullet 3
+1. Incremental Bullet 1
+2. Incremental Bullet 2
+3. Incremental Bullet 3
 :::
 ```
 
-::: incremental
-- Incremental Bullet 1
-- Incremental Bullet 2
-- Incremental Bullet 3
+::: {.incremental}
+
+1. Incremental Bullet 1
+2. Incremental Bullet 2
+3. Incremental Bullet 3
+
 :::
 
-[For more options, see [here](https://quarto.org/docs/presentations/revealjs/#incremental-lists).]{.smaller}
+[For more options, see [here](https://quarto.org/docs/presentations/revealjs/#incremental-lists).]{.small}
+
 :::
 ::::
 
@@ -376,12 +368,11 @@ This paragraph is red.
 
 - This is a span. ie; A word or one line.
 
-`[This text is red]{style="color: red"}`
+`[This text is blue]{style="color: blue"}`
 
-[This text is red]{style="color: red"}
+[This text is blue]{style="color: blue"}
 
 ## Call-Outs
-
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -407,6 +398,7 @@ This is a call-out.
 This is a call-out.
 :::
 ```
+
 :::
 
 ::: {.column width="60%"}
@@ -429,12 +421,73 @@ This is a call-out.
 ::: callout-caution
 This is a call-out.
 :::
+
 :::
 ::::
 
 ::: {.aside}
-Call-Out blocks are explained [here](https://quarto.org/docs/authoring/callouts.html).
+Call-Out blocks are documented [here](https://quarto.org/docs/authoring/callouts.html)
 :::
+
+## Call-Outs
+
+Variants of call-out
+
+:::: {.columns}
+::: {.column width="40%"}
+
+```         
+::: {.callout-note icon=false}
+Icon is disabled
+:::
+
+::: {.callout-note appearance="simple"}
+Appearance is simple
+:::
+
+::: {.callout-note appearance="minimal"}
+Appearance is minimal
+:::
+
+::: {.callout-note appearance="simple"}
+## Custom title
+Simple appearance and a custom title
+:::
+
+::: {.callout-note appearance="minimal"}
+## Custom title
+Minimal appearance and a custom title
+:::
+```
+
+:::
+
+::: {.column width="60%"}
+
+::: {.callout-note icon=false}
+Icon is disabled
+:::
+
+::: {.callout-note appearance="simple"}
+Appearance is simple
+:::
+
+::: {.callout-note appearance="minimal"}
+Appearance is minimal
+:::
+
+::: {.callout-note appearance="simple"}
+## Custom title
+Simple appearance and a custom title
+:::
+
+::: {.callout-note appearance="minimal"}
+## Custom title
+Minimal appearance and a custom title
+:::
+
+:::
+::::
 
 ## Code formatting
 
@@ -443,13 +496,7 @@ Call-Out blocks are explained [here](https://quarto.org/docs/authoring/callouts.
 - Code can be defined inline where `` `this` `` looks like `this`.
 - R code can be executed inline `` `r "\u0060r Sys.Date()\u0060"` `` producing `r Sys.Date()`.
 
-**Ligatures**
-
-== != && ++ |> <> <- <= <~ /= |=> ->>
-
 `== != && ++ |> <> <- <= <~ /= |=> ->>`
-
-[Code font used is [**JetBrains Mono**](https://www.jetbrains.com/lp/mono/). For full set of ligatures, see [here](https://www.jetbrains.com/lp/mono/#ligatures).]{.smaller}
 
 ## Code formatting
 
@@ -503,7 +550,7 @@ data(iris)
 head(iris[1:3,1:2])
 ```
 
-[These are called chunk options. For more options, see [here](https://quarto.org/docs/computations/execution-options.html) and complete list [here](https://quarto.org/docs/reference/cells/cells-knitr.html).]{.smaller}
+[These are called chunk attributes. For more options, see [here](https://quarto.org/docs/computations/execution-options.html) and complete list [here](https://quarto.org/docs/reference/cells/cells-knitr.html).]{.small}
 
 :::
 ::::
@@ -570,7 +617,7 @@ iris %>%
 :::
 ::::
 
-[For more code highlighting documentation, see [here](https://quarto.org/docs/presentations/revealjs/#code-blocks).]{.smaller}
+[For more code highlighting documentation, see [here](https://quarto.org/docs/presentations/revealjs/#code-blocks).]{.small}
 
 ## Images • Markdown
 
@@ -595,32 +642,55 @@ Control image dimensions.
 
 ```         
 ![](assets/featured.jpg){width=50%}
-![](assets/featured.jpg){width=10%}
+![](assets/featured.jpg){width=20%}
 ```
 
 ![](assets/featured.jpg){width=50%}
-![](assets/featured.jpg){width=10%}
-:::
-:::
+![](assets/featured.jpg){width=20%}
 
-[For more image documentation, see [here](https://quarto.org/docs/authoring/figures.html).]{.smaller}
+[For more image documentation, see [here](https://quarto.org/docs/authoring/figures.html).]{.small}
+
+:::
+:::
 
 ## Images • Markdown • Layout
 
-Figure layout.
+Figure layout
 
 ```         
-::: {layout-ncol=2}
-![Caption for figure 1](assets/featured.jpg){#subfig1 width="40%"}
-![Caption for figure 2](assets/featured.jpg){#subfig2 width="40%"}
+::: {layout-ncol=3}
+![Caption for figure 1](assets/featured.jpg){#fig-layout-1}
+
+![Caption for figure 2](assets/featured.jpg){#fig-layout-2}
+
+![Caption for figure 3](assets/featured.jpg){#fig-layout-3}
 :::
 ```
 
-::: {layout-ncol="2"}
-![Caption for figure 1](assets/featured.jpg){#subfig1 width="40%"}
+::: {layout-ncol="3"}
+![Caption for figure 1](assets/featured.jpg){#fig-layout-1}
 
-![Caption for figure 2](assets/featured.jpg){#subfig2 width="40%"}
+![Caption for figure 2](assets/featured.jpg){#fig-layout-2}
+
+![Caption for figure 3](assets/featured.jpg){#fig-layout-3}
+
 :::
+
+## Images • Markdown • Layout
+
+Absolute positioning
+
+```
+![](assets/featured.jpg){.absolute top=250 left=0 height="450"}
+![](assets/featured.jpg){.absolute top=200 right=50 height="250"}
+![](assets/featured.jpg){.absolute bottom=0 right=200 height="200"}
+```
+
+![](assets/featured.jpg){.absolute top=250 left=0 height="450"}
+
+![](assets/featured.jpg){.absolute top=200 right=50 height="250"}
+
+![](assets/featured.jpg){.absolute bottom=0 right=200 height="200"}
 
 ## Images • HTML
 
@@ -652,47 +722,64 @@ knitr::include_graphics("assets/featured.jpg")
 knitr::include_graphics("assets/featured.jpg")
 ```
 
-This image is displayed at a size of 75 pixels.
-
-````
-```{{r}}
-#| echo: false
-#| out-width: "75px"
-knitr::include_graphics("assets/featured.jpg")
-```
-````
-
-```{r}
-#| echo: false
-#| out-width: "75px"
-knitr::include_graphics("assets/featured.jpg")
-```
-
 ## Math expressions
 
 Some examples of rendering equations.
 
 :::: {.columns}
+::: {.column width="60%"}
+
+```
+$e^{i\pi} + 1 = 0$
+
+$$\frac{E \times X^2 \prod I}{2+7} = 432$$
+
+$$\sum_{i=1}^n X_i$$
+
+$$\int_0^{2\pi} \sin x~dx$$
+```
+
+:::
+
 ::: {.column width="40%"}
 
 $e^{i\pi} + 1 = 0$
 $$\frac{E \times X^2 \prod I}{2+7} = 432$$
 $$\sum_{i=1}^n X_i$$
 $$\int_0^{2\pi} \sin x~dx$$
-:::
 
+:::
+::::
+
+## Math expressions
+
+Some examples of rendering equations.
+
+:::: {.columns}
 ::: {.column width="60%"}
 
+```
 $\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+
 $\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
-]
+
+$\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\mathbb{E}\left[|X-\mu|^2\right]}{k^2}\\ & \leq & \frac{\mathrm{Var}[X]}{k^2} \end{eqnarray}$
+```
+
+:::
+
+::: {.column width="40%"}
+
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+
+$\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
 
 $\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\mathbb{E}\left[|X-\mu|^2\right]}{k^2}\\ & \leq & \frac{\mathrm{Var}[X]}{k^2} \end{eqnarray}$
 
 :::
 ::::
 
-## Tables • `kable`
+## Tables • kable
 
 The most simple table using `kable` from R package `knitr`.
 
@@ -700,7 +787,55 @@ The most simple table using `kable` from R package `knitr`.
 knitr::kable(head(iris),'html')
 ```
 
-## Tables • `kableExtra`
+## Tables • gt
+
+Tables using the [gt](https://gt.rstudio.com/) package. Grammar of tables with extensive customization options.
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+#| eval: false
+library(gt)
+
+iris %>%
+    group_by(Species) %>%
+    slice(1:2) %>%
+    gt() %>%
+    cols_label(
+      Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width",
+      Petal.Length = "Petal Length", Petal.Width = "Petal Width"
+    ) %>%
+    tab_source_note(
+        source_note = md("Source: Iris data. Anderson, 1936; Fisher, 1936)")
+    )
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| echo: false
+library(gt)
+
+iris %>%
+    group_by(Species) %>%
+    slice(1:2) %>%
+    gt() %>%
+    cols_label(
+      Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width",
+      Petal.Length = "Petal Length", Petal.Width = "Petal Width"
+    ) %>%
+    tab_source_note(
+        source_note = md("Source: Iris data. Anderson, 1936; Fisher, 1936)")
+    )
+```
+
+:::
+::::
+
+## Tables • kableExtra
 
 More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and [`formattable`](https://cran.r-project.org/web/packages/formattable/vignettes/formattable-data-frame.html).
 
@@ -711,8 +846,7 @@ More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages
   mutate(Species=cell_spec(Species,"html",color="white",bold=T,
     background=c("#8dd3c7","#fb8072","#bebada")[factor(.$Species)])) %>%
   kable("html",escape=F) %>%
-  kable_styling(bootstrap_options=c("striped","hover","responsive"),
-                full_width=F,position="left") %>%
+  kable_styling(bootstrap_options=c("striped","hover","responsive"),full_width=F) %>%
   column_spec(5,width="3cm")
 ```
 
@@ -741,7 +875,7 @@ Plots using base R.
        col=c("coral","steelblue","forestgreen"),pch=19)}
 ```
 
-## Static plots • `ggplot2`
+## Static plots • ggplot2
 
 Plotting using [`ggplot2`](http://ggplot2.org/).
 
@@ -762,7 +896,6 @@ R package [rbokeh](https://hafen.github.io/rbokeh/index.html) is an easy and con
 
 ```{r}
 #| label: plot-rbokeh
-#| fig-cap: Interactive scatterplot using rbokeh.
 library(rbokeh)
 
 figure(height=400,width=600,xlab="Sepal Length",ylab="Sepal Width") %>%
@@ -770,7 +903,7 @@ figure(height=400,width=600,xlab="Sepal Length",ylab="Sepal Width") %>%
   color=Species,glyph=Species,hover=list(Sepal.Length,Sepal.Width))
 ```
 
-## Interactive plots • `highcharter`
+## Interactive plots • highcharter
 
 R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
 
@@ -782,11 +915,10 @@ h <- iris %>%
   hc_yAxis(title=list(text="Sepal Width"),crosshair=TRUE) %>%
   hc_chart(zoomType="xy",inverted=FALSE) %>%
   hc_legend(verticalAlign="top",align="right") %>% hc_size(height=300,width=500)
-
 htmltools::tagList(list(h))
 ```
 
-## Interactive plots • `plotly`
+## Interactive plots • plotly
 
 R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
 
@@ -798,7 +930,7 @@ p <- iris %>%
 p
 ```
 
-## Interactive plots • `ggplotly`
+## Interactive plots • ggplotly
 
 `plotly` also has a function called `ggplotly` which converts a static ggplot2 object into an interactive plot.
 
@@ -815,7 +947,7 @@ p <- ggplot(iris,aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
 plotly::ggplotly(p,width=460,height=360)
 ```
 
-## Interactive plots • `ggiraph`
+## Interactive plots • ggiraph
 
 R package [`ggiraph`](https://github.com/davidgohel/ggiraph) converts a static ggplot2 object into an interactive plot.
 
@@ -831,7 +963,7 @@ tooltip_css <- "background-color:#f8f9f9;padding:10px;border-style:solid;border-
 ggiraph(code=print(p),hover_css="cursor:pointer;stroke:black;fill-opacity:0.3",zoom_max=5,tooltip_extra_css=tooltip_css,tooltip_opacity=0.9,height_svg=2,width_svg=4,width=0.6)
 ```
 
-## Interactive time series • `dygraphs`
+## Interactive time series • dygraphs
 
 R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings for javascript library [dygraphs](http://dygraphs.com/) for time series data.
 
@@ -857,7 +989,7 @@ forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
              height=300,width=500)
 ```
 
-## Interactive maps • `leaflet`
+## Interactive maps • leaflet
 
 R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
 
@@ -870,7 +1002,7 @@ leaflet(height=300,width=800) %>%
   setView(lat=57.639327,lng=18.288534,zoom=15)
 ```
 
-## Linking Plots • `crosstalk`
+## Linking Plots • crosstalk
 
 R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows crosstalk enabled plotting libraries to be linked. Through the shared 'key' variable, data points can be manipulated simultaneously on two independent plots.
 

@@ -4,18 +4,18 @@
 
 Quarto website template.
 
-![Report home](preview-home.png)
+![Report home](preview-home.jpg)
 
-![Report preview](preview-report.png)
+![Report preview](preview-report.jpg)
 
-![Slide preview](preview-slide.png)
+![Slide preview](preview-slide.jpg)
 
-For a demo site, see [here](https://royfrancis.github.io/abstrave).
+For a demo site and usage, see [here](https://royfrancis.github.io/abstrave).
 
 ## Usage
 
-- Required quarto 1.2.2 or higher
-- Run in the terminal
+- Required quarto 1.3.4 or higher
+- To download and use a starter template, run in the terminal
 
 ```
 quarto use template royfrancis/abstrave
@@ -34,21 +34,6 @@ quarto render
 ```
 
 
-- Template directory structure
-
-```
-.
-├── 404.md
-├── assets/
-├── _extensions
-├── index.qmd
-├── LICENSE
-├── _quarto.yml
-├── README.md
-├── reports/
-└── slides/
-```
-
 - Use `##` as the highest level heading.
 
 ## Acknowledgements
@@ -56,7 +41,8 @@ quarto render
 - Built using [Quarto](https://quarto.org/)
 - Uses the [lightbox extension](https://github.com/quarto-ext/lightbox) for viewing images
 - Uses the [fontawesome extension](https://github.com/quarto-ext/fontawesome) for icons
+- Uses the [reveal-logo extension](https://github.com/royfrancis/reveal-logo) for logos in presentation 
 
 ---
 
-2023 • Roy Francis
+2024 • Roy Francis

@@ -6,25 +6,24 @@ date: ""
 sidebar: false
 format:
   html:
-    css: "assets/css/background.css"
+    css: "assets/css/home.css"
     number-sections: false
     title-block-banner: false
-    page-layout: custom
+    page-layout: full
 execute:
   freeze: false
 ---
 
-<div class="page-layout-custom">
 <div class='home-grid-parent'>
 <div class='home-grid-child-left'>
 
 ## [**Abstrave**]{.large}
-### A quarto website template
+### A quarto course template
 
 - [Report](reports/sample/index.html)
 - [Presentation](slides/sample/index.html)
-- [Report Demo](reports/demo/index.html)
-- [Presentation Demo](slides/demo/index.html)
+
+For usage instructions and demo examples, see [Contents](home_contents.html)
 
 ---
 
@@ -37,6 +36,5 @@ Updated: <?lua.date?> at <?lua.time?>.
 
 ![](assets/images/hero.png)
 
-</div>
 </div>
 </div>

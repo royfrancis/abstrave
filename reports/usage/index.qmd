@@ -1,0 +1,110 @@
+---
+title: Using Quarto & Abstrave
+author: "Roy Francis"
+description: Practical guide to using Quarto with Abstrave theme
+image: "assets/featured.jpg"
+format: html
+---
+
+The Abstrave template is a Quarto website project with html reports and revealjs presentation.
+
+## Initialize
+
+To download a starter template, run in the terminal:
+
+```{bash}
+#| eval: false
+#| filename: bash
+quarto use template royfrancis/abstrave
+```
+
+This creates a website template that you can modify as needed. The directory structure is as follows:
+
+```
+.
+├── 404.md
+├── assets/
+├── _extensions/
+├── home_contents.qmd
+├── home_precourse.qmd
+├── home_schedule.qmd
+├── home_syllabus.qmd
+├── index.qmd
+├── _quarto.yml
+├── reports/
+└── slides/
+```
+
+## Settings
+
+Start by updating the settings. The website/project settings are contained in the `_quarto.yml` file. A website is a quarto project. Projects are documented [here]{https://quarto.org/docs/projects/quarto-projects.html} and websites are documented [here](https://quarto.org/docs/websites/).
+
+- The output directory is set to **docs**; `output-dir: docs`
+- Navigation bar links are set under **website: navbar**. Add or remove as needed
+- Page footer settings are set under **website: page-footer**. Update as needed
+- Change `site-url` to your intended destination
+- HTML report settings are under **format: html:**
+  - warnings and messages from chunks are disabled
+  - A default subtitle has been set
+- RevealJS slides settings are under **format: revealjs**
+- Add custom css under YAML if needed: `css: "styles.css"`
+
+## Content
+
+Now you can start adding content. 
+
+{{< fa circle-info >}} The starter template should render completely using quarto alone. You can add R or Python for example as needed.
+
+- The homepage is **index.qmd**
+- Files starting with **home** are essential pages linked in the top navigation menu. Remove or modify them as needed
+- All reports are organised under **reports/** as separate folders
+- All slides are organised under **slides/** as separate folders
+- To create additional Quarto documents in RStudio, **File** > **New File** > **Quarto Document**
+
+## Usage tips and conventions
+
+- Markdown basics are covered [here](https://quarto.org/docs/authoring/markdown-basics.html)
+- Use level 2 heading (`##`) as the highest level
+- Use quarto style chunk options; `#| eval: false` rather than `` `{r eval=FALSE}` ``
+- Qmds starting with `_` such as `_content.qmd` are child documents and are not rendered alone
+- Child qmd files can be included by using `{{{< include _content.qmd >>}}}`. They do not work in .ipynb notebooks. Includes is documented [here](https://quarto.org/docs/authoring/includes.html).
+- Dynamic variables can be defined in `_variables.yml` and used as `{{{< var variable_name >>}}}`. Dynamic variables are documented [here](https://quarto.org/docs/authoring/variables.html).
+- Dynamic variables can be defined in `_metadata.yml` and used as `{{{< meta variable_name >>}}}`
+- Environment variables can be used as `{{{< env variable_name >>}}}`
+- When using R or Python, declare all libraries at the beginning of each document
+
+## Preview
+
+Quarto allows for live preview of changes.
+
+```{bash}
+#| eval: false
+#| filename: bash
+quarto preview report.qmd
+```
+
+::: {.callout-note}
+Preview will build all the files in the project. So, this might not be a good option if there are incomplete documents.
+:::
+
+## Export
+
+A quarto document can be rendered from the terminal as follows:
+
+```{bash}
+#| eval: false
+#| filename: bash
+quarto render report.qmd
+```
+
+Rendering from the R console using the `quarto` R package.
+
+```{r}
+#| echo: true
+#| eval: false
+#| filename: R
+
+quarto::quarto_render("report.qmd")
+```
+
+To render from RStudio, click the **Render** button. Rendered output is moved into the **docs** directory. This is set in `_quarto.yml` as `output-dir:`

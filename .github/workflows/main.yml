@@ -26,6 +26,7 @@ jobs:
             any::kableExtra
             any::formattable
             any::DT
+            any::gt
             any::reactable
             any::ggplot2
             any::rbokeh

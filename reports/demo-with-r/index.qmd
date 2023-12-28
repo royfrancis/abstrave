@@ -1,0 +1,645 @@
+---
+title: "Quarto with R"
+author: "Roy Francis"
+description: "This document showcases the use of R."
+image: "assets/featured.jpg"
+format: html
+---
+
+```{r}
+#| echo: false
+
+# data handling
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+# tables
+library(htmlTable) # enchanced markdown table
+library(kableExtra) # complete table
+library(formattable) # table with conditional formatting
+library(DT) # interactive table
+library(reactable) # interactive table
+
+# graphics
+library(ggplot2) # static graphics
+
+# interactive graphics
+library(highcharter)
+library(plotly)
+library(ggiraph) # convert ggplot to interactive
+library(dygraphs) # time series
+library(networkD3) # network graph
+library(leaflet) # interactive maps
+library(crosstalk) # linking plots
+
+# extras
+library(fontawesome) # icons
+
+# custom ggplot theme
+theme_report <- function (basesize=12) {
+    theme_bw(base_size=basesize) %+replace%
+        theme(
+            panel.border=element_blank(),
+            panel.grid.minor=element_blank(),
+            panel.grid.major.x=element_blank(),
+            legend.position="top",
+            legend.direction="horizontal"
+        )
+}
+```
+
+## Code execution
+
+Code can be defined inline where `` `r "\u0060r Sys.Date()\u0060"` `` renders `r Sys.Date()`. 
+
+Code can be defined inside code blocks.
+
+````
+```{{r}}
+Sys.Date()
+```
+````
+
+which shows the source code and output.
+
+```{r}
+Sys.Date()
+```
+
+Here is another example of executed R code with input and output.
+
+```{r}
+data(iris)
+head(iris[,1:2])
+```
+
+## Chunk attributes
+
+Properties and behaviour of code chunks can be controlled using chunk attributes. This is specified as comment sign of the language and pipe followed by key: value. So for example, in R: `#| eval: false`.
+
+In this example, the R source code and results are hidden but the code is evaluated.
+
+````         
+```{{r}}
+#| eval: true
+#| echo: false
+#| results: hide
+Sys.Date()
+```
+````
+
+A code chunk can be given a code filename using the chunk attribute `filename`.
+
+````
+```{{r}}
+#| filename: R code
+Sys.Date()
+```
+````
+
+```{r}
+#| filename: R code
+#| eval: false
+Sys.Date()
+```
+
+Enable line numbers using `code-line-numbers: true`.
+
+````
+```{{r}}
+#| code-line-numbers: true
+Sys.Date()
+sessionInfo()
+```
+````
+
+```{r}
+#| eval: false
+#| code-line-numbers: true
+Sys.Date()
+sessionInfo()
+```
+
+Code chunk attributes are documented [here](https://quarto.org/docs/output-formats/html-code.html).
+
+## Tables
+
+### Manual
+
+For simple cases, tables can be manually created in markdown.
+
+::: {.grid}
+::: {.g-col-7}
+
+```         
+|speed|dist|
+|-----|----|
+|4    |   2|
+|4    |  10|
+|7    |   4|
+```
+
+:::
+::: {.g-col-5}
+
+| speed | dist |
+|-------|------|
+| 4     | 2    |
+| 4     | 10   |
+| 7     | 4    |
+
+:::
+:::
+
+### kable
+
+Simple table using `kable` from R package `knitr`. This is the default output for quarto.
+
+```{r}
+library(knitr)
+head(iris)
+```
+
+#### Layout
+
+````
+```{{r}}
+#| column: body-outset
+#| label: tbl-dual-table
+#| tbl-cap: "Example"
+#| tbl-subcap: 
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+
+kable(head(cars))
+kable(head(pressure))
+```
+````
+
+```{r}
+#| echo: false
+#| column: body-outset
+#| label: tbl-dual-table
+#| tbl-cap: "Example"
+#| tbl-subcap:
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+
+kable(head(cars))
+kable(head(pressure))
+```
+
+#### Cross referencing
+
+Images and tables can be automatically numbered by using `label` attribute. Image label must start with `fig-` and tables with `tbl-`. Tables and images can also be cross-referenced when using the `label` attribute. For example, the table above can be referenced like `@tbl-dual-table` which renders as @tbl-dual-table.
+
+#### Margin table
+
+````
+```{{r}}
+#| fig-caption: This table is in the margin.
+#| column: margin
+
+head(cars)
+```
+````
+
+```{r}
+#| fig-caption: This table is in the margin.
+#| column: margin
+#| echo: false
+
+head(cars)
+```
+
+### gt
+
+Tables using the [gt](https://gt.rstudio.com/) package. A structured approach to creating tables using grammar of tables with extensive customization options.
+
+```{r}
+library(gt)
+
+iris %>%
+    group_by(Species) %>%
+    slice(1:4) %>%
+    gt() %>%
+    cols_label(
+      Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width",
+      Petal.Length = "Petal Length", Petal.Width = "Petal Width"
+    ) %>%
+    tab_source_note(
+        source_note = md("Source: Iris data. Anderson, 1936; Fisher, 1936)")
+    )
+```
+
+### htmlTable
+
+Markdown tables can be enhanced using the R package [htmlTable](https://github.com/gforge/htmlTable).
+
+```{r}
+library(htmlTable)
+
+iris1 <- iris[c(1:4,51:53,105:108),]
+htmlTable(iris1, rgroup=unique(iris1$Species), n.rgroup=rle(as.character(iris1$Species))$lengths)
+```
+
+### kableExtra
+
+More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and [`formattable`](https://cran.r-project.org/web/packages/formattable/vignettes/formattable-data-frame.html).
+
+```{r}
+#| tbl-cap: Table using kableextra.
+library(kableExtra)
+
+iris[c(1:4,51:53,105:108),] %>%
+  mutate(Sepal.Length=color_bar("lightsteelblue")(Sepal.Length)) %>%
+  mutate(Sepal.Width=color_tile("white","orange")(Sepal.Width)) %>%
+  mutate(Species=cell_spec(Species,"html",color="white",bold=T,
+    background=c("#8dd3c7","#fb8072","#bebada")[factor(.$Species)])) %>%
+  kable("html",escape=F) %>%
+  kable_styling(bootstrap_options=c("striped","hover","responsive"),
+                full_width=F,position="left") %>%
+  column_spec(5,width="3cm")
+```
+
+### DT
+
+Interactive table using R package [`DT`](https://rstudio.github.io/DT/).
+
+```{r}
+#| tbl-cap: Table using datatable.
+library(DT)
+
+iris %>%
+  slice(1:15) %>%
+  datatable(options=list(pageLength=7))
+```
+
+### reactable
+
+Advanced interactive tables with [reactable](https://glin.github.io/reactable/index.html).
+
+```{r}
+library(reactable)
+
+reactable(iris[sample(1:150,10),],
+  columns = list(
+    Sepal.Length = colDef(name = "Sepal Length"),
+    Sepal.Width = colDef(name = "Sepal Width"),
+    Petal.Width = colDef(name = "Petal Width"),
+    Petal.Width = colDef(name = "Petal Width")
+  ),
+  striped = TRUE,
+  highlight = TRUE,
+  filterable = TRUE
+)
+```
+
+**reactable** creation can be simplified as well as enhanced by using [reactablefmtr](https://github.com/kcuilla/reactablefmtr/).
+
+## Static images using R
+
+Quarto chunks can be used to control image display size using the argument `out.width`.
+
+This image below is displayed at a size of 300 pixels.
+
+````         
+```{{r}}
+#| out-width: 300px
+knitr::include_graphics("assets/featured.jpg")
+```
+````
+
+```{r}
+#| echo: false
+#| out-width: "300px"
+knitr::include_graphics("assets/featured.jpg")
+```
+
+This image below is displayed at a size of 75 pixels and a caption added.
+
+````         
+```{{r}}
+#| out-width: 75px
+#| fig-cap: This is a caption
+knitr::include_graphics("assets/featured.jpg")
+```
+````
+
+```{r}
+#| echo: false
+#| out-width: "75px"
+#| fig-cap: This is a caption
+knitr::include_graphics("assets/featured.jpg")
+```
+
+For more information on figures, see [here](https://quarto.org/docs/authoring/figures.html). For plots generated through R, see section further below.
+
+## Static plots
+
+### Base plot
+
+-   Plots using base R are widely used and may be good enough for most situations.
+-   But they lack a consistent coding framework.
+
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+#| label: fig-plot-base
+#| fig-cap: Static plot using base plot.
+
+{
+  plot(x=iris$Sepal.Length,y=iris$Sepal.Width,
+      col=c("coral","steelblue","forestgreen")[iris$Species],
+      xlab="Sepal Length",ylab="Sepal Width",pch=19)
+
+  legend(x=7,y=4.47,legend=c("setosa","versicolor","virginica"),
+        col=c("coral","steelblue","forestgreen"),pch=19)
+}
+```
+
+#### Multiple plots
+
+````
+```{{r}}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+#| fig-cap:
+#|   - "Scatterplot of speed vs distance"
+#|   - "Pairwise scatterplot of all variables"
+#|   - "Scatterplot of temperature vs pressure"
+
+plot(cars)
+plot(iris)
+plot(pressure)
+```
+````
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+#| echo: false
+#| fig-cap:
+#|   - "Scatterplot of speed vs distance"
+#|   - "Pairwise scatterplot of all variables"
+#|   - "Scatterplot of temperature vs pressure"
+
+plot(cars)
+plot(iris)
+plot(pressure)
+```
+
+#### Margin plot
+
+```{{{r}}}
+#| column: margin
+
+plot(cars)
+```
+
+```{r}
+#| column: margin
+
+plot(cars)
+```
+
+### ggplot2
+
+R package [`ggplot2`](http://ggplot2.org/) is one of the most versatile and complete plotting solutions.
+
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+#| label: plot-ggplot
+#| fig-cap: Static plot using ggplot2.
+#| cap-location: margin
+library(ggplot2)
+
+iris %>%
+  ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
+  geom_point(size=2)+
+  labs(x="Sepal Length",y="Sepal Width")+
+  theme_report()
+```
+
+## Interactive plots
+
+### rbokeh
+
+R package [rbokeh](https://hafen.github.io/rbokeh/index.html) is an easy and convenient option to get started with interactive plots.
+
+```{r}
+#| label: plot-rbokeh
+#| fig-cap: Interactive scatterplot using rbokeh.
+library(rbokeh)
+
+figure(height=400,width=600,xlab="Sepal Length",ylab="Sepal Width") %>%
+  ly_points(Sepal.Length,Sepal.Width,data=iris,
+  color=Species,glyph=Species,hover=list(Sepal.Length,Sepal.Width))
+```
+
+### highcharter
+
+R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
+
+```{r}
+#| label: plot-highcharter
+#| fig-cap: Interactive scatterplot using highcharter.
+library(highcharter)
+
+h <- iris %>%
+  hchart(.,"scatter",hcaes(x="Sepal.Length",y="Sepal.Width",group="Species")) %>%
+  hc_xAxis(title=list(text="Sepal Length"),crosshair=TRUE) %>%
+  hc_yAxis(title=list(text="Sepal Width"),crosshair=TRUE) %>%
+  hc_chart(zoomType="xy",inverted=FALSE) %>%
+  hc_legend(verticalAlign="top",align="right") %>%
+  hc_size(height=400)
+
+htmltools::tagList(list(h))
+```
+
+### plotly
+
+R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
+
+```{r}
+#| fig-cap: Interactive scatterplot using plotly.
+library(plotly)
+
+p <- iris %>%
+  plot_ly(x=~Sepal.Length,y=~Sepal.Width,color=~Species,width=500,height=400) %>%
+  add_markers()
+p
+```
+
+### ggplotly
+
+`plotly` also has a function called `ggplotly` which converts a static ggplot2 object into an interactive plot.
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+#| fig-cap: Interactive scatterplot using ggplotly.
+library(plotly)
+
+p <- iris %>%
+  ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
+  geom_point()+
+  labs(x="Sepal Length",y="Sepal Width")+
+  theme_bw(base_size=12)
+
+ggplotly(p,width=500,height=400)
+```
+
+### ggiraph
+
+`ggiraph` is also an R package that can be used to convert a static ggplot2 object into an interactive plot.
+
+```{r}
+#| fig-height: 5
+#| fig-width: 7
+#| fig-cap: Interactive scatterplot using ggiraph.
+library(ggiraph)
+
+p <- ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+
+      geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=2)+
+  theme_bw()
+
+tooltip_css <- "background-color:#e7eef3;font-family:Roboto;padding:10px;border-style:solid;border-width:2px;border-color:#125687;border-radius:5px;"
+
+ggiraph(code=print(p),hover_css="cursor:pointer;stroke:black;fill-opacity:0.3",zoom_max=5,tooltip_extra_css=tooltip_css,tooltip_opacity=0.9)
+```
+
+### dygraphs
+
+R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings for javascript library [dygraphs](http://dygraphs.com/) for time series data.
+
+```{r}
+#| fig-height: 5
+#| fig-width: 9
+#| fig-cap: Interactive time series plot using dygraph.
+library(dygraphs)
+
+lungDeaths <- cbind(ldeaths, mdeaths, fdeaths)
+dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") %>%
+  dyOptions(colors=c("#66C2A5","#FC8D62","#8DA0CB"))
+```
+
+### Network graph
+
+R package `networkD3` allows the use of interactive network graphs from the [D3.js](https://d3js.org/) javascript library.
+
+```{r}
+#| fig-cap: Interactive network plot.
+library(networkD3)
+
+data(MisLinks,MisNodes)
+forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
+             Target="target",Value="value",NodeID="name",
+             Group="group",opacity=0.4)
+```
+
+### leaflet
+
+R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
+
+```{r}
+#| fig-cap: Interactive map using leaflet.
+library(leaflet)
+
+leaflet(height=500,width=700) %>%
+  addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+  #addProviderTiles(providers$Esri.NatGeoWorldMap) %>%
+  addMarkers(lat=57.639327,lng=18.288534,popup="RaukR") %>%
+  setView(lat=57.639327,lng=18.288534,zoom=15)
+```
+
+### crosstalk
+
+R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows `crosstalk` enabled plotting libraries to be linked. Through the shared 'key' variable, data points can be manipulated simultaneously on two independent plots.
+
+```{r}
+#| fig-height: 8
+#| fig-cap: Linking independent plots using crosstalk.
+library(crosstalk)
+
+shared_quakes <- SharedData$new(quakes[sample(nrow(quakes), 100),])
+lf <- leaflet(shared_quakes,height=300) %>%
+        addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+        addMarkers()
+py <- plot_ly(shared_quakes,x=~depth,y=~mag,size=~stations,height=300) %>%
+        add_markers()
+
+htmltools::div(lf,py)
+```
+
+## ObservableJS
+
+Quarto supports [ObservableJS](https://observablehq.com/) for interactive visualisations in the browser.
+
+Pass data from R to OJS
+
+```{r}
+irism <- iris
+colnames(irism) <- gsub("[.]","_",tolower(colnames(irism)))
+ojs_define(ojsd = irism)
+```
+
+```{ojs}
+ojsdata = transpose(ojsd)
+```
+
+Display as a table
+
+```{ojs}
+viewof filtered_table = Inputs.table(ojsdata)
+```
+
+Define inputs
+
+```{ojs}
+viewof x = Inputs.select(Object.keys(ojsdata[0]), {value: "sepal_length", multiple: false, label: "X axis"})
+```
+
+```{ojs}
+viewof y = Inputs.select(Object.keys(ojsdata[0]), {value: "sepal_width", multiple: false, label: "Y axis"})
+```
+
+Display plot
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.dot(ojsdata, {
+      x: x,
+      y: y,
+      fill: "species",
+      title: (d) =>
+        `${d.species} \n Petal length: ${d.petal_length} \n Sepal length: ${d.sepal_length}`
+    })
+  ],
+  grid: true
+})
+```
+
+ObservableJS in quarto [documentation](https://quarto.org/docs/interactive/index.html#observable-js).
+
+## Icons
+
+Icons can be placed programatically through R using the R package `fontawesome`.
+
+`` `r "\u0060r fontawesome::fa('lightbulb')\u0060"` ``
+
+`r fontawesome::fa("lightbulb")`
+
+Optional arguments are height and fill.
+
+`` `r "\u0060r fontawesome::fa('lightbulb',height='30px',fill='steelblue')\u0060"` ``
+
+`r fontawesome::fa("lightbulb",height='30px',fill='steelblue')`
+
+For full list of icons check out [FontAwesome](https://fontawesome.com/search?m=free).

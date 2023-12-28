@@ -1,0 +1,106 @@
+---
+title: "ObservableJS and Mermaid"
+author: "Roy Francis"
+description: "This document showcases use of OJS and mermaid in quarto."
+image: "assets/featured.jpg"
+format: html
+---
+
+## ObservableJS
+
+Quarto natively supports [ObservableJS](https://observablehq.com/) for interactive visualisations and analysis in the browser. OJS in quarto is documented [here](https://quarto.org/docs/interactive/index.html#observable-js).
+
+### Read CSV
+
+Specify `ojs` as the language. Read in a CSV file as a JSON object.
+
+````
+```{{ojs}}
+data = FileAttachment("assets/diamonds.csv").csv({ typed: true})
+data
+```
+````
+
+```{ojs}
+//| echo: false
+data = FileAttachment("assets/diamonds.csv").csv({ typed: true})
+data
+```
+
+### Table
+
+Display JSON object as a table.
+
+```{ojs}
+viewof raw_table = Inputs.table(data)
+```
+
+### Scatterplot
+
+Pick the variable for point color.
+
+```{ojs}
+viewof col = Inputs.select(["carat","cut","color","clarity","depth","table","price"],{value: "cut", multiple: false, label: "Color"})
+viewof x = Inputs.select(["carat","depth","table","price"], {value: "carat", multiple: false, label: "X axis"})
+viewof y = Inputs.select(["carat","depth","table","price"], {value: "depth", multiple: false, label: "Y axis"})
+```
+
+```{ojs}
+//| label: fig-scatter-1
+//| fig-cap: Scatterplot A.
+
+Plot.plot({
+  color: {legend: true},
+  marks: [
+    Plot.dot(data, {
+      x: x,
+      y: y,
+      stroke: col,
+      title: (d) => `${d.cut}`
+    })
+  ],
+  grid: true
+})
+```
+
+## MermaidJS
+
+Quarto natively supports diagrams using [mermaid](https://mermaid.js.org/). Using mermaid in quarto is documented [here](https://quarto.org/docs/authoring/diagrams.html).
+
+### Flow diagram
+
+Specify `mermaid` as the language.
+
+````
+```{{mermaid}}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+````
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+### Gant charts
+
+```{mermaid}
+gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+```
+
