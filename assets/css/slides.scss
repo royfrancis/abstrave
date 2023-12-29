@@ -4,7 +4,7 @@
 
 /* colours, fonts, size ---------------------------------------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Ubuntu+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Nunito:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
 $primary: #4C979F;
 $secondary: #A6CBCF;
@@ -14,7 +14,7 @@ $body-color: #1c2833;
 $code-color: #273746;
 $code-block-bg: WhiteSmoke;
 $font-family-sans-serif: 'Nunito', 'Source Sans Pro', 'Helvetica', 'sans-serif' ;
-$font-family-monospace: 'Ubuntu Mono', 'Lucida Console', 'Courier', 'monospace';
+$font-family-monospace: 'Fira Mono','Ubuntu Mono', 'Lucida Console', 'Courier', 'monospace';
 // $font-size-root: 18px;
 // $code-font-size: 14px;
 /* major second scale */
@@ -50,23 +50,22 @@ $presentation-h6-font-size: 1em;
 .smaller { font-size: 0.64em;}
 .smallest { font-size: 0.512em;}
 
-.badge,
-.badge-primary {
+
+.badge {
   background-color: $primary;
   color: white;
   font-size: 0.85em;
-  padding: 0.2em 0.3em;
+  padding: 0.1em 0.3em;
   border-radius: 4px;
   vertical-align: baseline;
 }
 
+.badge-primary {
+  background-color: $primary;
+}
+
 .badge-secondary {
   background-color: $secondary;
-  color: white;
-  font-size: 0.85em;
-  padding: 0.2em 0.3em;
-  border-radius: 4px;
-  vertical-align: baseline;
 }
 
 /* callout */

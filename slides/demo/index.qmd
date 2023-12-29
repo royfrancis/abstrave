@@ -271,9 +271,11 @@ This is subscript `H~2~O`  H~2~O
 
 This is superscript `2^10`  2^10^
 
-`[This is a badge]{.badge-primary}`  [This is a badge]{.badge-primary}
+`This is a [badge]{.badge .badge-primary}`  
+This is a [badge]{.badge .badge-primary}  
 
-`[This is a badge]{.badge-secondary}`  [This is a badge]{.badge-secondary}
+`This is a [badge]{.badge .badge-secondary}`  
+This is a [badge]{.badge .badge-secondary}  
 
 `This is a [link](r-project.org)`  This is a [link](r-project.org)
 :::
