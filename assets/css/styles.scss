@@ -25,7 +25,7 @@ $h4-font-size: 1.266rem;
 $h5-font-size: 1.125rem;
 $h6-font-size: 1rem;
 $code-block-border-color: none;
-$code-font-size: 0.95rem;
+$code-font-size: 0.90rem;
 $code-bg: $code-block-bg; /* inline code */
 /*$code-color: ; */
 
@@ -95,15 +95,6 @@ pre {
 code {
   color: $code-color;
 }
-
-pre, code, .sourceCode {
-  font-size: $code-font-size;
-}
-
-//.sourceCode,
-//div.sourceCode {
-//  border-radius: 0;
-//}
 
 /* call-out */
 

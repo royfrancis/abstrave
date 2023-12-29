@@ -374,30 +374,30 @@ This paragraph is red.
 
 [This text is blue]{style="color: blue"}
 
-## Call-Outs
+## Callouts
 
 :::: {.columns}
 ::: {.column width="40%"}
 
 ```         
 ::: {.callout-note}
-This is a call-out.
+This is a callout.
 :::
 
 ::: {.callout-warning}
-This is a call-out.
+This is a callout.
 :::
 
 ::: {.callout-important}
-This is a call-out.
+This is a callout.
 :::
 
 ::: {.callout-tip}
-This is a call-out.
+This is a callout.
 :::
 
 ::: {.callout-caution}
-This is a call-out.
+This is a callout.
 :::
 ```
 
@@ -405,38 +405,38 @@ This is a call-out.
 
 ::: {.column width="60%"}
 ::: callout-note
-This is a call-out.
+This is a callout.
 :::
 
 ::: callout-warning
-This is a call-out.
+This is a callout.
 :::
 
 ::: callout-important
-This is a call-out.
+This is a callout.
 :::
 
 ::: callout-tip
-This is a call-out.
+This is a callout.
 :::
 
 ::: callout-caution
-This is a call-out.
+This is a callout.
 :::
 
 :::
 ::::
 
 ::: {.aside}
-Call-Out blocks are documented [here](https://quarto.org/docs/authoring/callouts.html)
+CallOut blocks are documented [here](https://quarto.org/docs/authoring/callouts.html)
 :::
 
-## Call-Outs
+## Callouts
 
-Variants of call-out
+Variants of callout
 
 :::: {.columns}
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 ```         
 ::: {.callout-note icon=false}
@@ -464,7 +464,7 @@ Minimal appearance and a custom title
 
 :::
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 
 ::: {.callout-note icon=false}
 Icon is disabled
@@ -490,6 +490,34 @@ Minimal appearance and a custom title
 
 :::
 ::::
+
+## Callouts
+
+````
+::: {.callout-note}
+
+This contains code
+
+## Callout with code
+
+```
+Sys.Date()
+```
+
+:::
+````
+
+::: {.callout-note}
+
+## Callout with code
+
+This contains code
+
+```
+Sys.Date()
+```
+
+:::
 
 ## Code formatting
 
@@ -707,7 +735,7 @@ This image is 30% size.
 
 **Using R**
 
-R chunks in RMarkdown can be used to control image display size using the arguemnt `out.width`.
+R chunks in RMarkdown can be used to control image display size using the argument `out.width`.
 
 This image is displayed at a size of 200 pixels.
 
@@ -781,7 +809,7 @@ $\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\math
 :::
 ::::
 
-## Tables • kable
+## Tables • `kable`
 
 The most simple table using `kable` from R package `knitr`.
 
@@ -837,7 +865,7 @@ iris %>%
 :::
 ::::
 
-## Tables • kableExtra
+## Tables • `kableExtra`
 
 More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and [`formattable`](https://cran.r-project.org/web/packages/formattable/vignettes/formattable-data-frame.html).
 
@@ -852,13 +880,25 @@ More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages
   column_spec(5,width="3cm")
 ```
 
-## Tables • `DT`
+## Tables • Interactive • `DT`
 
 Interactive table using R package [`DT`](https://rstudio.github.io/DT/).
 
 ```{r}
 library(DT)
 DT::datatable(iris[1:20,],options=list(pageLength=7))
+```
+
+## Tables • Interactive • `reactable`
+
+Interactive tables with [reactable](https://glin.github.io/reactable/index.html).
+
+```{r}
+library(reactable)
+
+reactable(iris[sample(1:150,6),],
+  striped = TRUE, highlight = TRUE, filterable = TRUE
+)
 ```
 
 ## Static plots • Base Plot
@@ -877,7 +917,7 @@ Plots using base R.
        col=c("coral","steelblue","forestgreen"),pch=19)}
 ```
 
-## Static plots • ggplot2
+## Static plots • `ggplot2`
 
 Plotting using [`ggplot2`](http://ggplot2.org/).
 
@@ -892,7 +932,7 @@ iris %>%
   theme_bw(base_size=18)
 ```
 
-## Interactive plots • highcharter
+## Interactive plots • `highcharter`
 
 R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
 
@@ -907,7 +947,7 @@ h <- iris %>%
 htmltools::tagList(list(h))
 ```
 
-## Interactive plots • plotly
+## Interactive plots • `plotly`
 
 R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
 
@@ -919,7 +959,7 @@ p <- iris %>%
 p
 ```
 
-## Interactive plots • ggplotly
+## Interactive plots • `ggplotly`
 
 `plotly` also has a function called `ggplotly` which converts a static ggplot2 object into an interactive plot.
 
@@ -936,7 +976,7 @@ p <- ggplot(iris,aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
 plotly::ggplotly(p,width=460,height=360)
 ```
 
-## Interactive plots • ggiraph
+## Interactive plots • `ggiraph`
 
 R package [`ggiraph`](https://github.com/davidgohel/ggiraph) converts a static ggplot2 object into an interactive plot.
 
@@ -952,7 +992,7 @@ tooltip_css <- "background-color:#f8f9f9;padding:10px;border-style:solid;border-
 ggiraph(code=print(p),hover_css="cursor:pointer;stroke:black;fill-opacity:0.3",zoom_max=5,tooltip_extra_css=tooltip_css,tooltip_opacity=0.9,height_svg=2,width_svg=4,width=0.6)
 ```
 
-## Interactive time series • dygraphs
+## Interactive time series • `dygraphs`
 
 R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings for javascript library [dygraphs](http://dygraphs.com/) for time series data.
 
@@ -978,7 +1018,7 @@ forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
              height=300,width=500)
 ```
 
-## Interactive maps • leaflet
+## Interactive maps • `leaflet`
 
 R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
 
@@ -991,7 +1031,7 @@ leaflet(height=300,width=800) %>%
   setView(lat=57.639327,lng=18.288534,zoom=15)
 ```
 
-## Linking Plots • crosstalk
+## Linking Plots • `crosstalk`
 
 R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows crosstalk enabled plotting libraries to be linked. Through the shared 'key' variable, data points can be manipulated simultaneously on two independent plots.
 

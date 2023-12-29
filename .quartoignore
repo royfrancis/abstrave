@@ -10,5 +10,9 @@ README.md
 preview*
 docs
 reports/demo/
+reports/demo-with-r/
+reports/more/
+reports/usage/
+slides/demo/
 slides/demo/
 .nojekyll

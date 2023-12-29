@@ -11,7 +11,7 @@ $secondary: #A6CBCF;
 $tertiary: #D1E5E6;
 $link-color: #79B1B7;
 $body-color: #1c2833;
-$code-color: #273746;
+$code-color: #496985;
 $code-block-bg: WhiteSmoke;
 $font-family-sans-serif: 'Nunito', 'Source Sans Pro', 'Helvetica', 'sans-serif' ;
 $font-family-monospace: 'Fira Mono','Ubuntu Mono', 'Lucida Console', 'Courier', 'monospace';
@@ -55,7 +55,7 @@ $presentation-h6-font-size: 1em;
   background-color: $primary;
   color: white;
   font-size: 0.85em;
-  padding: 0.1em 0.3em;
+  padding: 0.05em 0.3em;
   border-radius: 4px;
   vertical-align: baseline;
 }
@@ -157,10 +157,12 @@ $presentation-h6-font-size: 1em;
   text-align: right;
 }
 
-.reveal pre,
-.reveal code,
-.reveal .sourceCode {
-  font-size: $presentation-code-font-size !important;
+.reveal pre {
+  font-size: 1.8rem !important;
+}
+
+.reveal code {
+  font-size: 0.85em !important;
 }
 
 .reveal pre {

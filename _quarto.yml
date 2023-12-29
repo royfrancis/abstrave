@@ -66,8 +66,9 @@ format:
     transition: "fade"
     transition-speed: "fast"
     smaller: false
-    incremental: true
+    incremental: false
     scrollable: false
+    slide-level: 2
     slide-number: true
     progress: true
     date:  last-modified
