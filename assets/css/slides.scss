@@ -250,10 +250,6 @@ $presentation-h6-font-size: 1em;
 
 /* title slide */
 
-#title-slide {
-  text-align: left !important;
-}
-
 #title-slide .title {
   font-size: $presentation-h1-font-size;
   margin: 0;
@@ -276,18 +272,54 @@ $presentation-h6-font-size: 1em;
   padding-left: 0;
 }
 
-#title-slide .institute {
+#title-slide .institute, #title-slide .author {
   font-size: $presentation-h4-font-size;
   margin: 0;
 }
 
 #title-slide .date {
-  font-size: $presentation-h4-font-size;
+  font-size: $presentation-h5-font-size;
   margin: 0;
 }
 
 .reveal .slide-background-content {
   background-position: right;
+}
+
+#title-slide .title-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#title-slide .title-parent {
+  display: grid;
+  margin: auto;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 2em;
+  align-items: center;
+  grid-column-gap: 2em;
+  /*grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));*/
+}
+
+#title-slide .title-one {
+  grid-template-columns: 1fr;
+  grid-template-areas: "text";
+}
+
+#title-slide .title-two {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "text hero";
+}
+
+#title-slide .title-child-text {
+  grid-area: text;
+  text-align: left;
+}
+
+#title-slide .title-child-hero {
+  grid-area: hero;
 }
 
 /* citation */

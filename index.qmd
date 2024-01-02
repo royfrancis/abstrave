@@ -14,8 +14,9 @@ execute:
   freeze: false
 ---
 
-<div class='home-grid-parent'>
-<div class='home-grid-child-left'>
+::: {.home-container}
+::: {.home-grid-parent}
+::: {.home-grid-child-left}
 
 ## [**Abstrave**]{.large}
 ### A quarto course template
@@ -31,10 +32,11 @@ For usage instructions and demo examples, see [Contents](home_contents.html)
 Updated: <?lua.date?> at <?lua.time?>.
 :::
 
-</div>
-<div class='home-grid-child-right'>
+:::
+:::{.home-grid-child-right}
 
-![](assets/images/hero.png)
+![](assets/images/hero.png){.nolightbox}
 
-</div>
-</div>
+:::
+:::
+:::

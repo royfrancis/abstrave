@@ -1,7 +1,6 @@
 ---
 title: "Quarto Presentation"
 author: "Roy Francis"
-image: "assets/featured.jpg"
 format: revealjs
 ---
 
@@ -659,10 +658,10 @@ iris %>%
 Using regular markdown.
 
 ```         
-![](assets/featured.jpg)
+![](assets/image.jpg)
 ```
 
-![](assets/featured.jpg)
+![](assets/image.jpg)
 
 [The dimensions are based on image and/or fill up the entire width.]{.small}
 :::
@@ -671,12 +670,12 @@ Using regular markdown.
 Control image dimensions.
 
 ```         
-![](assets/featured.jpg){width=50%}
-![](assets/featured.jpg){width=20%}
+![](assets/image.jpg){width=50%}
+![](assets/image.jpg){width=20%}
 ```
 
-![](assets/featured.jpg){width=50%}
-![](assets/featured.jpg){width=20%}
+![](assets/image.jpg){width=50%}
+![](assets/image.jpg){width=20%}
 
 [For more image documentation, see [here](https://quarto.org/docs/authoring/figures.html).]{.small}
 
@@ -689,20 +688,20 @@ Figure layout
 
 ```         
 ::: {layout-ncol=3}
-![Caption for figure 1](assets/featured.jpg){#fig-layout-1}
+![Caption for figure 1](assets/image.jpg){#fig-layout-1}
 
-![Caption for figure 2](assets/featured.jpg){#fig-layout-2}
+![Caption for figure 2](assets/image.jpg){#fig-layout-2}
 
-![Caption for figure 3](assets/featured.jpg){#fig-layout-3}
+![Caption for figure 3](assets/image.jpg){#fig-layout-3}
 :::
 ```
 
 ::: {layout-ncol="3"}
-![Caption for figure 1](assets/featured.jpg){#fig-layout-1}
+![Caption for figure 1](assets/image.jpg){#fig-layout-1}
 
-![Caption for figure 2](assets/featured.jpg){#fig-layout-2}
+![Caption for figure 2](assets/image.jpg){#fig-layout-2}
 
-![Caption for figure 3](assets/featured.jpg){#fig-layout-3}
+![Caption for figure 3](assets/image.jpg){#fig-layout-3}
 
 :::
 
@@ -711,25 +710,25 @@ Figure layout
 Absolute positioning
 
 ```
-![](assets/featured.jpg){.absolute top=250 left=0 height="450"}
-![](assets/featured.jpg){.absolute top=200 right=50 height="250"}
-![](assets/featured.jpg){.absolute bottom=0 right=200 height="200"}
+![](assets/image.jpg){.absolute top=250 left=0 height="450"}
+![](assets/image.jpg){.absolute top=200 right=50 height="250"}
+![](assets/image.jpg){.absolute bottom=0 right=200 height="200"}
 ```
 
-![](assets/featured.jpg){.absolute top=250 left=0 height="450"}
+![](assets/image.jpg){.absolute top=250 left=0 height="450"}
 
-![](assets/featured.jpg){.absolute top=200 right=50 height="250"}
+![](assets/image.jpg){.absolute top=200 right=50 height="250"}
 
-![](assets/featured.jpg){.absolute bottom=0 right=200 height="200"}
+![](assets/image.jpg){.absolute bottom=0 right=200 height="200"}
 
 ## Images • HTML
 
 **Using Raw HTML**
 
 This image is 30% size.
-`<img src="assets/featured.jpg" style="width:30%;"/>`
+`<img src="assets/image.jpg" style="width:30%;"/>`
 
-<img src="assets/featured.jpg" style="width:30%;"/>
+<img src="assets/image.jpg" style="width:30%;"/>
 
 ## Images • R
 
@@ -742,14 +741,14 @@ This image is displayed at a size of 200 pixels.
 ````
 ```{{r}}
 #| out-width: "200px"
-knitr::include_graphics("assets/featured.jpg")
+knitr::include_graphics("assets/image.jpg")
 ```
 ````
 
 ```{r}
 #| echo: false
 #| out-width: "200px"
-knitr::include_graphics("assets/featured.jpg")
+knitr::include_graphics("assets/image.jpg")
 ```
 
 ## Math expressions
@@ -1142,12 +1141,12 @@ This slide has a colourful background
 ##  Colourful {background-color="#ABEBC6"}
 ```
 
-## Big Image {background-image="assets/featured.jpg"}
+## Big Image {background-image="assets/image.jpg"}
 
 This slide has a background image
 
 ```         
-##  Big Image {background-image="assets/featured.jpg"}
+##  Big Image {background-image="assets/image.jpg"}
 ```
 
 ## General tips
@@ -1176,6 +1175,6 @@ Sys.info()
 R.version[c("platform","os","major","minor")]
 ```
 
-[2023 • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+[<?lua.year?> • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
 
 

@@ -1,12 +1,11 @@
 ---
-title: Using Quarto & Abstrave
+title: Using Quarto
 author: "Roy Francis"
-description: Practical guide to using Quarto with Abstrave theme
-image: "assets/featured.jpg"
+description: Practical guide to using Quarto with a custom theme
 format: html
 ---
 
-The Abstrave template is a Quarto website project with html reports and revealjs presentation.
+The custom template is a Quarto website project with html reports and revealjs presentation.
 
 ## Initialize
 

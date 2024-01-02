@@ -1,6 +1,5 @@
 ---
 title: "Slides"
-subtitle: "Abstrave theme"
 description: "List of all presentations"
 listing:
   type: grid

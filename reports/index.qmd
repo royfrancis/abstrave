@@ -1,6 +1,5 @@
 ---
 title: "Reports"
-subtitle: "Abstrave theme"
 description: "List of all reports"
 listing:
   type: grid

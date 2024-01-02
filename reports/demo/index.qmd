@@ -2,11 +2,10 @@
 title: "Quarto Basics"
 author: "Roy Francis"
 description: "This document showcases some of the in-built capabilities of quarto. It also shows the custom theme, style and usage."
-image: "assets/featured.jpg"
 format: html
 ---
 
-[This is a [quarto](https://quarto.org/) document using custom theme **Abstrave**]{.large}
+This is a [quarto](https://quarto.org/) document
 
 ## Text formatting
 

@@ -2,7 +2,6 @@
 title: "ObservableJS and Mermaid"
 author: "Roy Francis"
 description: "This document showcases use of OJS and mermaid in quarto."
-image: "assets/featured.jpg"
 format: html
 ---
 

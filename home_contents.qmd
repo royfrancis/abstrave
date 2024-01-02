@@ -14,7 +14,7 @@ HTML report using the Quarto format `html`.
 
 [Listing page](reports/) for all reports.
 
-- Using Quarto and Abstrave [{{< fa file-lines >}}](reports/usage/index.html)
+- Using Quarto and custom theme [{{< fa file-lines >}}](reports/usage/index.html)
 - Minimal demo [{{< fa file-lines >}}](reports/sample/index.html)
 - Quarto basics [{{< fa file-lines >}}](reports/demo/index.html)
 - Quarto with R [{{< fa file-lines >}}](reports/demo-with-r/index.html)

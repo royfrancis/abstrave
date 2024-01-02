@@ -16,7 +16,7 @@ execute:
 |---------------------------------------|------------|-----|
 |[**12-Jan-2024 (Fri)**]{.highlight}    |||
 |Minimal demo                           |Roy Francis |[Slides](slides/sample/index.html), [Report](reports/sample/index.html)|
-|Using Abstrave                         |Roy Francis |[Report](reports/usage/index.html)|
+|Using custom theme                     |Roy Francis |[Report](reports/usage/index.html)|
 |Quarto basics                          |Roy Francis |[Report](reports/demo/index.html)|
 |Quarto and R                           |Roy Francis |[Slides](slides/demo/index.html), [Report](reports/quarto-with-r/index.html)|
 |OJS and mermaid                        |Roy Francis |[Report](reports/more/index.html)|

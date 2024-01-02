@@ -3,6 +3,11 @@ title: Presentation
 author: "John Doe"
 subtitle: "This is a subtitle"
 description: "This is a description"
+title-slide-attributes:
+    data-background-image: "assets/cover.jpg"
+    data-background-size: "cover"
+    data-background-opacity: "1"
+hero: "assets/hero.png"
 format: revealjs
 ---
 
@@ -17,5 +22,5 @@ More content
 ##  {background-image="../../assets/images/cover.jpg"}
 ### Thank you! Questions?
 
-[2023 • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+[<?lua.year?> • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
 
