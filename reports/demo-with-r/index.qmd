@@ -121,6 +121,26 @@ Sys.Date()
 sessionInfo()
 ```
 
+An advanced example showing bash code generated from R.
+
+````
+```{{r}}
+#| attr-output: "filename='bash'"
+#| class-output: bash
+#| echo: false
+d <- "custom"
+cat(paste("mkdir​", d))
+```
+````
+
+```{r}
+#| attr-output: "filename='bash'"
+#| class-output: bash
+#| echo: false
+d <- "custom"
+cat(paste("mkdir​", d))
+```
+
 Code chunk attributes are documented [here](https://quarto.org/docs/output-formats/html-code.html).
 
 ## Tables

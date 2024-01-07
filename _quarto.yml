@@ -3,10 +3,10 @@ project:
   output-dir: docs
 
 website:
-  image: "assets/abstrave.png"
+  image: "assets/images/featured.jpg"
   favicon: "assets/favicon.png"
   navbar:
-    logo: "assets/abstrave.png"
+    logo: "assets/logos/abstrave.png"
     logo-alt: "logo"
     right:
       - text: "Home"
@@ -50,7 +50,7 @@ format:
     callout-icon: true
     date:  last-modified
     date-format: "DD-MMM-YYYY"
-    image: "assets/images/featured.png"
+    image: "assets/images/featured.jpg"
     lightbox: 
       match: auto
   revealjs:
@@ -59,7 +59,7 @@ format:
     include-before-body: "assets/include_body_before.html"
     include_after_body: "assets/include_body_after.html"
     theme: ["default","assets/css/slides.scss"]
-    df-print: kable
+    df-print: paged
     width: 1280
     height: 720
     transition: "fade"
@@ -82,10 +82,10 @@ format:
       data-background-size: "cover"
       data-background-opacity: "1"
     subtitle: "Abstrave quarto theme"
-    header-logo-left: ../../assets/abstrave.png
+    header-logo-left: ../../assets/logos/abstrave.png
     header-logo-left-height: 25px
     header-logo-left-url: https://royfrancis.github.io/abstrave/home_contents.html
-    header-logo-right: ../../assets/abstrave.png
+    header-logo-right: ../../assets/logos/abstrave.png
     header-logo-right-height: 25px
     header-logo-right-url: https://royfrancis.github.io/abstrave/home_contents.html
     template-partials:

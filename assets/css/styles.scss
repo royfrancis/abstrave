@@ -44,13 +44,6 @@ $footer-fg: DimGray;
 .smaller { font-size: 0.64em;}
 .smallest { font-size: 0.512em;}
 
-.badge, .badge-primary {
-  background-color: $primary;
-}
-
-.badge-secondary {
-  background-color: $secondary;
-}
 
 /* site ---------------------------------------------------------------------- */
 
@@ -73,9 +66,26 @@ $footer-fg: DimGray;
   object-fit: cover;
 }
 
-.shadow{
-  box-shadow: 2px 2px 10px lightgray;
+/* buttons and badges */
+
+.badge,
+.badge-primary {
+  background-color: $primary;
 }
+
+.badge-secondary {
+  background-color: $secondary;
+}
+
+.btn {
+  background-color: $secondary;
+}
+
+.btn:hover {
+  background-color: $tertiary;
+}
+
+/* alert */
 
 .alert {
   border-radius: 0;
@@ -88,11 +98,22 @@ $footer-fg: DimGray;
 /* code */
 
 pre {
+  // font-size: 1.05rem !important;
+  line-height: 1.4;
   background-color: $code-block-bg;
   border-radius: 0.25rem;
 }
 
+pre:not(.sourceCode), pre:not([class]) {
+  padding: 0.4em;
+}
+
+div.code-with-filename-file pre {
+  padding: 0;
+}
+
 code {
+  // font-size: 0.85em !important;
   color: $code-color;
 }
 
@@ -107,7 +128,7 @@ code {
   border: solid silver 1px !important;
 }
 
-div.callout-note.callout-style-default .callout-title {
+div.callout-note.callout-style-default > .callout-header {
   background-color: $secondary;
 }
 
