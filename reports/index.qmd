@@ -5,6 +5,7 @@ listing:
   type: grid
   grid-columns: 4
   fields: [image, title, author]
+  image-placeholder: "/assets/images/featured.jpg"
 date: ""
 toc: false
 sidebar: false
