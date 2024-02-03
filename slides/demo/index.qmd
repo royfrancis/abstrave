@@ -1175,6 +1175,6 @@ Sys.info()
 R.version[c("platform","os","major","minor")]
 ```
 
-[<?lua.year?> • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+[{{< meta current_year >}}  • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
 
 

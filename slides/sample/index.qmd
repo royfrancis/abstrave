@@ -22,5 +22,5 @@ More content
 ##  {background-image="../../assets/images/cover.jpg"}
 ### Thank you! Questions?
 
-[<?lua.year?> • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+[{{< meta current_year >}}  • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
 

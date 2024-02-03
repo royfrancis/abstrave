@@ -29,7 +29,7 @@ For usage instructions and demo examples, see [Contents](home_contents.html)
 ---
 
 ::: small
-Updated: <?lua.date?> at <?lua.time?>.
+Updated: {{< meta current_date >}}  at {{< meta current_time >}} .
 :::
 
 :::
