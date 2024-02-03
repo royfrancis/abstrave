@@ -174,11 +174,11 @@ For simple cases, tables can be manually created in markdown.
 
 ### kable
 
-Simple table using `kable` from R package `knitr`. This is the default output for quarto.
+Simple table using `kable` from R package `knitr`.
 
 ```{r}
 library(knitr)
-head(iris)
+kable(head(iris))
 ```
 
 #### Layout
@@ -233,6 +233,20 @@ head(cars)
 #| echo: false
 
 head(cars)
+```
+
+### paged
+
+Interactive table from `rmarkdown`.
+
+```{r}
+rmarkdown::paged_table(head(iris))
+```
+
+This is the default in this template.
+
+```{r}
+head(iris)
 ```
 
 ### gt
