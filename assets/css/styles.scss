@@ -63,6 +63,7 @@ $footer-fg: DimGray;
 .listing-image img {
   height: 40px;
   width: 60px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -77,12 +78,25 @@ $footer-fg: DimGray;
   background-color: $secondary;
 }
 
-.btn.primary {
-  background-color: $secondary;
+.btn-primary {
+  background-color: $primary;
+  color: whitesmoke;
 }
 
-.btn.primary:hover {
+.btn-primary:hover {
+  background-color: $secondary;
+  color: whitesmoke;
+
+}
+
+.btn-secondary {
+  background-color: $secondary;
+  color: whitesmoke;
+}
+
+.btn-secondary:hover {
   background-color: $tertiary;
+  color: whitesmoke;
 }
 
 /* alert */
@@ -98,7 +112,6 @@ $footer-fg: DimGray;
 /* code */
 
 pre {
-  // font-size: 1.05rem !important;
   line-height: 1.4;
   background-color: $code-block-bg;
   border-radius: 0.25rem;
@@ -110,10 +123,10 @@ pre:not(.sourceCode), pre:not([class]) {
 
 div.code-with-filename-file pre {
   padding: 0;
+  background-color: transparent;
 }
 
 code {
-  // font-size: 0.85em !important;
   color: $code-color;
 }
 
