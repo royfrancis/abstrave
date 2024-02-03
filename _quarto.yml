@@ -42,7 +42,7 @@ format:
     code-tools: false
     code-copy: true
     code-overflow: wrap
-    df-print: kable
+    df-print: paged
     standalone: false
     fig-align: left
     title-block-banner: "assets/images/banner.jpg"
@@ -51,8 +51,6 @@ format:
     date:  last-modified
     date-format: "DD-MMM-YYYY"
     image: "assets/images/featured.jpg"
-    lightbox: 
-      match: auto
   revealjs:
     quarto-required: ">=1.4.0"
     include-in-header: "assets/include_head.html"

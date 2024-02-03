@@ -41,7 +41,6 @@ quarto render
 ## Acknowledgements
 
 - Built using [Quarto](https://quarto.org/)
-- Uses the [lightbox extension](https://github.com/quarto-ext/lightbox) for viewing images
 - Uses the [fontawesome extension](https://github.com/quarto-ext/fontawesome) for icons
 - Uses the [reveal-logo extension](https://github.com/royfrancis/reveal-logo) for logos in presentation 
 
