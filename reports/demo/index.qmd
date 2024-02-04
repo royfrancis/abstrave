@@ -210,7 +210,7 @@ Ordered lists are created using numbers.
 
 ## Images
 
-Images can be inserted using plain markdown or HTML directly. Plain markdown can be embellished with custom quarto adjustments to modify aspects of the image. Clicking the image opens the image in a lightbox. This is made possible using the [lightbox](https://github.com/quarto-ext/lightbox) extension.
+Images can be inserted using plain markdown or HTML directly. Plain markdown can be embellished with custom quarto adjustments to modify aspects of the image. Clicking the image opens the image in a lightbox.
 
 ### Using Markdown
 

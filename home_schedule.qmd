@@ -12,7 +12,7 @@ execute:
 
 :::{.contents-table .column-body-outset}
 
-|Topic                                  |Author      |Links|
+|Topic                                  |Instructor  |Links|
 |---------------------------------------|------------|-----|
 |[**12-Jan-2024 (Fri)**]{.badge .badge-secondary}    |||
 |Minimal demo                           |Roy Francis |[Slides](slides/sample/index.html), [Report](reports/sample/index.html)|

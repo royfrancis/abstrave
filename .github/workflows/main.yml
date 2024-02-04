@@ -41,7 +41,7 @@ jobs:
       - name: Setup quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.4.549"
+          version: 1.4.549
           tinytex: true
       - name: Render and publish
         uses: quarto-dev/quarto-actions/publish@v2
