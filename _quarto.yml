@@ -19,6 +19,8 @@ website:
         href: "home_syllabus.html"
       - text: "Precourse"
         href: "home_precourse.html"
+      - text: About
+        href: "home_about.html"
   page-footer:
     border: false
     left: "{{< meta current_year >}} Roy Francis | [GPL-3 License](https://choosealicense.com/licenses/gpl-3.0/)"
@@ -27,7 +29,7 @@ website:
 
 format:
   html:
-    quarto-required: ">=1.4.0"
+    quarto-required: ">=1.4.5"
     include-in-header: "assets/include_head.html"
     include-before-body: "assets/include_body_before.html"
     include_after_body: "assets/include_body_after.html"
@@ -52,7 +54,7 @@ format:
     date-format: "DD-MMM-YYYY"
     image: "assets/images/featured.jpg"
   revealjs:
-    quarto-required: ">=1.4.0"
+    quarto-required: ">=1.4.5"
     include-in-header: "assets/include_head.html"
     include-before-body: "assets/include_body_before.html"
     include_after_body: "assets/include_body_after.html"

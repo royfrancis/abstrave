@@ -1,0 +1,45 @@
+---
+title: "About"
+toc: false
+date: ""
+sidebar: false
+format:
+  html:
+    number-sections: false
+---
+
+## Organizers
+
+::: {.profile-parent}
+::: {.profile-child}
+
+![](assets/images/profile/profile.jpg){.nolightbox}
+
+[**John Doe**](http://www.johndoe.com/)  
+Data Scientist, Institute 
+Associate Professor in Bioinformatics, University
+
+:::
+::: {.profile-child}
+
+![](assets/images/profile/profile.jpg){.nolightbox}
+
+[**John Doe**](http://www.johndoe.com/)   
+Data Scientist, Institute
+
+:::
+::: {.profile-child}
+
+![](assets/images/profile/profile.jpg){.nolightbox}
+
+[**John Doe**](http://www.johndoe.com/)  
+Data Scientist, Institute
+
+:::
+
+:::
+
+## Contact
+
+For queries, write to us at **contact[at]email.se**.  
+
