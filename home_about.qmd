@@ -13,7 +13,7 @@ format:
 ::: {.profile-parent}
 ::: {.profile-child}
 
-![](assets/images/profile/profile.jpg){.nolightbox}
+![](assets/images/profile/profile.webp){.nolightbox}
 
 [**John Doe**](http://www.johndoe.com/)  
 Data Scientist, Institute 
@@ -22,15 +22,15 @@ Associate Professor in Bioinformatics, University
 :::
 ::: {.profile-child}
 
-![](assets/images/profile/profile.jpg){.nolightbox}
+![](assets/images/profile/profile.webp){.nolightbox}
 
-[**John Doe**](http://www.johndoe.com/)   
+[**John Doe**](http://www.johndoe.com/)  
 Data Scientist, Institute
 
 :::
 ::: {.profile-child}
 
-![](assets/images/profile/profile.jpg){.nolightbox}
+![](assets/images/profile/profile.webp){.nolightbox}
 
 [**John Doe**](http://www.johndoe.com/)  
 Data Scientist, Institute
@@ -41,5 +41,5 @@ Data Scientist, Institute
 
 ## Contact
 
-For queries, write to us at **contact[at]email.se**.  
+For queries, write to us at **contact[at]email.com**.  
 

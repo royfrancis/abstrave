@@ -1,20 +1,20 @@
-# abstrave <span><a href="https://github.com/royfrancis/abstrave"><img src="assets/logos/logo.png" style="height:40px;vertical-align:middle;"></a></span> 
+# abstrave <span><a href="https://github.com/royfrancis/abstrave"><img src="assets/logos/logo.webp" style="height:40px;vertical-align:middle;"></a></span> 
 
 [![ci_badge](https://github.com/royfrancis/abstrave/workflows/deploy/badge.svg)](https://github.com/royfrancis/abstrave/actions?workflow=deploy)    [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
-Quarto website template
+Quarto website template for courses
 
-![Report home](preview-home.jpg)
+![Report home](preview-home.webp)
 
-![Report preview](preview-report.jpg)
+![Report preview](preview-report.webp)
 
-![Slide preview](preview-slide.jpg)
+![Slide preview](preview-slide.webp)
 
 For a demo site and usage, see [here](https://royfrancis.github.io/abstrave).
 
 ## Usage
 
-- Required quarto 1.4.0 or higher
+- Required quarto 1.4.5 or higher
 - To download and use a starter template, run in the terminal
 
 :exclamation: Demo files are not downloaded
@@ -23,20 +23,14 @@ For a demo site and usage, see [here](https://royfrancis.github.io/abstrave).
 quarto use template royfrancis/abstrave
 ```
 
-- Launch preview in the browser
-
-```
-quarto preview
-```
-
-- Render all html files into `docs` directory
+- Render all html files into `docs` directory to make sure everything works as expected
 
 ```
 quarto render
 ```
 
-
 - Use `##` as the highest level heading.
+- Limited documentation is available on the [demo site](https://royfrancis.github.io/abstrave/home_contents.html) for customization
 
 ## Acknowledgements
 

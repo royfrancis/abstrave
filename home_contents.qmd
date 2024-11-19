@@ -8,6 +8,14 @@ sidebar: false
 format: html
 ---
 
+## Install
+
+Once you have quarto installed, run;
+
+```
+quarto use template royfrancis/abstrave
+```
+
 ## Reports
 
 HTML report using the Quarto format `html`.

@@ -2,6 +2,7 @@
 title: "Quarto with R"
 author: "Roy Francis"
 description: "This document showcases the use of R."
+image: "/assets/images/featured.webp"
 format: html
 ---
 
@@ -89,6 +90,34 @@ Sys.Date()
 ```
 ````
 
+Source code blocks can be folded.
+
+````         
+```{{r}}
+#| code-fold: true
+Sys.Date()
+```
+````
+
+```{r}
+#| code-fold: true
+Sys.Date()
+```
+
+There is not proper implementation to fold code output. Here is a hacky solution that uses a custom lua filter.
+
+````         
+```{{r}}
+#| attr.output: '.details summary="Output"'
+Sys.Date()
+```
+````
+
+```{r}
+#| attr.output: '.details summary="Output"'
+Sys.Date()
+```
+
 A code chunk can be given a code filename using the chunk attribute `filename`.
 
 ````
@@ -121,7 +150,7 @@ Sys.Date()
 sessionInfo()
 ```
 
-An advanced example showing bash code generated from R.
+An example showing bash code generated from R.
 
 ````
 ```{{r}}
@@ -129,7 +158,7 @@ An advanced example showing bash code generated from R.
 #| class-output: bash
 #| echo: false
 d <- "custom"
-cat(paste("mkdir​", d))
+cat(paste("mkdir", d))
 ```
 ````
 
@@ -138,7 +167,7 @@ cat(paste("mkdir​", d))
 #| class-output: bash
 #| echo: false
 d <- "custom"
-cat(paste("mkdir​", d))
+cat(paste("mkdir", d))
 ```
 
 Code chunk attributes are documented [here](https://quarto.org/docs/output-formats/html-code.html).
@@ -237,16 +266,11 @@ head(cars)
 
 ### paged
 
-Interactive table from `rmarkdown`.
+Interactive table from R package `rmarkdown`.
 
 ```{r}
+library(rmarkdown)
 rmarkdown::paged_table(head(iris))
-```
-
-This is the default in this template.
-
-```{r}
-head(iris)
 ```
 
 ### gt
@@ -343,14 +367,14 @@ This image below is displayed at a size of 300 pixels.
 ````         
 ```{{r}}
 #| out-width: 300px
-knitr::include_graphics("assets/image.jpg")
+knitr::include_graphics("assets/image.webp")
 ```
 ````
 
 ```{r}
 #| echo: false
 #| out-width: "300px"
-knitr::include_graphics("assets/image.jpg")
+knitr::include_graphics("assets/image.webp")
 ```
 
 This image below is displayed at a size of 75 pixels and a caption added.
@@ -359,7 +383,7 @@ This image below is displayed at a size of 75 pixels and a caption added.
 ```{{r}}
 #| out-width: 75px
 #| fig-cap: This is a caption
-knitr::include_graphics("assets/image.jpg")
+knitr::include_graphics("assets/image.webp")
 ```
 ````
 
@@ -367,7 +391,7 @@ knitr::include_graphics("assets/image.jpg")
 #| echo: false
 #| out-width: "75px"
 #| fig-cap: This is a caption
-knitr::include_graphics("assets/image.jpg")
+knitr::include_graphics("assets/image.webp")
 ```
 
 For more information on figures, see [here](https://quarto.org/docs/authoring/figures.html). For plots generated through R, see section further below.

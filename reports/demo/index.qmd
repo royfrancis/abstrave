@@ -2,6 +2,7 @@
 title: "Quarto Basics"
 author: "Roy Francis"
 description: "This document showcases some of the in-built capabilities of quarto. It also shows the custom theme, style and usage."
+image: "/assets/images/featured.webp"
 format: html
 ---
 
@@ -41,7 +42,7 @@ Custom character sizes. This is an enchanced feature.
 |`_Italic text_`|_Italic text_|
 |`~~Strikethrough~~`|~~Strikethrough~~|
 |`H~2~O`|H~2~O|
-|`x^2`|x^2|
+|`x^2^`|x^2^|
 |`--`|--|
 |`---`|---|
 |`[link](r-project.org)`|[link](r-project.org)|
@@ -217,18 +218,18 @@ Images can be inserted using plain markdown or HTML directly. Plain markdown can
 Using regular markdown.
 
 ```         
-![](assets/image.jpg)
+![](assets/image.webp)
 ```
 
-![](assets/image.jpg)
+![](assets/image.webp)
 
 The dimensions are based on image and/or fill up the entire available space. You can control the dimension as shown below.
 
 ```         
-![This is a caption](assets/image.jpg){width=30%}  
+![This is a caption](assets/image.webp){width=30%}  
 ```
 
-![This is a caption](assets/image.jpg){width="30%"}
+![This is a caption](assets/image.webp){width="30%"}
 
 This image above is now 30% of it's original width.
 
@@ -236,18 +237,18 @@ This image above is now 30% of it's original width.
 
 ```         
 ::: {#fig-mylabel layout-ncol=2}
-![Caption for figure 1](assets/image.jpg){width="40%"}
+![Caption for figure 1](assets/image.webp){width="40%"}
 
-![Caption for figure 2](assets/image.jpg){width="40%"}
+![Caption for figure 2](assets/image.webp){width="40%"}
 
 These figures are interesting.
 :::
 ```
 
 ::: {#fig-mylabel layout-ncol="2"}
-![Caption for figure 1](assets/image.jpg){width="40%"}
+![Caption for figure 1](assets/image.webp){width="40%"}
 
-![Caption for figure 2](assets/image.jpg){width="40%"}
+![Caption for figure 2](assets/image.webp){width="40%"}
 
 These figures are interesting.
 :::
@@ -257,9 +258,9 @@ More figure options and layouts are described [here](https://quarto.org/docs/aut
 ### Using HTML
 
 This image below is 30% size.\
-`<img src="assets/image.jpg" style="width:30%;"/>`
+`<img src="assets/image.webp" style="width:30%;"/>`
 
-<img src="assets/image.jpg" style="width:30%;"/>
+<img src="assets/image.webp" style="width:30%;"/>
 
 For more information on figures, see [here](https://quarto.org/docs/authoring/figures.html). Images generated through code is not covered here.
 
@@ -559,6 +560,8 @@ This content is behind an accordion.
 :::
 
 ## Alerts
+
+This is not a quarto feature, but rather from bootstrap.
 
 ```         
 ::: {.alert .alert-primary}
@@ -904,6 +907,36 @@ This is some material for topic 2.
 
 More layout settings are described [here](https://quarto.org/docs/authoring/article-layout.html) and [here](https://quarto.org/docs/output-formats/page-layout.html).
 
+## Shortcodes
+
+Shortcodes are sort of like quarto functions. 
+
+Two important shortcodes are `meta` and `var`. `meta` allows to read metadata from the yaml block in the current page or from `_quarto.yml`. Here are a few examples:
+
+`{{{< meta title >}}}` {{< meta title >}}
+
+`![]({{{< meta image >}}}){width="300px"}` 
+
+![]({{< meta image >}}){width="300px"}
+
+Similarly, `var` allows to read variables from `_variables.yml` if it has been defined. The `include` shortcode allows to add a child qmd document into a specific position in a qmd file. The `kbd` shortcode allows keyboard notations:
+
+`Press {{{< kbd Shift-Ctrl-P >}}}` Press {{< kbd Shift-Ctrl-P >}}
+
+The `video` shortcode allows to embed a video.
+
+`{{{< video https://www.youtube.com/watch?v=_f3latmOhew >}}}`
+
+{{< video https://www.youtube.com/watch?v=_f3latmOhew >}}
+
+Some of the custom shortcodes added with Specky template are:
+
+`{{{< meta quarto_version >}}}` {{< meta quarto_version >}}  
+`{{{< meta current_date >}}}` {{< meta current_date >}}  
+`{{{< meta current year >}}}` {{< meta current_year >}}  
+`{{{< meta current time >}}}` {{< meta current_time >}}  
+
+Shortcodes are documented [here](https://quarto.org/docs/authoring/shortcodes.html).
 
 ## General tips
 

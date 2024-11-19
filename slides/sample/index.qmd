@@ -3,11 +3,12 @@ title: Presentation
 author: "John Doe"
 subtitle: "This is a subtitle"
 description: "This is a description"
+image: "/assets/images/featured.webp"
 title-slide-attributes:
-    data-background-image: "assets/cover.jpg"
+    data-background-image: "assets/cover.webp"
     data-background-size: "cover"
     data-background-opacity: "1"
-hero: "assets/hero.png"
+hero: "assets/hero.webp"
 format: revealjs
 ---
 
@@ -19,8 +20,17 @@ Content
 
 More content
 
-##  {background-image="../../assets/images/cover.jpg"}
-### Thank you! Questions?
+##  {background-image="../../assets/images/cover.webp"}
+
+::: {.v-center .center}
+::: {}
+
+[Thank you!]{.largest}
+
+[Questions?]{.larger}
 
 [{{< meta current_year >}}  • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+
+:::
+:::
 

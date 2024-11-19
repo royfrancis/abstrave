@@ -1,5 +1,5 @@
 ---
-pagetitle: "Abstrave"
+pagetitle: "Abstrave: Course Template"
 subtitle: ""
 toc: false
 date: ""
@@ -10,6 +10,7 @@ format:
     number-sections: false
     title-block-banner: false
     page-layout: full
+    anchor-sections: false
 execute:
   freeze: false
 ---
@@ -18,7 +19,7 @@ execute:
 ::: {.home-grid-parent}
 ::: {.home-grid-child-left}
 
-## [**Abstrave**]{.large}
+## [**Abstrave: Course Template**]{.large}
 ### A quarto course template
 
 - [Report](reports/sample/index.html)
@@ -35,7 +36,7 @@ Updated: {{< meta current_date >}}  at {{< meta current_time >}} .
 :::
 :::{.home-grid-child-right}
 
-![](assets/images/hero.png){.nolightbox}
+![](assets/images/hero.webp){.nolightbox}
 
 :::
 :::

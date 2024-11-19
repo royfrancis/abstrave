@@ -1,6 +1,7 @@
 ---
-title: "Quarto Presentation"
+title: "Quarto demo with R"
 author: "Roy Francis"
+image: "/assets/images/featured.webp"
 format: revealjs
 ---
 
@@ -149,6 +150,66 @@ Inner right
 
 ::::
 
+## Layout • Vertical align • Top
+
+::: {.v-top}
+::: {}
+
+```
+::: {.v-top}
+::: {}
+- Top aligned
+- content
+:::
+:::
+```
+
+- Top aligned
+- content
+
+:::
+:::
+
+## Layout • Vertical align • Center
+
+::: {.v-center}
+::: {}
+
+```
+::: {.v-center}
+::: {}
+- Center aligned
+- content
+:::
+:::
+```
+
+- Center aligned
+- content
+
+:::
+:::
+
+## Layout • Vertical align • Bottom
+
+::: {.v-bottom}
+::: {}
+
+```
+::: {.v-bottom}
+::: {}
+- Bottom aligned
+- content
+:::
+:::
+```
+
+- Bottom aligned
+- content
+
+:::
+:::
+
 ## Panel tabs
 
 ::: {.panel-tabset}
@@ -268,7 +329,7 @@ A horizontal line can be created using `---`
 
 This is subscript `H~2~O`  H~2~O
 
-This is superscript `2^10`  2^10^
+This is superscript `2^10^`  2^10^
 
 `This is a [badge]{.badge .badge-primary}`  
 This is a [badge]{.badge .badge-primary}  
@@ -658,10 +719,10 @@ iris %>%
 Using regular markdown.
 
 ```         
-![](assets/image.jpg)
+![](assets/image.webp)
 ```
 
-![](assets/image.jpg)
+![](assets/image.webp)
 
 [The dimensions are based on image and/or fill up the entire width.]{.small}
 :::
@@ -670,12 +731,12 @@ Using regular markdown.
 Control image dimensions.
 
 ```         
-![](assets/image.jpg){width=50%}
-![](assets/image.jpg){width=20%}
+![](assets/image.webp){width=50%}
+![](assets/image.webp){width=20%}
 ```
 
-![](assets/image.jpg){width=50%}
-![](assets/image.jpg){width=20%}
+![](assets/image.webp){width=50%}
+![](assets/image.webp){width=20%}
 
 [For more image documentation, see [here](https://quarto.org/docs/authoring/figures.html).]{.small}
 
@@ -688,20 +749,20 @@ Figure layout
 
 ```         
 ::: {layout-ncol=3}
-![Caption for figure 1](assets/image.jpg){#fig-layout-1}
+![Caption for figure 1](assets/image.webp){#fig-layout-1}
 
-![Caption for figure 2](assets/image.jpg){#fig-layout-2}
+![Caption for figure 2](assets/image.webp){#fig-layout-2}
 
-![Caption for figure 3](assets/image.jpg){#fig-layout-3}
+![Caption for figure 3](assets/image.webp){#fig-layout-3}
 :::
 ```
 
 ::: {layout-ncol="3"}
-![Caption for figure 1](assets/image.jpg){#fig-layout-1}
+![Caption for figure 1](assets/image.webp){#fig-layout-1}
 
-![Caption for figure 2](assets/image.jpg){#fig-layout-2}
+![Caption for figure 2](assets/image.webp){#fig-layout-2}
 
-![Caption for figure 3](assets/image.jpg){#fig-layout-3}
+![Caption for figure 3](assets/image.webp){#fig-layout-3}
 
 :::
 
@@ -710,25 +771,25 @@ Figure layout
 Absolute positioning
 
 ```
-![](assets/image.jpg){.absolute top=250 left=0 height="450"}
-![](assets/image.jpg){.absolute top=200 right=50 height="250"}
-![](assets/image.jpg){.absolute bottom=0 right=200 height="200"}
+![](assets/image.webp){.absolute top=250 left=0 height="450"}
+![](assets/image.webp){.absolute top=200 right=50 height="250"}
+![](assets/image.webp){.absolute bottom=0 right=200 height="200"}
 ```
 
-![](assets/image.jpg){.absolute top=250 left=0 height="450"}
+![](assets/image.webp){.absolute top=250 left=0 height="450"}
 
-![](assets/image.jpg){.absolute top=200 right=50 height="250"}
+![](assets/image.webp){.absolute top=200 right=50 height="250"}
 
-![](assets/image.jpg){.absolute bottom=0 right=200 height="200"}
+![](assets/image.webp){.absolute bottom=0 right=200 height="200"}
 
 ## Images • HTML
 
 **Using Raw HTML**
 
 This image is 30% size.
-`<img src="assets/image.jpg" style="width:30%;"/>`
+`<img src="assets/image.webp" style="width:30%;"/>`
 
-<img src="assets/image.jpg" style="width:30%;"/>
+<img src="assets/image.webp" style="width:30%;"/>
 
 ## Images • R
 
@@ -741,15 +802,67 @@ This image is displayed at a size of 200 pixels.
 ````
 ```{{r}}
 #| out-width: "200px"
-knitr::include_graphics("assets/image.jpg")
+knitr::include_graphics("assets/image.webp")
 ```
 ````
 
 ```{r}
 #| echo: false
 #| out-width: "200px"
-knitr::include_graphics("assets/image.jpg")
+knitr::include_graphics("assets/image.webp")
 ```
+
+## Stacking
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Stack images and display incrementally
+
+```
+::: {.r-stack}
+::: {.fragment}
+
+![](assets/image.webp){style="transform:rotate(-5deg);border:beige 40px solid;"}
+
+:::
+::: {.fragment}
+
+![](assets/image.webp){style="transform:rotate(5deg);border:beige 40px solid;"}
+
+:::
+:::
+```
+
+:::
+
+::: {.column width="50%"}
+
+::: {.r-stack}
+::: {.fragment}
+
+![](assets/image.webp){style="transform:rotate(-5deg);border:beige 40px solid;"}
+
+:::
+::: {.fragment}
+
+![](assets/image.webp){style="transform:rotate(5deg);border:beige 40px solid;"}
+
+:::
+:::
+
+:::
+::::
+
+## Stretching
+
+Stretch images to use up remaining space.
+
+```
+![](assets/image.webp){.stretch}
+```
+
+![](assets/image.webp){.stretch}
 
 ## Math expressions
 
@@ -1141,18 +1254,18 @@ This slide has a colourful background
 ##  Colourful {background-color="#ABEBC6"}
 ```
 
-## Big Image {background-image="assets/image.jpg"}
+## Big Image {background-image="assets/image.webp"}
 
 This slide has a background image
 
 ```         
-##  Big Image {background-image="assets/image.jpg"}
+##  Big Image {background-image="assets/image.webp"}
 ```
 
 ## General tips
 
-- Replace *assets/cover.jpg* to change cover slide picture
-- Replace *assets/end.jpg* to change end slide picture
+- Replace *assets/cover.webp* to change cover slide picture
+- Replace *assets/end.webp* to change end slide picture
 - Add custom css under YAML `css: "styles.css"`
 - If content overflows the slide in vertical direction, add class `.scrollable`
 
@@ -1166,9 +1279,19 @@ Sys.info()
 - Export HTML to PDF using PDF export mode by pressing **e**
 - For complete Quarto revealjs documentation, click [here](https://quarto.org/docs/presentations/revealjs/)
 
-##  {background-image="../../assets/images/cover.jpg"}
+##  {background-image="../../assets/images/cover.webp"}
 
-### Thank you! Questions?
+::: {.v-center .center}
+::: {}
+
+[Thank you!]{.largest}
+
+[Questions?]{.larger}
+
+:::
+:::
+
+##  {background-image="../../assets/images/cover.webp"}
 
 ```{r}
 #| echo: false

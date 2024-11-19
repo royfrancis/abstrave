@@ -3,10 +3,10 @@ project:
   output-dir: docs
 
 website:
-  image: "assets/images/featured.jpg"
+  image: "assets/images/seo.webp"
   favicon: "assets/favicon.png"
   navbar:
-    logo: "assets/logos/abstrave.png"
+    logo: "assets/logos/abstrave.webp"
     logo-alt: "logo"
     right:
       - text: "Home"
@@ -26,6 +26,7 @@ website:
     left: "{{< meta current_year >}} Roy Francis | [GPL-3 License](https://choosealicense.com/licenses/gpl-3.0/)"
     right: "Published with [Quarto](https://quarto.org/) v{{< meta quarto_version >}}"
   site-url: "https://royfrancis.github.io/abstrave/"
+  open-graph: true
 
 format:
   html:
@@ -47,12 +48,13 @@ format:
     df-print: paged
     standalone: false
     fig-align: left
-    title-block-banner: "assets/images/banner.jpg"
+    title-block-banner: "assets/images/banner.webp"
     subtitle: "Abstrave quarto theme"
     callout-icon: true
     date:  last-modified
     date-format: "DD-MMM-YYYY"
-    image: "assets/images/featured.jpg"
+    image: "assets/images/featured.webp"
+    lightbox: auto
   revealjs:
     quarto-required: ">=1.4.5"
     include-in-header: "assets/include_head.html"
@@ -75,17 +77,17 @@ format:
     fig-align: left
     chalkboard: true
     callout-icon: true
-    image: "/assets/images/featured.jpg"
-    hero: "/assets/images/hero.png"
+    image: "/assets/images/featured.webp"
+    hero: "/assets/images/hero.webp"
     title-slide-attributes:
-      data-background-image: "/assets/images/home.jpg"
+      data-background-image: "/assets/images/home.webp"
       data-background-size: "cover"
       data-background-opacity: "1"
     subtitle: "Abstrave quarto theme"
-    header-logo-left: /assets/logos/abstrave.png
+    header-logo-left: /assets/logos/abstrave.webp
     header-logo-left-height: 25px
     header-logo-left-url: https://royfrancis.github.io/abstrave/home_contents.html
-    header-logo-right: /assets/logos/abstrave.png
+    header-logo-right: /assets/logos/abstrave.webp
     header-logo-right-height: 25px
     header-logo-right-url: https://royfrancis.github.io/abstrave/home_contents.html
     template-partials:
@@ -100,6 +102,7 @@ execute:
 
 filters:
   - assets/custom.lua
+  - assets/fold-results.lua
   - reveal-logo
   - fontawesome
 
