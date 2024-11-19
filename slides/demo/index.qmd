@@ -1101,7 +1101,14 @@ p <- ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+
       geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=2)+
   theme_bw()
 tooltip_css <- "background-color:#f8f9f9;padding:10px;border-style:solid;border-width:2px;border-color:#125687;border-radius:5px;"
-ggiraph(code=print(p),hover_css="cursor:pointer;stroke:black;fill-opacity:0.3",zoom_max=5,tooltip_extra_css=tooltip_css,tooltip_opacity=0.9,height_svg=2,width_svg=4,width=0.6)
+girafe(code=print(p), height_svg=2, width_svg=4,
+  options=list(
+    opts_hover(css="cursor:pointer;stroke:black;fill-opacity:0.3"),
+    opts_zoom(max=5),
+    opts_tooltip(css=tooltip_css,opacity=0.9),
+    opts_sizing(width=0.6)
+  )
+)
 ```
 
 ## Interactive time series • `dygraphs`
