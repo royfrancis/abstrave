@@ -11,16 +11,22 @@ website:
     right:
       - text: "Home"
         href: "index.html"
+        aria-label: "Home"
       - text: "Schedule"
         href: "home_schedule.html"
+        aria-label: "Schedule"
       - text: "Contents"
         href: "home_contents.html"
+        aria-label: "Contents"
       - text: "Syllabus"
         href: "home_syllabus.html"
+        aria-label: "Syllabus"
       - text: "Precourse"
         href: "home_precourse.html"
+        aria-label: "Pre-course"
       - text: About
         href: "home_about.html"
+        aria-label: "About"
   page-footer:
     border: false
     left: "{{< meta current_year >}} Roy Francis | [GPL-3 License](https://choosealicense.com/licenses/gpl-3.0/)"
