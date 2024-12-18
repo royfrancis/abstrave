@@ -13,10 +13,10 @@ This is a [quarto](https://quarto.org/) document
 ### Headings
 
 ```
-## Level 2 heading  
-### Level 3 heading  
-#### Level 4 heading  
-##### Level 5 heading  
+## Level 2 heading
+### Level 3 heading
+#### Level 4 heading
+##### Level 5 heading
 ###### Level 6 heading
 ```
 
@@ -50,7 +50,7 @@ Custom character sizes. This is an enchanced feature.
 
 ### Blockquote
 
-```         
+```
 > This is a block quote. This
 > paragraph has two lines.
 >
@@ -103,8 +103,8 @@ An example of footnote reference [^1]
 
 Badges are defined as such:
 
-`[badge]{.badge .badge-primary}`  [badge]{.badge .badge-primary}  
-`[badge]{.badge .badge-secondary}`  [badge]{.badge .badge-secondary}  
+`[badge]{.badge .badge-primary}`  [badge]{.badge .badge-primary}
+`[badge]{.badge .badge-secondary}`  [badge]{.badge .badge-secondary}
 
 ## Code formatting
 
@@ -217,7 +217,7 @@ Images can be inserted using plain markdown or HTML directly. Plain markdown can
 
 Using regular markdown.
 
-```         
+```
 ![](assets/image.webp)
 ```
 
@@ -225,8 +225,8 @@ Using regular markdown.
 
 The dimensions are based on image and/or fill up the entire available space. You can control the dimension as shown below.
 
-```         
-![This is a caption](assets/image.webp){width=30%}  
+```
+![This is a caption](assets/image.webp){width=30%}
 ```
 
 ![This is a caption](assets/image.webp){width="30%"}
@@ -235,7 +235,7 @@ This image above is now 30% of it's original width.
 
 #### Figure layout
 
-```         
+```
 ::: {#fig-mylabel layout-ncol=2}
 ![Caption for figure 1](assets/image.webp){width="40%"}
 
@@ -271,7 +271,7 @@ Some examples of rendering equations.
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $e^{i\pi} + 1 = 0$
 ```
 
@@ -286,7 +286,7 @@ $e^{i\pi} + 1 = 0$
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $$\frac{E \times X^2 \prod I}{2+7} = 432$$
 ```
 
@@ -301,7 +301,7 @@ $$\frac{E \times X^2 \prod I}{2+7} = 432$$
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $$\sum_{i=1}^n X_i$$
 ```
 
@@ -316,7 +316,7 @@ $$\sum_{i=1}^n X_i$$
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $$\int_0^{2\pi} \sin x~dx$$
 ```
 
@@ -331,7 +331,7 @@ $$\int_0^{2\pi} \sin x~dx$$
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
 ```
 
@@ -346,7 +346,7 @@ $\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
 ```
 
@@ -361,7 +361,7 @@ $\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \eq
 ::: {.grid}
 ::: {.g-col-6}
 
-```         
+```
 $\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\mathbb{E}\left[|X-\mu|^2\right]}{k^2}\\ & \leq & \frac{\mathrm{Var}[X]}{k^2} \end{eqnarray}$
 ```
 
@@ -381,7 +381,7 @@ For simple cases, tables can be manually created in markdown.
 ::: {.grid}
 ::: {.g-col-7}
 
-```         
+```
 |speed|dist|
 |-----|----|
 |4    |   2|
@@ -406,7 +406,7 @@ Table caption and numbering can be added as such:
 ::: {.grid}
 ::: {.g-col-7}
 
-```         
+```
 |speed|dist|
 |-----|----|
 |4    |   2|
@@ -467,13 +467,13 @@ More information about [tables](https://quarto.org/docs/authoring/tables.html).
 [Bootstrap icons](https://icons.getbootstrap.com) are directly available since quarto uses bootstrap for styling. Optionally, one could also use the quarto extension [bsicons](https://github.com/shafayetShafee/bsicons) for more control.
 
 
-`<i class="bi bi-lightbulb-fill"></i>`  <i class="bi bi-lightbulb-fill"></i>  
-`<i class="bi bi-exclamation-circle-fill"></i>`  <i class="bi bi-exclamation-circle-fill"></i>  
-`<i class="bi bi-clipboard2-check-fill"></i>`  <i class="bi bi-clipboard2-check-fill"></i>  
-`<i class="bi bi-chat-fill"></i>`  <i class="bi bi-chat-fill"></i>  
-`<i class="bi bi-laptop-fill"></i>`  <i class="bi bi-laptop-fill"></i>  
-`<i class="bi bi-cloud-fill"></i>`  <i class="bi bi-cloud-fill"></i>  
-`<i class="bi bi-github"></i>`  <i class="bi bi-github"></i>  
+`<i class="bi bi-lightbulb-fill"></i>`  <i class="bi bi-lightbulb-fill"></i>
+`<i class="bi bi-exclamation-circle-fill"></i>`  <i class="bi bi-exclamation-circle-fill"></i>
+`<i class="bi bi-clipboard2-check-fill"></i>`  <i class="bi bi-clipboard2-check-fill"></i>
+`<i class="bi bi-chat-fill"></i>`  <i class="bi bi-chat-fill"></i>
+`<i class="bi bi-laptop-fill"></i>`  <i class="bi bi-laptop-fill"></i>
+`<i class="bi bi-cloud-fill"></i>`  <i class="bi bi-cloud-fill"></i>
+`<i class="bi bi-github"></i>`  <i class="bi bi-github"></i>
 
 ### Fontawesome
 
@@ -481,16 +481,16 @@ To use [fontawesome](https://fontawesome.com/search?m=free) icons as shortcodes,
 
 Icons can be placed using shortcodes.
 
-`{{{< fa lightbulb >}}}`      {{< fa lightbulb >}}     
-`{{{< fa exclamation >}}}`    {{< fa exclamation >}}   
-`{{{< fa clipboard-list >}}}` {{< fa clipboard-list >}}  
-`{{{< fa comments >}}}`       {{< fa comments >}}      
-`{{{< fa desktop >}}}`        {{< fa desktop >}}       
-`{{{< fa cloud >}}}`          {{< fa cloud >}}         
-`{{{< fa check >}}}`          {{< fa check >}}         
-`{{{< fa times >}}}`          {{< fa times >}}         
-`{{{< fa skull >}}}`          {{< fa skull >}}         
-`{{{< fa skull size=2x >}}}`  {{< fa skull size=2x >}}   
+`{{{< fa lightbulb >}}}`      {{< fa lightbulb >}}
+`{{{< fa exclamation >}}}`    {{< fa exclamation >}}
+`{{{< fa clipboard-list >}}}` {{< fa clipboard-list >}}
+`{{{< fa comments >}}}`       {{< fa comments >}}
+`{{{< fa desktop >}}}`        {{< fa desktop >}}
+`{{{< fa cloud >}}}`          {{< fa cloud >}}
+`{{{< fa check >}}}`          {{< fa check >}}
+`{{{< fa times >}}}`          {{< fa times >}}
+`{{{< fa skull >}}}`          {{< fa skull >}}
+`{{{< fa skull size=2x >}}}`  {{< fa skull size=2x >}}
 `{{{< fa brands github >}}}`  {{< fa brands github >}}
 
 Icons can be displayed using the HTML `<i>` tag. Note that not all icons may work.
@@ -499,13 +499,13 @@ Icons can be displayed using the HTML `<i>` tag. Note that not all icons may wor
 
 Here is a <i class='fa fa-calendar'></i> calendar and a <i class='fa fa-couch'></i> couch.
 
-There are many other quarto extensions for icons such as [academicons](https://github.com/schochastics/academicons), [iconify](https://github.com/mcanouil/quarto-iconify) and [lordicons](https://github.com/jmgirard/lordicon). 
+There are many other quarto extensions for icons such as [academicons](https://github.com/schochastics/academicons), [iconify](https://github.com/mcanouil/quarto-iconify) and [lordicons](https://github.com/jmgirard/lordicon).
 
 ## Call-Outs
 
 Call-Out blocks are explained [here](https://quarto.org/docs/authoring/callouts.html).
 
-```         
+```
 ::: {.callout-note}
 This is a call-out.
 :::
@@ -563,7 +563,7 @@ This content is behind an accordion.
 
 This is not a quarto feature, but rather from bootstrap.
 
-```         
+```
 ::: {.alert .alert-primary}
 **Note:** This is an alert!
 :::
@@ -637,7 +637,7 @@ Divs can be nested like this:
 ::::
 ```
 
-Both spans and divs support attributes in this specific order: identifiers, classes, and then key-value attributes. 
+Both spans and divs support attributes in this specific order: identifiers, classes, and then key-value attributes.
 
 `[Content inside span]{#id .class key1="val1" key2="val2"}`
 
@@ -669,7 +669,7 @@ Conditional content is documented [here](https://quarto.org/docs/authoring/condi
 
 Organisation of content into columns within the body container.
 
-```         
+```
 :::: {.columns}
 ::: {.column style="background-color: aliceblue"}
 Content is left.
@@ -694,7 +694,7 @@ Content in right column.
 
 This is an example of nested columns.
 
-```         
+```
 :::: {.columns}
 
 ::: {.column style="background-color: aliceblue"}
@@ -742,7 +742,7 @@ Nested right.
 
 Extending content outside the body container.
 
-```         
+```
 ::: {.column-body style="background-color: lightgray; margin-bottom:0.5em;"}
 .column-body
 :::
@@ -882,7 +882,7 @@ Extending content outside the body container.
 
 ### Panel layout
 
-```         
+```
 ::: {.panel-tabset}
 #### Sub topic 1
 
@@ -909,13 +909,13 @@ More layout settings are described [here](https://quarto.org/docs/authoring/arti
 
 ## Shortcodes
 
-Shortcodes are sort of like quarto functions. 
+Shortcodes are sort of like quarto functions.
 
 Two important shortcodes are `meta` and `var`. `meta` allows to read metadata from the yaml block in the current page or from `_quarto.yml`. Here are a few examples:
 
 `{{{< meta title >}}}` {{< meta title >}}
 
-`![]({{{< meta image >}}}){width="300px"}` 
+`![]({{{< meta image >}}}){width="300px"}`
 
 ![]({{< meta image >}}){width="300px"}
 
@@ -929,12 +929,12 @@ The `video` shortcode allows to embed a video.
 
 {{< video https://www.youtube.com/watch?v=_f3latmOhew >}}
 
-Some of the custom shortcodes added with Specky template are:
+Some of the custom shortcodes added with this template are:
 
-`{{{< meta quarto_version >}}}` {{< meta quarto_version >}}  
-`{{{< meta current_date >}}}` {{< meta current_date >}}  
-`{{{< meta current year >}}}` {{< meta current_year >}}  
-`{{{< meta current time >}}}` {{< meta current_time >}}  
+`{{{< meta quarto_version >}}}` {{< meta quarto_version >}}
+`{{{< meta current_date >}}}` {{< meta current_date >}}
+`{{{< meta current year >}}}` {{< meta current_year >}}
+`{{{< meta current time >}}}` {{< meta current_time >}}
 
 Shortcodes are documented [here](https://quarto.org/docs/authoring/shortcodes.html).
 
