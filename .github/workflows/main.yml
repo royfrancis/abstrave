@@ -19,7 +19,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           install-quarto: false
-          cache-version: 2
+          cache: always
           packages: |
             any::dplyr
             any::tidyr
