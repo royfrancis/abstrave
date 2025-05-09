@@ -2,6 +2,7 @@
 title: Using Quarto
 author: "Roy Francis"
 description: Practical guide to using Quarto with a custom theme
+image: "/assets/images/featured.webp"
 format: html
 ---
 
