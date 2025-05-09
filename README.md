@@ -14,7 +14,7 @@ For a demo site and usage, see [here](https://royfrancis.github.io/abstrave).
 
 ## Usage
 
-- Required quarto 1.4.5 or higher
+- Recommended quarto 1.6.43 or higher
 - To download and use a starter template, run in the terminal
 
 :exclamation: Demo files are not downloaded

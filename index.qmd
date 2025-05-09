@@ -19,7 +19,7 @@ execute:
 ::: {.home-grid-parent}
 ::: {.home-grid-child-left}
 
-## [**Abstrave: Course Template**]{.large}
+## [Abstrave: Course Template]{.large}
 ### A quarto course template
 
 - [Report](reports/sample/index.html)

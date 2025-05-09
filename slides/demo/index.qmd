@@ -1295,16 +1295,9 @@ Sys.info()
 
 [Questions?]{.larger}
 
-:::
-:::
-
-##  {background-image="../../assets/images/cover.webp"}
-
-```{r}
-#| echo: false
-R.version[c("platform","os","major","minor")]
-```
-
 [{{< meta current_year >}}  • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+
+:::
+:::
 
 

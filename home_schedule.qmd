@@ -14,7 +14,7 @@ execute:
 
 |Topic                                  |Instructor  |Links|
 |---------------------------------------|------------|-----|
-|[**12-Jan-2024 (Fri)**]{.badge .badge-secondary}    |||
+|[12-Jan-2024 (Fri)]{.badge .badge-secondary}    |||
 |Minimal demo                           |Roy Francis |[Slides](slides/sample/index.html), [Report](reports/sample/index.html)|
 |Using custom theme                     |Roy Francis |[Report](reports/usage/index.html)|
 |Quarto basics                          |Roy Francis |[Report](reports/demo/index.html)|
