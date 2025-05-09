@@ -200,27 +200,24 @@ $presentation-h6-font-size: 1em;
   font-size: 1.4rem !important;
 }
 
-.reveal .callout.callout-titled .callout-title p {
-  margin-top: 0.2rem;
-  margin-bottom: 0;
+.reveal div.callout.callout-style-simple div.callout-title p,
+.reveal div.callout.callout-style-default div.callout-title p {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
-.reveal .callout.callout-titled .callout-body>.callout-content>:last-child {
-  margin-bottom: 0.1rem;
-}
-
-.reveal .callout.callout-style-simple .callout-icon::before,
-.reveal .callout.callout-style-default .callout-icon::before {
+.reveal div.callout.callout-style-simple .callout-icon::before, 
+.reveal div.callout.callout-style-default .callout-icon::before {
   height: 1.4rem;
-  width: 1.4rem;
-  background-size: 1.3rem 1.3rem;
+  width: 1.5rem;
+  background-size: 1.4rem 1.4rem;
 }
 
 .reveal .callout.callout-titled .callout-icon::before {
-  margin-top: 0.6rem;
+  margin-top: 0.55rem;
 }
 
-.reveal div.callout-note.callout-style-default .callout-title {
+.reveal div.callout.callout-note.callout-style-default .callout-title {
   background-color: $secondary;
 }
 
