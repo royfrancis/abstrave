@@ -53,14 +53,14 @@
     "href": "index.html",
     "title": "",
     "section": "",
-    "text": "Report\nPresentation\n\nFor usage instructions and demo examples, see Contents\n\n\nUpdated: 09-05-2025 at 12:53:02 ."
+    "text": "Report\nPresentation\n\nFor usage instructions and demo examples, see Contents\n\n\nUpdated: 09-05-2025 at 13:05:27 ."
   },
   {
     "objectID": "index.html#abstrave-course-template",
     "href": "index.html#abstrave-course-template",
     "title": "",
     "section": "",
-    "text": "Report\nPresentation\n\nFor usage instructions and demo examples, see Contents\n\n\nUpdated: 09-05-2025 at 12:53:02 ."
+    "text": "Report\nPresentation\n\nFor usage instructions and demo examples, see Contents\n\n\nUpdated: 09-05-2025 at 13:05:27 ."
   },
   {
     "objectID": "home_syllabus.html",
@@ -333,7 +333,7 @@
     "href": "reports/demo/index.html#shortcodes",
     "title": "Quarto Basics",
     "section": "11 Shortcodes",
-    "text": "11 Shortcodes\nShortcodes are sort of like quarto functions.\nTwo important shortcodes are meta and var. meta allows to read metadata from the yaml block in the current page or from _quarto.yml. Here are a few examples:\n{{&lt; meta title &gt;}} Quarto Basics\n![]({{&lt; meta image &gt;}}){width=\"300px\"}\n\nSimilarly, var allows to read variables from _variables.yml if it has been defined. The include shortcode allows to add a child qmd document into a specific position in a qmd file. The kbd shortcode allows keyboard notations:\nPress {{&lt; kbd Shift-Ctrl-P &gt;}} Press Shift-Ctrl-PShift-Ctrl-P\nThe video shortcode allows to embed a video.\n{{&lt; video https://www.youtube.com/watch?v=_f3latmOhew &gt;}}\n\nSome of the custom shortcodes added with this template are:\n{{&lt; meta quarto_version &gt;}} 1.6.43\n{{&lt; meta current_date &gt;}} 09-05-2025 {{&lt; meta current year &gt;}} 2025 {{&lt; meta current time &gt;}} 12:53:00\nShortcodes are documented here."
+    "text": "11 Shortcodes\nShortcodes are sort of like quarto functions.\nTwo important shortcodes are meta and var. meta allows to read metadata from the yaml block in the current page or from _quarto.yml. Here are a few examples:\n{{&lt; meta title &gt;}} Quarto Basics\n![]({{&lt; meta image &gt;}}){width=\"300px\"}\n\nSimilarly, var allows to read variables from _variables.yml if it has been defined. The include shortcode allows to add a child qmd document into a specific position in a qmd file. The kbd shortcode allows keyboard notations:\nPress {{&lt; kbd Shift-Ctrl-P &gt;}} Press Shift-Ctrl-PShift-Ctrl-P\nThe video shortcode allows to embed a video.\n{{&lt; video https://www.youtube.com/watch?v=_f3latmOhew &gt;}}\n\nSome of the custom shortcodes added with this template are:\n{{&lt; meta quarto_version &gt;}} 1.6.43\n\n{{&lt; meta current_date &gt;}} 09-05-2025\n{{&lt; meta current year &gt;}} 2025\n{{&lt; meta current time &gt;}} 13:05:25\nShortcodes are documented here."
   },
   {
     "objectID": "reports/demo/index.html#general-tips",
@@ -739,20 +739,13 @@
     "href": "slides/demo/index.html#general-tips",
     "title": "Quarto demo with R",
     "section": "General tips",
-    "text": "General tips\n\nReplace assets/cover.webp to change cover slide picture\nReplace assets/end.webp to change end slide picture\nAdd custom css under YAML css: \"styles.css\"\nIf content overflows the slide in vertical direction, add class .scrollable\n\n\n\n\n                                              sysname \n                                              \"Linux\" \n                                              release \n                                  \"6.11.0-1013-azure\" \n                                              version \n\"#13~24.04.1-Ubuntu SMP Fri Mar 28 23:43:34 UTC 2025\" \n                                             nodename \n                                      \"fv-az1376-106\" \n                                              machine \n                                             \"x86_64\" \n                                                login \n                                            \"unknown\" \n                                                 user \n                                             \"runner\" \n                                       effective_user \n                                             \"runner\" \n\n\n\n\nExport HTML to PDF using PDF export mode by pressing e\nFor complete Quarto revealjs documentation, click here"
+    "text": "General tips\n\nReplace assets/cover.webp to change cover slide picture\nReplace assets/end.webp to change end slide picture\nAdd custom css under YAML css: \"styles.css\"\nIf content overflows the slide in vertical direction, add class .scrollable\n\n\n\n\n                                              sysname \n                                              \"Linux\" \n                                              release \n                                  \"6.11.0-1013-azure\" \n                                              version \n\"#13~24.04.1-Ubuntu SMP Fri Mar 28 23:43:34 UTC 2025\" \n                                             nodename \n                                      \"fv-az1690-142\" \n                                              machine \n                                             \"x86_64\" \n                                                login \n                                            \"unknown\" \n                                                 user \n                                             \"runner\" \n                                       effective_user \n                                             \"runner\" \n\n\n\n\nExport HTML to PDF using PDF export mode by pressing e\nFor complete Quarto revealjs documentation, click here"
   },
   {
     "objectID": "slides/demo/index.html#section",
     "href": "slides/demo/index.html#section",
     "title": "Quarto demo with R",
     "section": "",
-    "text": "Thank you!\nQuestions?"
-  },
-  {
-    "objectID": "slides/demo/index.html#section-1",
-    "href": "slides/demo/index.html#section-1",
-    "title": "Quarto demo with R",
-    "section": "",
-    "text": "_                  \nplatform x86_64-pc-linux-gnu\nos       linux-gnu          \nmajor    4                  \nminor    5.0                \n\n\n2025 • Abstrave"
+    "text": "Thank you!\nQuestions?\n2025 • Abstrave"
   }
 ]
