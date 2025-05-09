@@ -1,5 +1,6 @@
 name: deploy
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -41,7 +42,7 @@ jobs:
       - name: Setup quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.6.39
+          version: 1.6.43
           tinytex: true
       - name: Render and publish
         uses: quarto-dev/quarto-actions/publish@v2
@@ -49,4 +50,4 @@ jobs:
           target: gh-pages
           render: true
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
