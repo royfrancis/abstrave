@@ -163,11 +163,12 @@ $presentation-h6-font-size: 1em;
 /* badge */
 
 .badge {
+  font-size: 0.85em;
   background-color: $primary;
   color: white;
   padding: 0.05em 0.3em;
   border-radius: 4px;
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 .badge-primary {
@@ -382,4 +383,10 @@ $presentation-h6-font-size: 1em;
 
 .references {
   font-size: 0.7rem;
+}
+
+/* shinylive */
+
+.reveal .shinylive-wrapper {
+  margin: 0;
 }
