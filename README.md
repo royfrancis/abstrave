@@ -1,6 +1,6 @@
 # abstrave <span><a href="https://github.com/royfrancis/abstrave"><img src="assets/logos/logo.webp" style="height:40px;vertical-align:middle;"></a></span> 
 
-[![ci_badge](https://github.com/royfrancis/abstrave/workflows/deploy/badge.svg)](https://github.com/royfrancis/abstrave/actions?workflow=deploy)    [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![ci_badge](https://github.com/royfrancis/abstrave/workflows/deploy/badge.svg)](https://github.com/royfrancis/abstrave/actions?workflow=deploy)  [![linkcheck_badge](https://github.com/royfrancis/abstrave/workflows/linkcheck/badge.svg)](https://github.com/royfrancis/abstrave/actions?workflow=linkcheck)  [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 Quarto website template for courses
 
