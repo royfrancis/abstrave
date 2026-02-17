@@ -32,12 +32,12 @@ $presentation-h6-font-size: 1em;
 
 /* font */
 /* major third scale */
-.largest { font-size: 1.953em;}
-.larger { font-size: 1.563em;}
-.large { font-size: 1.25em;}
-.small { font-size: 0.8em;}
-.smaller { font-size: 0.64em;}
-.smallest { font-size: 0.512em;}
+.largest { font-size: 1.953em; }
+.larger { font-size: 1.563em; }
+.large { font-size: 1.25em; }
+.small { font-size: 0.8em; }
+.smaller { font-size: 0.64em; }
+.smallest { font-size: 0.512em; }
 
 .reveal .largest pre { font-size: 3.41rem !important; }
 .reveal .larger pre { font-size: 2.73rem !important; }
@@ -91,7 +91,7 @@ $presentation-h6-font-size: 1em;
 }
 
 .reveal .slide-number {
-  font-family: "Source Sans Pro";
+  font-family: $font-family-sans-serif;
 }
 
 .reveal .blockquote {
@@ -387,3 +387,4 @@ $presentation-h6-font-size: 1em;
 .reveal .shinylive-wrapper {
   margin: 0;
 }
+

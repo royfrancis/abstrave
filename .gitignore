@@ -13,3 +13,4 @@ slides/**/*_files
 labs/**/*_files
 _freeze
 docs
+**/*.quarto_ipynb
