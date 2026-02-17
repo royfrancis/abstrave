@@ -467,13 +467,13 @@ More information about [tables](https://quarto.org/docs/authoring/tables.html).
 [Bootstrap icons](https://icons.getbootstrap.com) are directly available since quarto uses bootstrap for styling. Optionally, one could also use the quarto extension [bsicons](https://github.com/shafayetShafee/bsicons) for more control.
 
 
-`<i class="bi bi-lightbulb-fill"></i>`  <i class="bi bi-lightbulb-fill"></i>
-`<i class="bi bi-exclamation-circle-fill"></i>`  <i class="bi bi-exclamation-circle-fill"></i>
-`<i class="bi bi-clipboard2-check-fill"></i>`  <i class="bi bi-clipboard2-check-fill"></i>
-`<i class="bi bi-chat-fill"></i>`  <i class="bi bi-chat-fill"></i>
-`<i class="bi bi-laptop-fill"></i>`  <i class="bi bi-laptop-fill"></i>
-`<i class="bi bi-cloud-fill"></i>`  <i class="bi bi-cloud-fill"></i>
-`<i class="bi bi-github"></i>`  <i class="bi bi-github"></i>
+`<i class="bi bi-lightbulb-fill"></i>`  <i class="bi bi-lightbulb-fill"></i>  
+`<i class="bi bi-exclamation-circle-fill"></i>`  <i class="bi bi-exclamation-circle-fill"></i>  
+`<i class="bi bi-clipboard2-check-fill"></i>`  <i class="bi bi-clipboard2-check-fill"></i>  
+`<i class="bi bi-chat-fill"></i>`  <i class="bi bi-chat-fill"></i>  
+`<i class="bi bi-laptop-fill"></i>`  <i class="bi bi-laptop-fill"></i>  
+`<i class="bi bi-cloud-fill"></i>`  <i class="bi bi-cloud-fill"></i>  
+`<i class="bi bi-github"></i>`  <i class="bi bi-github"></i>  
 
 ### Fontawesome
 
@@ -481,17 +481,17 @@ To use [fontawesome](https://fontawesome.com/search?m=free) icons as shortcodes,
 
 Icons can be placed using shortcodes.
 
-`{{{< fa lightbulb >}}}`      {{< fa lightbulb >}}
-`{{{< fa exclamation >}}}`    {{< fa exclamation >}}
-`{{{< fa clipboard-list >}}}` {{< fa clipboard-list >}}
-`{{{< fa comments >}}}`       {{< fa comments >}}
-`{{{< fa desktop >}}}`        {{< fa desktop >}}
-`{{{< fa cloud >}}}`          {{< fa cloud >}}
-`{{{< fa check >}}}`          {{< fa check >}}
-`{{{< fa times >}}}`          {{< fa times >}}
-`{{{< fa skull >}}}`          {{< fa skull >}}
-`{{{< fa skull size=2x >}}}`  {{< fa skull size=2x >}}
-`{{{< fa brands github >}}}`  {{< fa brands github >}}
+`{{{< fa lightbulb >}}}`      {{< fa lightbulb >}}  
+`{{{< fa exclamation >}}}`    {{< fa exclamation >}}  
+`{{{< fa clipboard-list >}}}` {{< fa clipboard-list >}}  
+`{{{< fa comments >}}}`       {{< fa comments >}}  
+`{{{< fa desktop >}}}`        {{< fa desktop >}}  
+`{{{< fa cloud >}}}`          {{< fa cloud >}}  
+`{{{< fa check >}}}`          {{< fa check >}}  
+`{{{< fa times >}}}`          {{< fa times >}}  
+`{{{< fa skull >}}}`          {{< fa skull >}}  
+`{{{< fa skull size=2x >}}}`  {{< fa skull size=2x >}}  
+`{{{< fa brands github >}}}`  {{< fa brands github >}}  
 
 Icons can be displayed using the HTML `<i>` tag. Note that not all icons may work.
 
@@ -557,6 +557,26 @@ This is a call-out.
 ## Call-out with collapse
 
 This content is behind an accordion.
+:::
+
+```         
+::: {.callout-note appearance="simple"}
+This is a call-out.
+:::
+```
+
+::: {.callout-note appearance="simple"}
+This is a call-out.
+:::
+
+```         
+::: {.callout-note appearance="minimal"}
+This is a call-out.
+:::
+```
+
+::: {.callout-note appearance="minimal"}
+This is a call-out.
 :::
 
 ## Alerts
