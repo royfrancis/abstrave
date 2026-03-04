@@ -56,6 +56,8 @@ jobs:
           version: 1.8.27
           tinytex: true
       - run: quarto --version
+      - run: quarto add --no-prompt quarto-ext/fontawesome
+      - run: quarto add --no-prompt royfrancis/quarto-reveal-logo
       - run: quarto render
 
       - name: Configure Github Pages

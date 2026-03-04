@@ -23,6 +23,13 @@ For a demo site and usage, see [here](https://royfrancis.github.io/abstrave).
 quarto use template royfrancis/abstrave
 ```
 
+- Install required extensions
+
+```
+quarto add quarto-ext/fontawesome
+quarto add royfrancis/quarto-reveal-logo
+```
+
 - Render all html files into `docs` directory to make sure everything works as expected
 
 ```
