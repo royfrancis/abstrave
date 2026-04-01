@@ -27,6 +27,9 @@ website:
       - text: "Precourse"
         href: "home_precourse.html"
         aria-label: "Pre-course"
+      - text: "FAQ"
+        href: "home_faq.html"
+        aria-label: "FAQ"
       - text: About
         href: "home_about.html"
         aria-label: "About"
@@ -55,7 +58,7 @@ format:
     code-tools: false
     code-copy: true
     code-overflow: wrap
-    df-print: paged
+    df-print: kable
     standalone: false
     fig-align: left
     title-block-banner: "assets/images/banner.webp"
@@ -70,7 +73,7 @@ format:
     include-in-header: "assets/include_head.html"
     include-before-body: "assets/include_body_before.html"
     include_after_body: "assets/include_body_after.html"
-    theme: ["default","assets/css/slides.scss"]
+    theme: ["default", "assets/css/slides.scss"]
     df-print: kable
     width: 1280
     height: 720
@@ -110,9 +113,12 @@ execute:
   message: false
   freeze: false
 
+metadata-files: 
+  - _metadata.yml
+
 filters:
   - assets/custom.lua
-  - assets/fold-results.lua
+  - collapse-output
   - reveal-logo
   - fontawesome
 

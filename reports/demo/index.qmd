@@ -4,6 +4,10 @@ author: "Roy Francis"
 description: "This document showcases some of the in-built capabilities of quarto. It also shows the custom theme, style and usage."
 image: "/assets/images/featured.webp"
 format: html
+accordion:
+  - ac-1:
+    - header: "**This is a header**"
+      body: "This is **bold** and *italic* text"
 ---
 
 This is a [quarto](https://quarto.org/) document
@@ -103,8 +107,8 @@ An example of footnote reference [^1]
 
 Badges are defined as such:
 
-`[badge]{.badge .badge-primary}`  [badge]{.badge .badge-primary}
-`[badge]{.badge .badge-secondary}`  [badge]{.badge .badge-secondary}
+`[badge]{.badge .badge-primary}`  [badge]{.badge .badge-primary}  
+`[badge]{.badge .badge-secondary}`  [badge]{.badge .badge-secondary}  
 
 ## Code formatting
 
@@ -492,6 +496,7 @@ Icons can be placed using shortcodes.
 `{{{< fa skull >}}}`          {{< fa skull >}}  
 `{{{< fa skull size=2x >}}}`  {{< fa skull size=2x >}}  
 `{{{< fa brands github >}}}`  {{< fa brands github >}}  
+`{{{< fa brands youtube >}}}`  {{< fa brands youtube >}}  
 
 Icons can be displayed using the HTML `<i>` tag. Note that not all icons may work.
 
@@ -958,6 +963,114 @@ Some of the custom shortcodes added with this template are:
 
 Shortcodes are documented [here](https://quarto.org/docs/authoring/shortcodes.html).
 
+## Accordions
+
+Accordion support is provided through the [accordion](https://github.com/royfrancis/accordion) extension.
+
+Accordion contents can be defined in the YAML header as shown below.
+
+```yaml
+accordion:
+  - ac-1:
+    - header: "**This is a header**"
+      body: "This is **bold** and *italic* text"
+```
+
+and then called in the body using the shortcode.
+
+```lua
+{{{< accordion ac-1 >}}}
+```
+
+{{< accordion ac-1 >}}
+
+Alternatively, an accordion can be defined inline as shown below.
+
+```lua
+{{{< accordion label="my-accordion" header="Click to expand" body="This is the content of the accordion." >}}}
+```
+
+{{< accordion label="my-accordion" header="Click to expand" body="This is the content of the accordion." >}}
+
+Multiple inline items are defined using JSON.
+
+```
+{{{< accordion label="inline-multi" items='[
+  { "header": "Inline Item 1", "body": "Content for inline item 1." },
+  { "header": "Inline Item 2", "body": "Content for inline item 2." }
+]' >}}}
+```
+
+{{< accordion label="inline-multi" items='[
+  { "header": "Inline Item 1", "body": "Content for inline item 1." },
+  { "header": "Inline Item 2", "body": "Content for inline item 2." }
+]' >}}
+
+## Leaflet maps
+
+Leaflet maps are enabled through the `leaflet` extension. Leaflet maps are documented [here](https://github.com/royfrancis/quarto-leaflet). Add map information to yaml matter or `_metadata.yml` and use the shortcode `{{< leaflet mapname >}}`.
+
+```yaml
+---
+leaflet:
+  zoom: 15
+  ucl:
+    markers:
+      - tooltip: Venue
+        icon: "fa-solid fa-briefcase"
+        icon-color: "#E74856"
+        lat: 51.5218
+        lon: -0.1318
+        popup: "Room 309<br> Roberts Building<br> University College London<br> Torrington Place<br> London WC1E 7JE<br> United Kingdom"
+      - tooltip: "The Academy Hotel (0.2 km, 3 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5244
+        lon: -0.1328
+        popup: "21 Gower Street<br> London WC1E 6HG<br> United Kingdom"
+      - tooltip: "The Bloomsbury Hotel (0.5 km, 6 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5192
+        lon: -0.1265
+        popup: "16-22 Great Russell Street<br> London WC1B 3QD<br> United Kingdom"
+      - tooltip: "Kimpton Fitzroy London (0.6 km, 8 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5216
+        lon: -0.1232
+        popup: "1-8 Russell Square<br> London WC1B 5BE<br> United Kingdom"
+      - tooltip: "Holiday Inn London Bloomsbury (0.7 km, 9 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5242
+        lon: -0.1225
+        popup: "60 Coram Street<br> London WC1N 1HT<br> United Kingdom"
+      - tooltip: "Premier Inn London Euston (1.0 km, 12 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5270
+        lon: -0.1329
+        popup: "1 Dukes Road<br> London WC1H 9PJ<br> United Kingdom"
+      - tooltip: "Ibis London Euston St Pancras (1.2 km, 15 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5277
+        lon: -0.1285
+        popup: "3 Cardington Street<br> London NW1 2LW<br> United Kingdom"
+      - tooltip: Euston Station
+        icon: "fa-solid fa-train"
+        icon-color: "#8E8CD8"
+        lat: 51.5281
+        lon: -0.1337
+        popup: "Euston Station<br> London NW1 2RT<br> United Kingdom"
+---
+
+{{{< leaflet ucl >}}}
+```
+
+{{< leaflet ucl >}}
+
 ## General tips
 
 -   Use level 2 heading as the highest level
@@ -968,3 +1081,4 @@ Shortcodes are documented [here](https://quarto.org/docs/authoring/shortcodes.ht
 
 -   Add custom css under YAML if needed `css: "my-theme.css"`
 -   Check out the [Quarto](https://quarto.org/) website
+

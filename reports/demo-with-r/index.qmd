@@ -104,17 +104,17 @@ Sys.Date()
 Sys.Date()
 ```
 
-There is not proper implementation to fold code output. Here is a hacky solution that uses a custom lua filter.
+There is not built-in implementation to fold code output. Therefore, we use the quarto extension [`quarto-collapse-output`](https://github.com/mcanouil/quarto-collapse-output) to enable this functionality.
 
-````         
+````
 ```{{r}}
-#| attr.output: '.details summary="Output"'
+#| output-fold: true
 Sys.Date()
 ```
 ````
 
 ```{r}
-#| attr.output: '.details summary="Output"'
+#| output-fold: true
 Sys.Date()
 ```
 

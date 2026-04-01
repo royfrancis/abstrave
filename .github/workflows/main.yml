@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -53,21 +53,25 @@ jobs:
       - name: Setup quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.8.27
-          tinytex: true
+          version: 1.9.35
       - run: quarto --version
       - run: quarto add --no-prompt quarto-ext/fontawesome
+      - run: quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
       - run: quarto add --no-prompt royfrancis/quarto-reveal-logo
-      - run: quarto render
+      - run: quarto add --no-prompt royfrancis/quarto-accordion
+      - run: quarto add --no-prompt royfrancis/quarto-leaflet
+
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
 
       - name: Configure Github Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: 'docs'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

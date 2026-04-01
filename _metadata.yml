@@ -1,0 +1,52 @@
+leaflet:
+  zoom: 15
+  ucl:
+    markers:
+      - tooltip: Venue
+        icon: "fa-solid fa-briefcase"
+        icon-color: "#E74856"
+        lat: 51.5218
+        lon: -0.1318
+        popup: "Room 309<br> Roberts Building<br> University College London<br> Torrington Place<br> London WC1E 7JE<br> United Kingdom"
+      - tooltip: "The Academy Hotel (0.2 km, 3 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5244
+        lon: -0.1328
+        popup: "21 Gower Street<br> London WC1E 6HG<br> United Kingdom"
+      - tooltip: "The Bloomsbury Hotel (0.5 km, 6 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5192
+        lon: -0.1265
+        popup: "16-22 Great Russell Street<br> London WC1B 3QD<br> United Kingdom"
+      - tooltip: "Kimpton Fitzroy London (0.6 km, 8 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5216
+        lon: -0.1232
+        popup: "1-8 Russell Square<br> London WC1B 5BE<br> United Kingdom"
+      - tooltip: "Holiday Inn London Bloomsbury (0.7 km, 9 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5242
+        lon: -0.1225
+        popup: "60 Coram Street<br> London WC1N 1HT<br> United Kingdom"
+      - tooltip: "Premier Inn London Euston (1.0 km, 12 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5270
+        lon: -0.1329
+        popup: "1 Dukes Road<br> London WC1H 9PJ<br> United Kingdom"
+      - tooltip: "Ibis London Euston St Pancras (1.2 km, 15 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5277
+        lon: -0.1285
+        popup: "3 Cardington Street<br> London NW1 2LW<br> United Kingdom"
+      - tooltip: Euston Station
+        icon: "fa-solid fa-train"
+        icon-color: "#8E8CD8"
+        lat: 51.5281
+        lon: -0.1337
+        popup: "Euston Station<br> London NW1 2RT<br> United Kingdom"

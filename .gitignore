@@ -14,3 +14,4 @@ labs/**/*_files
 _freeze
 docs
 **/*.quarto_ipynb
+_extensions

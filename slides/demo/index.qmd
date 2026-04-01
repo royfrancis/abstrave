@@ -3,6 +3,10 @@ title: "Quarto demo with R"
 author: "Roy Francis"
 image: "/assets/images/featured.webp"
 format: revealjs
+accordion:
+  - ac-1:
+    - header: "**This is a header**"
+      body: "This is **bold** and *italic* text"
 ---
 
 ## Packages {visibility="hidden"}
@@ -37,7 +41,7 @@ library(crosstalk) # linking plots
 ## Introduction
 
 ::: {.large}
-This is a [Quarto](https://quarto.org/) [revealjs](https://revealjs.com) presentation with Abstrave theme. This demo showcases the usage and capabilities of this system. Revealjs in Quarto is documented [here](https://quarto.org/docs/presentations/revealjs/).
+This is a [Quarto](https://quarto.org/) [revealjs](https://revealjs.com) presentation. This demo showcases the usage and capabilities of this system. Revealjs in Quarto is documented [here](https://quarto.org/docs/presentations/revealjs/).
 :::
 
 ## Getting started
@@ -224,7 +228,7 @@ Content for `Tab B`
 
 :::
 
-## Text Formatting
+## Text formatting
 
 Rendering of normal text, numbers and symbols.
 
@@ -579,6 +583,51 @@ Sys.Date()
 
 :::
 
+## Accordions
+
+Accordion support is provided through the [accordion](https://github.com/royfrancis/accordion) extension.
+
+Accordion contents can be defined in the YAML header as shown below.
+
+```yaml
+accordion:
+  - ac-1:
+    - header: "**This is a header**"
+      body: "This is **bold** and *italic* text"
+```
+
+and then called in the body using the shortcode.
+
+```lua
+{{{< accordion ac-1 >}}}
+```
+
+{{< accordion ac-1 >}}
+
+## Inline Accordions
+
+An accordion can also be defined inline as shown below.
+
+```lua
+{{{< accordion label="my-accordion" header="Click to expand" body="This is the content of the accordion." >}}}
+```
+
+{{< accordion label="my-accordion" header="Click to expand" body="This is the content of the accordion." >}}
+
+Multiple inline items are defined using JSON.
+
+```
+{{{< accordion label="inline-multi" items='[
+  { "header": "Inline Item 1", "body": "Content for inline item 1." },
+  { "header": "Inline Item 2", "body": "Content for inline item 2." }
+]' >}}}
+```
+
+{{< accordion label="inline-multi" items='[
+  { "header": "Inline Item 1", "body": "Content for inline item 1." },
+  { "header": "Inline Item 2", "body": "Content for inline item 2." }
+]' >}}
+
 ## Code formatting
 
 **Inline code**
@@ -644,6 +693,164 @@ head(iris[1:3,1:2])
 
 :::
 ::::
+
+## Code folding
+
+Source code blocks can be folded to only show the output.
+
+````
+```{{r}}
+#| code-fold: true
+Sys.Date()
+```
+````
+
+```{r}
+#| code-fold: true
+Sys.Date()
+```
+
+Quarto extension [`quarto-collapse-output`](https://github.com/mcanouil/quarto-collapse-output) is used to enable folding of code output.
+
+````
+```{{r}}
+#| output-fold: true
+Sys.Date()
+```
+````
+
+```{r}
+#| output-fold: true
+Sys.Date()
+```
+
+## Code sizing
+
+::: {.columns}
+::: {.column}
+
+**Sizing pre-formatted inline code**
+
+```         
+[`Sys.Date()`]{.largest}
+[`Sys.Date()`]{.larger}
+[`Sys.Date()`]{.large}
+`Sys.Date()`
+[`Sys.Date()`]{.small}
+[`Sys.Date()`]{.smaller}
+[`Sys.Date()`]{.smallest}
+```
+
+[`Sys.Date()`]{.largest}\
+[`Sys.Date()`]{.larger}\
+[`Sys.Date()`]{.large}\
+`Sys.Date()`\
+[`Sys.Date()`]{.small}\
+[`Sys.Date()`]{.smaller}\
+[`Sys.Date()`]{.smallest}
+
+:::
+::: {.column}
+
+**Sizing pre-formatted code block**
+
+````
+::: {.small}
+```
+Sys.Date()
+```
+:::
+````
+
+::: {.small}
+```
+Sys.Date()
+```
+:::
+
+````
+::: {.smaller}
+```
+Sys.Date()
+```
+:::
+````
+
+::: {.smaller}
+```
+Sys.Date()
+```
+:::
+
+::: {.smallest}
+```
+Sys.Date()
+```
+:::
+
+:::
+:::
+
+## Code sizing
+
+::: {.columns}
+::: {.column}
+
+**Sizing source code**
+
+```{{r}}
+#| class-source: small
+#| echo: true
+Sys.Date()
+```
+
+```{r}
+#| class-source: small
+#| echo: true
+Sys.Date()
+```
+
+```{r}
+#| class-source: smaller
+#| echo: true
+Sys.Date()
+```
+
+```{r}
+#| class-source: smallest
+#| echo: true
+Sys.Date()
+```
+
+The output can be hidden using `echo: false` or `results: hide`.
+
+:::
+::: {.column}
+
+**Sizing source and output code**
+
+```{{r}}
+#| classes: small
+Sys.Date()
+```
+
+```{r}
+#| classes: small
+Sys.Date()
+```
+
+```{r}
+#| classes: smaller
+Sys.Date()
+```
+
+```{r}
+#| classes: smallest
+Sys.Date()
+```
+
+:::
+:::
 
 ## Code highlighting
 
@@ -1098,17 +1305,12 @@ R package [`ggiraph`](https://github.com/davidgohel/ggiraph) converts a static g
 
 library(ggiraph)
 p <- ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+
-      geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=2)+
+      geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=1)+
   theme_bw()
 tooltip_css <- "background-color:#f8f9f9;padding:10px;border-style:solid;border-width:2px;border-color:#125687;border-radius:5px;"
 girafe(code=print(p), height_svg=2, width_svg=4,
-  options=list(
-    opts_hover(css="cursor:pointer;stroke:black;fill-opacity:0.3"),
-    opts_zoom(max=5),
-    opts_tooltip(css=tooltip_css,opacity=0.9),
-    opts_sizing(width=0.6)
-  )
-)
+  options=list(opts_hover(css="cursor:pointer;stroke:black;fill-opacity:0.3"), opts_zoom(max=5),
+    opts_tooltip(css=tooltip_css,opacity=0.9), opts_sizing(width=0.6)))
 ```
 
 ## Interactive time series • `dygraphs`
@@ -1136,6 +1338,51 @@ forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
              Group="group",opacity=0.4,
              height=300,width=500)
 ```
+
+## Interactive maps • `leaflet`
+
+Quarto extension [leaflet](https://github.com/royfrancis/quarto-leaflet) provides support for [leafletjs](http://leafletjs.com/) maps. Add map information to yaml matter or `_metadata.yml` and use the shortcode `{{< leaflet mapname >}}`.
+
+::: {columns}
+::: {.column width="50%"}
+
+
+```yaml
+---
+leaflet:
+  zoom: 15
+  ucl:
+    markers:
+      - tooltip: Venue
+        icon: "fa-solid fa-briefcase"
+        icon-color: "#E74856"
+        lat: 51.5218
+        lon: -0.1318
+        popup: "Room 309<br> Roberts Building<br> University College London<br> Torrington Place<br> London WC1E 7JE<br> United Kingdom"
+      - tooltip: "The Academy Hotel (0.2 km, 3 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5244
+        lon: -0.1328
+        popup: "21 Gower Street<br> London WC1E 6HG<br> United Kingdom"
+      - tooltip: "The Bloomsbury Hotel (0.5 km, 6 min walk)"
+        icon: "fa-solid fa-bed"
+        icon-color: "#0078D7"
+        lat: 51.5192
+        lon: -0.1265
+        popup: "16-22 Great Russell Street<br> London WC1B 3QD<br> United Kingdom"
+---
+
+{{{< leaflet ucl >}}}
+```
+
+:::
+::: {.column width="50%"}
+
+{{< leaflet ucl >}}
+
+:::
+:::
 
 ## Interactive maps • `leaflet`
 
@@ -1274,17 +1521,38 @@ This slide has a background image
 - Replace *assets/cover.webp* to change cover slide picture
 - Replace *assets/end.webp* to change end slide picture
 - Add custom css under YAML `css: "styles.css"`
+- Export HTML to PDF using [DeckTape](https://github.com/astefanutti/decktape)
+- Change title slide background image by adjusting the following YAML parameters.
+
+  ```
+  ---
+  title-slide-attributes:
+    data-background-image: "assets/cover.webp"
+    data-background-size: "cover"
+    data-background-opacity: "1"
+  ---
+  ```
+
+- For complete Quarto revealjs documentation, click [here](https://quarto.org/docs/presentations/revealjs/)
+
+## Session
+
 - If content overflows the slide in vertical direction, add class `.scrollable`
 
-::: scrollable
+```
+::: { .scrollable }
+<contents>
+:::
+```
+
+::: { .scrollable }
+
 ```{r}
 #| echo: false
-Sys.info()
+sessionInfo()
 ```
-:::
 
-- Export HTML to PDF using PDF export mode by pressing **e**
-- For complete Quarto revealjs documentation, click [here](https://quarto.org/docs/presentations/revealjs/)
+:::
 
 ##  {background-image="../../assets/images/cover.webp"}
 
@@ -1299,5 +1567,4 @@ Sys.info()
 
 :::
 :::
-
 

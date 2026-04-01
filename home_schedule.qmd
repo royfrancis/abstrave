@@ -12,13 +12,13 @@ execute:
 
 :::{.contents-table .column-body-outset}
 
-|Topic                                  |Instructor  |Links|
-|---------------------------------------|------------|-----|
-|[12-Jan-2024 (Fri)]{.badge .badge-secondary}    |||
-|Minimal demo                           |Roy Francis |[Slides](slides/sample/index.html), [Report](reports/sample/index.html)|
-|Using custom theme                     |Roy Francis |[Report](reports/usage/index.html)|
-|Quarto basics                          |Roy Francis |[Report](reports/demo/index.html)|
-|Quarto and R                           |Roy Francis |[Slides](slides/demo/index.html), [Report](reports/demo-with-r/index.html)|
-|OJS and mermaid                        |Roy Francis |[Report](reports/more/index.html)|
+|Topic              |Instructor  |Links                                                                    |
+|-------------------|------------|-------------------------------------------------------------------------|
+|[30-Mar-2026 (Mon)]{.badge .badge-secondary} ||                                                           |
+|Minimal demo       |John Doe   |[Slides](slides/sample/index.html), [Report](reports/sample/index.html)   |
+|Using custom theme |John Doe   |[Report](reports/usage/index.html)                                        |
+|Quarto basics      |John Doe   |[Report](reports/demo/index.html)                                         |
+|Quarto and R       |John Doe   |[Slides](slides/demo/index.html), [Report](reports/demo-with-r/index.html)|
+|OJS and mermaid    |John Doe   |[Report](reports/more/index.html)                                         |
 
 :::

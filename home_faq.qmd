@@ -1,0 +1,24 @@
+---
+title: "FAQs"
+description: "Frequently Asked Questions"
+toc: false
+date: ""
+sidebar: false
+number-sections: false
+accordion:
+  - faq:
+    - header: 1. Will I receive a certificate for completing the workshop?
+      body: Certainly! Upon maintaining satisfactory attendance, demonstrating proficiency in practical exercises, and actively engaging in the collaborative group project, you will be awarded a course completion certificate.
+    - header: 2. I need to leave earlier. Is that acceptable?
+      body: Project presentations are scheduled for the morning on the final day, and participation in presenting your project is a key criterion. If you must leave early, we can attempt to schedule your group's presentation at an earlier time to accommodate your schedule.
+    - header: 3. I woke up feeling sick during the course. What should I do?
+      body: Please inform us and stay in your room until you feel better. We prioritize the well-being of all participants and understand that illness may prevent participation. We will work to find a suitable solution for you to minimize the impact on your learning experience. If you require assistance, don't hesitate to reach out.
+    - header: 4. Do you accommodate special dietary needs and provide suitable food options?
+      body: Please provide your dietary requirements in the registration form, and we'll communicate them to the restaurant. Lunches have various options, and the restaurant can prepare special meals if needed to accommodate your specific dietary needs.
+format: html
+filters:
+  - accordion
+---
+
+{{< accordion faq >}}
+
