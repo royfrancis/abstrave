@@ -105,6 +105,11 @@ format:
     header-logo-right-url: https://royfrancis.github.io/abstrave/home_contents.html
     template-partials:
       - "/assets/title-slide.html"
+    pointer:
+      color: "#4C979F"
+      pointerSize: 12
+      trail: true
+      trailDuration: 250
 
 execute:
   eval: true
@@ -119,6 +124,9 @@ metadata-files:
 filters:
   - assets/custom.lua
   - collapse-output
-  - reveal-logo
+  - revealjs-header
   - fontawesome
+
+revealjs-plugins:
+  - pointer
 

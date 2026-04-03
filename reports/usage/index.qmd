@@ -25,7 +25,8 @@ Install required extensions
 #| eval: false
 #| filename: bash
 quarto add --no-prompt quarto-ext/fontawesome
-quarto add --no-prompt royfrancis/quarto-reveal-logo
+quarto add --no-prompt royfrancis/quarto-revealjs-header
+quarto add --no-prompt royfrancis/quarto-revealjs-pointer
 quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
 quarto add --no-prompt royfrancis/quarto-accordion
 quarto add --no-prompt royfrancis/quarto-leaflet
@@ -129,6 +130,7 @@ Start by updating the settings. The website/project settings are contained in th
   - Code output folding is enabled through the `quarto-collapse-output` extension. This is documented [here](https://github.com/mcanouil/quarto-collapse-output)
   - Accordions are enabled through the `quarto-accordion` extension. Use the shortcode `{{{< accordion name >}}}` to include an accordion in any qmd file. Accordions are documented [here](https://github.com/royfrancis/quarto-accordion)
   - Leaflet maps are enabled through the `leaflet` extension. Add map information as metadata in `_metadata.yml` and use the shortcode `{{{< leaflet mapname >}}}` to include the map in any qmd file. Leaflet maps are documented [here](https://github.com/royfrancis/quarto-leaflet)
+  - RevealJS [header with logos](https://github.com/royfrancis/quarto-revealjs-header) and [pointer](https://github.com/royfrancis/quarto-revealjs-pointer) extensions are enabled for slides. Press `q` on slides to show the pointer and `q` again to hide it
   - If the extensions are not used, they can be removed from the project by running `quarto remove extension-name`
 - Add custom css under YAML for individual qmd files if needed: `css: "styles.css"`
 

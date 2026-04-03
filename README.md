@@ -27,7 +27,8 @@ quarto use template royfrancis/abstrave
 
 ```
 quarto add --no-prompt quarto-ext/fontawesome
-quarto add --no-prompt royfrancis/quarto-reveal-logo
+quarto add --no-prompt royfrancis/quarto-revealjs-header
+quarto add --no-prompt royfrancis/quarto-revealjs-pointer
 quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
 quarto add --no-prompt royfrancis/quarto-accordion
 quarto add --no-prompt royfrancis/quarto-leaflet

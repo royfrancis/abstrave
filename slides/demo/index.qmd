@@ -44,12 +44,14 @@ library(crosstalk) # linking plots
 This is a [Quarto](https://quarto.org/) [revealjs](https://revealjs.com) presentation. This demo showcases the usage and capabilities of this system. Revealjs in Quarto is documented [here](https://quarto.org/docs/presentations/revealjs/).
 :::
 
+Press `q` to enable pointer and press `q` again to hide it
+
 ## Getting started
 
 - In RStudio, **File** > **New File** > **Quarto Presentation**
 - Add YAML matter to the top if not already there.
 
-```         
+```
 ---
 title: "This is a title"
 format:

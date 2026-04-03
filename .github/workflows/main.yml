@@ -57,7 +57,8 @@ jobs:
       - run: quarto --version
       - run: quarto add --no-prompt quarto-ext/fontawesome
       - run: quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
-      - run: quarto add --no-prompt royfrancis/quarto-reveal-logo
+      - run: quarto add --no-prompt royfrancis/quarto-revealjs-header
+      - run: quarto add --no-prompt royfrancis/quarto-revealjs-pointer
       - run: quarto add --no-prompt royfrancis/quarto-accordion
       - run: quarto add --no-prompt royfrancis/quarto-leaflet
 
