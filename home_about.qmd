@@ -3,12 +3,27 @@ title: "About"
 toc: false
 date: ""
 sidebar: false
-filters:
-  - leaflet
+team:
+  organizers:
+    - name: "John Doe"
+      image: "assets/images/profile/profile.webp"
+      description: |
+        Data Scientist, Institute  
+        Associate Professor in Bioinformatics,  
+        University
+    - name: "John Doe"
+      image: "assets/images/profile/profile.webp"
+      description: "Data Scientist, Institute"
+    - name: "John Doe"
+      image: "assets/images/profile/profile.webp"
+      description: "Data Scientist, Institute"
 format:
   html:
     number-sections: false
     anchor-sections: false
+filters:
+  - leaflet
+  - team
 ---
 
 ## Venue
@@ -19,34 +34,7 @@ format:
 
 ## Organizers
 
-::: {.profile-parent}
-::: {.profile-child}
-
-![](assets/images/profile/profile.webp){.nolightbox}
-
-[**John Doe**](http://www.johndoe.com/)  
-Data Scientist, Institute 
-Associate Professor in Bioinformatics, University
-
-:::
-::: {.profile-child}
-
-![](assets/images/profile/profile.webp){.nolightbox}
-
-[**John Doe**](http://www.johndoe.com/)  
-Data Scientist, Institute
-
-:::
-::: {.profile-child}
-
-![](assets/images/profile/profile.webp){.nolightbox}
-
-[**John Doe**](http://www.johndoe.com/)  
-Data Scientist, Institute
-
-:::
-
-:::
+{{< team organizers >}}
 
 ## Contact
 

@@ -61,6 +61,7 @@ jobs:
       - run: quarto add --no-prompt royfrancis/quarto-revealjs-pointer
       - run: quarto add --no-prompt royfrancis/quarto-accordion
       - run: quarto add --no-prompt royfrancis/quarto-leaflet
+      - run: quarto add --no-prompt royfrancis/quarto-team
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
