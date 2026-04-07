@@ -213,6 +213,23 @@ Ordered lists are created using numbers.
 :::
 :::
 
+## Bootstrap
+
+[Bootstrap](https://getbootstrap.com/docs/5.0/utilities/text/) has many many bult-in classes of it's own. Here are some examples:
+
+`[lOwerCase]{.text-lowercase}`  [lOwerCase]{.text-lowercase}  
+`[lOwerCase]{.text-uppercase}`  [lOwerCase]{.text-uppercase}  
+`[lOwerCase]{.text-capitalize}`  [lOwerCase]{.text-capitalize}  
+`[lOwerCase]{.fs-2}`  [lOwerCase]{.fs-2}  
+`[lOwerCase]{.fw-bold}`  [lOwerCase]{.fw-bold}  
+`[lOwerCase]{.fw-bolder}`  [lOwerCase]{.fw-bolder}  
+`[lOwerCase]{.fw-light}`  [lOwerCase]{.fw-light}  
+`[lOwerCase]{.fw-lighter}`  [lOwerCase]{.fw-lighter}  
+`[lOwerCase]{.fst-italic}`  [lOwerCase]{.fst-italic}  
+`[lOwerCase]{.text-muted}`  [lOwerCase]{.text-muted}  
+`[lOwerCase]{.text-decoration-underline}`  [lOwerCase]{.text-decoration-underline}  
+`[lOwerCase]{.text-decoration-line-through}`  [lOwerCase]{.text-decoration-line-through}  
+
 ## Images
 
 Images can be inserted using plain markdown or HTML directly. Plain markdown can be embellished with custom quarto adjustments to modify aspects of the image. Clicking the image opens the image in a lightbox.
@@ -258,6 +275,20 @@ These figures are interesting.
 :::
 
 More figure options and layouts are described [here](https://quarto.org/docs/authoring/figures.html). Cross referencing described [here](https://quarto.org/docs/authoring/cross-references.html).
+
+Here are some [bootstrap](https://getbootstrap.com/docs/5.0/utilities/shadows/) styles:
+
+`![](assets/image.webp){width="20%" class="shadow-sm rounded"}`
+
+![](assets/image.webp){width="20%" class="shadow-sm rounded"}
+
+`![](assets/image.webp){width="20%" class="shadow rounded"}`
+
+![](assets/image.webp){width="20%" class="shadow rounded"}
+
+`![](assets/image.webp){width="20%" class="shadow-lg rounded-pill"}`
+
+![](assets/image.webp){width="20%" class="shadow-lg rounded-pill"}
 
 ### Using HTML
 
