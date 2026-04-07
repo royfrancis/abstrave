@@ -51,6 +51,8 @@ h1,h2,h3,h4,h5,h6 {
 
 /* site ---------------------------------------------------------------------- */
 
+/* navbar  and footer */
+
 .navbar-brand {
   padding-top: 0;
 }
@@ -64,19 +66,28 @@ h1,h2,h3,h4,h5,h6 {
   margin-bottom: 0;
 }
 
-table, .Reactable {
-  font-size: 0.85em;
-}
-
-.contents-table table {
-  line-height: 1;
-}
+/* listing */
 
 .listing-image img {
   height: 40px;
   width: 60px;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+/* table */
+
+table th,
+table td {
+  vertical-align: middle;
+}
+
+table, .Reactable {
+  font-size: 0.85em;
+}
+
+.contents-table table {
+  line-height: 1;
 }
 
 /* buttons and badges */
