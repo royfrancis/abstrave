@@ -21,9 +21,6 @@ format:
   html:
     number-sections: false
     anchor-sections: false
-filters:
-  - leaflet
-  - team
 ---
 
 ## Venue

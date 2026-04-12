@@ -123,9 +123,9 @@ Start by updating the settings. The website/project settings are contained in th
   - warnings and messages from chunks are disabled
   - `freeze` is an option available for projects that allow code chunks to be cached to speed up rendering
 - Add any arbitrary metadata in `_metadata.yml` and use it across the project as `{{{< meta metadata >}}}`. This is used for map information.
-- Custom filters
+- Custom extensions
   - Additional functionality through extensions
-  - Filters can be added globally in `_quarto.yml` or locally in individual qmd files
+  - Filter extensions can be added globally in `_quarto.yml` or locally in individual qmd files
   - Add quarto version (`{{{< meta quarto_version >}}}`) or date/time (`{{{< meta current_year >}}}`), enabled through custom lua (`assets/custom.lua`)
   - Code output folding is enabled through the `quarto-collapse-output` extension. This is documented [here](https://github.com/mcanouil/quarto-collapse-output)
   - Accordions are enabled through the `quarto-accordion` extension. Use the shortcode `{{{< accordion name >}}}` to include an accordion in any qmd file. Accordions are documented [here](https://github.com/royfrancis/quarto-accordion)

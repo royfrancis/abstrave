@@ -16,8 +16,6 @@ accordion:
     - header: 4. Do you accommodate special dietary needs and provide suitable food options?
       body: Please provide your dietary requirements in the registration form, and we'll communicate them to the restaurant. Lunches have various options, and the restaurant can prepare special meals if needed to accommodate your specific dietary needs.
 format: html
-filters:
-  - accordion
 ---
 
 {{< accordion faq >}}

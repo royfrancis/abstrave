@@ -125,7 +125,6 @@ filters:
   - assets/custom.lua
   - collapse-output
   - revealjs-header
-  - fontawesome
 
 revealjs-plugins:
   - pointer
