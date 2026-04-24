@@ -39,11 +39,15 @@ viewof raw_table = Inputs.table(data)
 
 Pick the variable for point color.
 
+::: {.alert .alert-secondary}
+
 ```{ojs}
 viewof col = Inputs.select(["carat","cut","color","clarity","depth","table","price"],{value: "cut", multiple: false, label: "Color"})
 viewof x = Inputs.select(["carat","depth","table","price"], {value: "carat", multiple: false, label: "X axis"})
 viewof y = Inputs.select(["carat","depth","table","price"], {value: "depth", multiple: false, label: "Y axis"})
 ```
+
+:::
 
 ```{ojs}
 //| label: fig-scatter-1

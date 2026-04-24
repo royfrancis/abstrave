@@ -14,7 +14,7 @@ For a demo site and usage, see [here](https://royfrancis.github.io/abstrave).
 
 ## Usage
 
-- Recommended quarto 1.6.43 or higher
+- Recommended quarto 1.8.25 or higher
 - To download and use a starter template, run in the terminal
 
 :exclamation: Demo files are not downloaded
@@ -32,6 +32,7 @@ quarto add --no-prompt royfrancis/quarto-revealjs-pointer
 quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
 quarto add --no-prompt royfrancis/quarto-accordion
 quarto add --no-prompt royfrancis/quarto-leaflet
+quarto add --no-prompt royfrancis/quarto-team
 ```
 
 - Render all html files into `docs` directory to make sure everything works as expected

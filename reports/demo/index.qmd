@@ -971,9 +971,7 @@ Two important shortcodes are `meta` and `var`. `meta` allows to read metadata fr
 
 `{{{< meta title >}}}` {{< meta title >}}
 
-`![]({{{< meta image >}}}){width="300px"}`
-
-![]({{< meta image >}}){width="300px"}
+`{{{< meta description >}}}` {{< meta description >}}
 
 Similarly, `var` allows to read variables from `_variables.yml` if it has been defined. The `include` shortcode allows to add a child qmd document into a specific position in a qmd file. The `kbd` shortcode allows keyboard notations:
 
