@@ -26,7 +26,7 @@ This is a [quarto](https://quarto.org/) document
 
 ### Character sizes
 
-Custom character sizes. This is an enchanced feature.
+Custom character sizes. This is an enhanced feature.
 
 |Markdown|Rendered|
 |---|---|
@@ -723,7 +723,7 @@ Conditional content is documented [here](https://quarto.org/docs/authoring/condi
 
 ### Inner columns
 
-Organisation of content into columns within the body container.
+Organization of content into columns within the body container.
 
 ```
 :::: {.columns}
@@ -987,8 +987,8 @@ Some of the custom shortcodes added with this template are:
 
 `{{{< meta quarto_version >}}}` {{< meta quarto_version >}}  
 `{{{< meta current_date >}}}` {{< meta current_date >}}  
-`{{{< meta current year >}}}` {{< meta current_year >}}  
-`{{{< meta current time >}}}` {{< meta current_time >}}  
+`{{{< meta current_year >}}}` {{< meta current_year >}}  
+`{{{< meta current_time >}}}` {{< meta current_time >}}  
 
 Shortcodes are documented [here](https://quarto.org/docs/authoring/shortcodes.html).
 
