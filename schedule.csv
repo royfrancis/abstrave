@@ -1,0 +1,27 @@
+start,end,title,attendees,calendarId
+2026-11-16T09:00:00,2026-11-16T09:30:00,Welcome,John Doe,extra
+2026-11-16T09:30:00,2026-11-16T10:00:00,Intro to Topic,John Doe,session
+2026-11-16T10:00:00,2026-11-16T10:30:00,Break,,free
+2026-11-16T10:30:00,2026-11-16T12:00:00,Intro to Topic,John Doe,session
+2026-11-16T12:00:00,2026-11-16T13:00:00,Lunch,,free
+2026-11-16T13:00:00,2026-11-16T15:00:00,Intro to Topic,John Doe,session
+2026-11-16T15:00:00,2026-11-16T15:30:00,Break,,free
+2026-11-16T15:30:00,2026-11-16T17:00:00,Intro to Topic,John Doe,session
+2026-11-17T09:00:00,2026-11-17T10:00:00,Intro to Topic,John Doe,session
+2026-11-17T10:00:00,2026-11-17T10:30:00,Break,,free
+2026-11-17T10:30:00,2026-11-17T11:00:00,Intro to Topic,John Doe,session
+2026-11-17T11:00:00,2026-11-17T12:00:00,Intro to Topic,John Doe,session
+2026-11-17T12:00:00,2026-11-17T13:00:00,Lunch,,free
+2026-11-17T13:00:00,2026-11-17T14:00:00,Intro to Topic,Jane Doe,session
+2026-11-17T14:00:00,2026-11-17T15:00:00,Intro to Topic,John Doe,session
+2026-11-17T15:00:00,2026-11-17T15:30:00,Break,,free
+2026-11-17T15:30:00,2026-11-17T17:00:00,Intro to Topic,John Doe,session
+2026-11-18T09:00:00,2026-11-18T10:00:00,Intro to Topic,NGI,session
+2026-11-18T10:00:00,2026-11-18T10:30:00,Break,,free
+2026-11-18T10:30:00,2026-11-18T11:30:00,Intro to Topic,NGI,session
+2026-11-18T11:30:00,2026-11-18T12:00:00,Tour,NGI,extra
+2026-11-18T12:00:00,2026-11-18T13:00:00,Lunch,,free
+2026-11-18T13:00:00,2026-11-18T15:00:00,Intro to Topic,Jane Doe,session
+2026-11-18T15:00:00,2026-11-18T15:30:00,Break,,free
+2026-11-18T15:30:00,2026-11-18T17:00:00,Intro to Topic,Jane Doe,session
+2026-11-18T18:00:00,2026-11-18T21:00:00,Course dinner,John Doe,extra
