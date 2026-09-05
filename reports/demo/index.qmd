@@ -119,12 +119,42 @@ An example of footnote reference [^1]
 
 [This content lives in the right margin]{.aside}
 
+### Buttons
+
+Here is how buttons are defined:
+
+`[button]{.btn}`  [button]{.btn}  
+`[button]{.btn .btn-primary}`  [button]{.btn .btn-primary}  
+`[button]{.btn .btn-secondary}`  [button]{.btn .btn-secondary}  
+`[button]{.btn .btn-tertiary}`  [button]{.btn .btn-tertiary}  
+
+Button sizes
+
+`[button]{.btn .btn-sm}`  [button]{.btn .btn-sm}  
+`[button]{.btn}`  [button]{.btn}  
+`[button]{.btn .btn-lg}`  [button]{.btn .btn-lg}  
+
+Links inside buttons
+
+`[[link](url)]{.btn}`  [[link](url)]{.btn}  
+`[[link](url)]{.btn .btn-primary}`  [[link](url)]{.btn .btn-primary}  
+`[[link](url)]{.btn .btn-secondary}`  [[link](url)]{.btn .btn-secondary}  
+`[[link](url)]{.btn .btn-tertiary}`  [[link](url)]{.btn .btn-tertiary}  
+
 ### Badge
 
-Badges are defined as such:
+Here is how badges are defined:
 
+`[badge]{.badge}`  [badge]{.badge}  
 `[badge]{.badge .badge-primary}`  [badge]{.badge .badge-primary}  
 `[badge]{.badge .badge-secondary}`  [badge]{.badge .badge-secondary}  
+`[badge]{.badge .badge-tertiary}`  [badge]{.badge .badge-tertiary}  
+
+Links inside badges.
+
+`[[link](url)]{.badge .badge-primary}`  [[link](url)]{.badge .badge-primary}  
+`[[link](url)]{.badge .badge-secondary}`  [[link](url)]{.badge .badge-secondary}  
+`[[link](url)]{.badge .badge-tertiary}`  [[link](url)]{.badge .badge-tertiary}  
 
 ## Code formatting
 

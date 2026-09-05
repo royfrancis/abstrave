@@ -13,12 +13,12 @@ $link-color: #79B1B7;
 $body-color: #1c2833;
 $code-color: #496985;
 $code-block-bg: WhiteSmoke;
-$font-family-sans-serif: 'Nunito', 'Source Sans Pro', 'Helvetica', 'sans-serif' ;
-$font-family-monospace: 'Fira Mono','Ubuntu Mono', 'Lucida Console', 'Courier', 'monospace';
+$font-family-sans-serif: 'Nunito', 'Source Sans Pro', 'Helvetica', sans-serif;
+$font-family-monospace: 'Fira Mono','Ubuntu Mono', 'Lucida Console', 'Courier', monospace;
 $font-family-headings: $font-family-sans-serif;
-$mermaid-font-family: 'Nunito', 'Source Sans Pro', 'Helvetica', 'sans-serif' ;
+$mermaid-font-family: 'Nunito', 'Source Sans Pro', 'Helvetica', sans-serif;
 $font-size-root: 18px;
-$code-font-size: 14px;
+$code-font-size: 15px;
 /* major second scale */
 $h1-font-size: 1.802rem;
 $h2-font-size: 1.602rem;
@@ -51,11 +51,19 @@ h1,h2,h3,h4,h5,h6 {
 
 /* site ---------------------------------------------------------------------- */
 
-/* navbar  and footer */
-
-.navbar-brand {
-  padding-top: 0;
+.fourofour {
+  font-size: 16rem;
+  font-weight: 700;
+  color: $secondary;
 }
+
+@media (max-width: 575.98px) {
+  .fourofour {
+    font-size: 8rem;
+  }
+}
+
+/* navbar  and footer */
 
 .navbar-nav {
   font-size: 0.85em;
@@ -90,40 +98,90 @@ table, .Reactable {
   line-height: 1;
 }
 
-/* buttons and badges */
+/* buttons */
 
-.badge,
-.badge-primary {
-  background-color: $primary;
-}
-
-.badge-secondary {
-  background-color: $secondary;
-}
-
+.btn,
 .btn-primary {
-  background-color: $primary;
-  color: whitesmoke;
-}
-
-.btn-primary:hover {
-  background-color: darken($primary, 5%);
-  color: whitesmoke;
+  --bs-btn-color: whitesmoke;
+  --bs-btn-bg: #{$primary};
+  --bs-btn-border-color: #{$primary};
+  --bs-btn-hover-color: whitesmoke;
+  --bs-btn-hover-bg: #{darken($primary, 5%)};
+  --bs-btn-hover-border-color: #{darken($primary, 5%)};
+  --bs-btn-active-color: whitesmoke;
+  --bs-btn-active-bg: #{darken($primary, 10%)};
+  --bs-btn-active-border-color: #{darken($primary, 10%)};
+  --bs-btn-disabled-color: whitesmoke;
+  --bs-btn-disabled-bg: #{$primary};
+  --bs-btn-disabled-border-color: #{$primary};
 }
 
 .btn-secondary {
-  background-color: $secondary;
-  color: whitesmoke;
+  --bs-btn-color: whitesmoke;
+  --bs-btn-bg: #{$secondary};
+  --bs-btn-border-color: #{$secondary};
+  --bs-btn-hover-color: whitesmoke;
+  --bs-btn-hover-bg: #{darken($secondary, 5%)};
+  --bs-btn-hover-border-color: #{darken($secondary, 5%)};
+  --bs-btn-active-color: whitesmoke;
+  --bs-btn-active-bg: #{darken($secondary, 10%)};
+  --bs-btn-active-border-color: #{darken($secondary, 10%)};
+  --bs-btn-disabled-color: whitesmoke;
+  --bs-btn-disabled-bg: #{$secondary};
+  --bs-btn-disabled-border-color: #{$secondary};
 }
 
-.btn-secondary:hover {
-  background-color: darken($secondary, 5%);
-  color: whitesmoke;
+.btn-tertiary {
+  --bs-btn-color: #{$body-color};
+  --bs-btn-bg: #{$tertiary};
+  --bs-btn-border-color: #{$tertiary};
+  --bs-btn-hover-color: #{$body-color};
+  --bs-btn-hover-bg: #{darken($tertiary, 5%)};
+  --bs-btn-hover-border-color: #{darken($tertiary, 5%)};
+  --bs-btn-active-color: #{$body-color};
+  --bs-btn-active-bg: #{darken($tertiary, 10%)};
+  --bs-btn-active-border-color: #{darken($tertiary, 10%)};
+  --bs-btn-disabled-color: #{$body-color};
+  --bs-btn-disabled-bg: #{$tertiary};
+  --bs-btn-disabled-border-color: #{$tertiary};
 }
 
 .btn a {
   color: whitesmoke;
   text-decoration: none;
+}
+
+.btn-tertiary a, .btn-tertiary a:hover {
+  color: $body-color;
+}
+
+/* badges */
+
+.badge,
+.badge.badge-primary {
+  background-color: $primary;
+  color: whitesmoke;
+}
+
+.badge.badge-secondary {
+  background-color: $secondary;
+  color: whitesmoke;
+}
+
+.badge.badge-tertiary {
+  background-color: $tertiary;
+  color: $body-color;
+}
+
+.badge a,
+.badge a:hover {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.badge.badge-tertiary a,
+.badge.badge-tertiary a:hover {
+  color: $body-color;
 }
 
 /* observablehq */
@@ -221,7 +279,7 @@ code {
 }
 
 div.callout-note.callout-style-default > .callout-header {
-  background-color: $secondary;
+  background-color: $tertiary;
 }
 
 div.callout-note .callout-icon::before {
@@ -246,27 +304,6 @@ div.callout-caution .callout-icon::before {
 
 div.callout-important .callout-icon::before {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgZmlsbD0iIzFjMjgzMyIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNi41LjEgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyMyBGb250aWNvbnMsIEluYy4tLT48cGF0aCBkPSJNNDE2IDM5OC45YzU4LjUtNDEuMSA5Ni0xMDQuMSA5Ni0xNzQuOUM1MTIgMTAwLjMgMzk3LjQgMCAyNTYgMFMwIDEwMC4zIDAgMjI0YzAgNzAuNyAzNy41IDEzMy44IDk2IDE3NC45YzAgLjQgMCAuNyAwIDEuMXY2NGMwIDI2LjUgMjEuNSA0OCA0OCA0OGg0OFY0NjRjMC04LjggNy4yLTE2IDE2LTE2czE2IDcuMiAxNiAxNnY0OGg2NFY0NjRjMC04LjggNy4yLTE2IDE2LTE2czE2IDcuMiAxNiAxNnY0OGg0OGMyNi41IDAgNDgtMjEuNSA0OC00OFY0MDBjMC0uNCAwLS43IDAtMS4xek05NiAyNTZhNjQgNjQgMCAxIDEgMTI4IDBBNjQgNjQgMCAxIDEgOTYgMjU2em0yNTYtNjRhNjQgNjQgMCAxIDEgMCAxMjggNjQgNjQgMCAxIDEgMC0xMjh6Ii8+PC9zdmc+') !important;
-}
-
-/* profile gallery */
-
-.profile-parent {
-  display: -ms-grid;
-  display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-}
-
-.profile-child {
-  text-align: center;
-}
-
-.profile-child img {
-  height: 150px;
-  width: 150px;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 /* shinylive */
