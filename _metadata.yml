@@ -1,3 +1,7 @@
+# map markers information
+# markdown is supported in tooltip and popup, use <br> for new lines
+# leaflet map is enabled through quarto extension https://github.com/royfrancis/quarto-leaflet which supports fontawesome icons
+# use fontawesome v6 icons: https://fontawesome.com/v6/search
 leaflet:
   zoom: 15
   ucl:

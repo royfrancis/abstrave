@@ -1,24 +1,50 @@
 ---
 title: "Schedule"
-toc: false
 date: ""
+toc: false
+number-sections: false
 sidebar: false
+toastui:
+  schedule:
+    defaultView: week
+    file: "schedule.csv"
+    file-sep: ","
+    date: "2026-11-16"
+    useDetailPopup: true
+    isReadOnly: true
+    height: 980px
+    timegridHeight: 900px
+    week:
+      workweek: true
+      taskView: false
+      eventView: ['time']
+      hourStart: 9
+      hourEnd: 21
+      showNowIndicator: true
+    timezone:
+      zones:
+        - timezoneName: Europe/Stockholm
+    calendars:
+      - id: "session"
+        name: "Session"
+        color: inherit
+        backgroundColor: "#D6EAF8"
+        dragBackgroundColor: "#D6EAF8"
+        borderColor: "#85C1E9"
+      - id: "free"
+        name: "Free"
+        color: inherit
+        backgroundColor: "#FCF3CF"
+        dragBackgroundColor: "#FCF3CF"
+        borderColor: "#F7DC6F"
+      - id: "extra"
+        name: "Extra"
+        color: inherit
+        backgroundColor: "#E8DAEF"
+        dragBackgroundColor: "#E8DAEF"
+        borderColor: "#BB8FCE"
 format:
-  html:
-    number-sections: false
-execute:
-  freeze: false
+  html
 ---
 
-:::{.contents-table .column-body-outset}
-
-|Topic              |Instructor  |Links                                                                    |
-|-------------------|------------|-------------------------------------------------------------------------|
-|[30-Mar-2026 (Mon)]{.badge .badge-secondary} ||                                                           |
-|Minimal demo       |John Doe   |[Slides](slides/sample/index.html), [Report](reports/sample/index.html)   |
-|Using custom theme |John Doe   |[Report](reports/usage/index.html)                                        |
-|Quarto basics      |John Doe   |[Report](reports/demo/index.html)                                         |
-|Quarto and R       |John Doe   |[Slides](slides/demo/index.html), [Report](reports/demo-with-r/index.html)|
-|OJS and mermaid    |John Doe   |[Report](reports/more/index.html)                                         |
-
-:::
+{{< toastui schedule >}}

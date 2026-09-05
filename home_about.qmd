@@ -5,7 +5,7 @@ date: ""
 sidebar: false
 team:
   organizers:
-    - name: "John Doe"
+    - name: "Jane Doe"
       image: "assets/images/profile/profile.webp"
       description: |
         Data Scientist, Institute  
@@ -25,12 +25,15 @@ format:
 
 ## Venue
 
+<!-- update map markers in _metadata.yml -->
 {{< leaflet ucl >}}
 
+<!-- additional practical information -->
 {{< include assets/locations/_ucl.md >}}
 
 ## Organizers
 
+<!-- organizers info up in the yaml matter -->
 {{< team organizers >}}
 
 ## Contact

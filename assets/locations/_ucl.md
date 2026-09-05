@@ -1,4 +1,4 @@
-{{< fa location-dot >}} Room 309  
+Room 309  
 Roberts Building  
 University College London  
 Torrington Place  
