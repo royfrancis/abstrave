@@ -1,16 +1,28 @@
+# quarto project configuration
 project:
+  # render the project as a website
   type: website
+  # write rendered website files to this directory
   output-dir: docs
 
+# quarto website project configuration
 website:
+  # generate Open Graph metadata for social sharing
   open-graph: true
+  # set the canonical public URL of the site
   site-url: "https://royfrancis.github.io/abstrave/"
+  # use this image for social link previews
   image: "assets/images/seo.webp"
+  # describe the site for search engines and social previews
   description: "A quarto website template for courses and workshops."
+  # use this image as the browser favicon
   favicon: "assets/favicon.png"
+  # configure the site navigation bar
   navbar:
+    # display this logo in the navigation bar
     logo: "assets/logos/abstrave.webp"
     logo-alt: "logo"
+    # place these navigation items on the right side
     right:
       - text: "Home"
         href: "index.html"
@@ -37,95 +49,174 @@ website:
         aria-label: "GitHub"
         href: https://github.com/royfrancis/abstrave
   page-footer:
+    # hide the footer's top border
     border: false
+    # show copyright and license information on the left
     left: "{{< meta current_year >}} [NBIS](https://nbis.se) • [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+    # show the Quarto publishing attribution and version on the right
     right: "Published with [Quarto](https://quarto.org/) v{{< meta quarto_version >}}"
 
+# configure output formats
 format:
+  # configure HTML document output
   html:
+    # require this minimum Quarto version for HTML rendering
     quarto-required: ">=1.8.25"
+    # insert this HTML in the document head
     include-in-header: "assets/include_head.html"
+    # insert this HTML before the page body
     include-before-body: "assets/include_body_before.html"
+    # insert this HTML after the page body
     include-after-body: "assets/include_body_after.html"
+    # apply this custom CSS style
     theme: "assets/css/styles.scss"
+    # animate in-page anchor navigation
     smooth-scroll: true
+    # generate a table of contents
     toc: true
+    # include headings through level four in the table of contents
     toc-depth: 4
+    # display the table of contents on the right
     toc-location: right
+    # number document sections
     number-sections: true
+    # number headings up to level four
     number-depth: 4
+    # keep code blocks expanded
     code-fold: false
+    # do not add code tools button to hide/show all code blocks
     code-tools: false
+    # add copy buttons to code blocks
     code-copy: true
+    # wrap long code lines instead of overflowing
     code-overflow: wrap
+    # print data frames using the kable format
     df-print: kable
-    standalone: false
+    # align figures to the left
     fig-align: left
+    # use this image as the title block banner
     title-block-banner: "assets/images/banner.webp"
+    # set the default document subtitle
     subtitle: "Abstrave quarto theme"
+    # show icons in callout blocks
     callout-icon: true
-    date:  last-modified
+    # display each document's last-modified date
+    date: last-modified
+    # format displayed dates with day, month, and year
     date-format: "DD-MMM-YYYY"
+    # use this image as the default page image, for listing
     image: "assets/images/featured.webp"
+    # images can be opened in a lightbox
     lightbox: auto
+  # configure Reveal.js presentation output
   revealjs:
+    # require this minimum Quarto version for presentations
     quarto-required: ">=1.8.25"
+    # insert this HTML in the presentation head
     include-in-header: "assets/include_head.html"
+    # insert this HTML before the presentation body
     include-before-body: "assets/include_body_before.html"
+    # insert this HTML after the presentation body
     include-after-body: "assets/include_body_after.html"
+    # apply the base and custom styles
     theme: ["default", "assets/css/slides.scss"]
+    # print data frames using the kable format
     df-print: kable
+    # set the presentation canvas width in pixels
     width: 1280
+    # set the presentation canvas height in pixels
     height: 720
+    # fade between slides
     transition: "fade"
+    # use the fast transition duration
     transition-speed: "fast"
+    # do not reduce slide content size automatically
     smaller: false
+    # show all list items at once
     incremental: false
+    # disable scrolling within individual slides
     scrollable: false
+    # start a new slide at level-two headings
     slide-level: 2
+    # show slide numbers
     slide-number: true
+    # show the presentation progress bar
     progress: true
-    date:  last-modified
+    # display each presentation's last-modified date
+    date: last-modified
+    # format displayed dates with day, month, and year
     date-format: "DD-MMM-YYYY"
+    # align figures to the left
     fig-align: left
+    # enable the interactive chalkboard plugin
     chalkboard: true
+    # show icons in callout blocks
     callout-icon: true
-    image: "/assets/images/featured.webp"
-    hero: "/assets/images/hero.webp"
+    # use this image as the default image, used in listing
+    image: "assets/images/featured.webp"
+    # use this image as the presentation hero image on title slide
+    hero: "assets/images/hero.webp"
+    # set attributes for the title slide
     title-slide-attributes:
-      data-background-image: "/assets/images/home.webp"
+      # use this image as the title slide background
+      data-background-image: "assets/images/home.webp"
+      # scale the background image to cover the slide
       data-background-size: "cover"
+      # render the background image fully opaque
       data-background-opacity: "1"
+    # set the default presentation subtitle
     subtitle: "Abstrave quarto theme"
-    header-logo-left: /assets/logos/abstrave.webp
+    # display this logo on the left side of the header
+    header-logo-left: assets/logos/abstrave.webp
+    # set the left header logo height
     header-logo-left-height: 25px
     header-logo-left-url: https://royfrancis.github.io/abstrave/home_contents.html
-    header-logo-right: /assets/logos/abstrave.webp
+    header-logo-right: assets/logos/abstrave.webp
     header-logo-right-height: 25px
     header-logo-right-url: https://royfrancis.github.io/abstrave/home_contents.html
+    # load these custom Reveal.js template partials
     template-partials:
-      - "/assets/title-slide.html"
+      # use this partial to customize the title slide
+      - "assets/title-slide.html"
+    # configure the presentation pointer plugin
     pointer:
+      # set the pointer color
       color: "#4C979F"
+      # set the pointer size
       pointerSize: 12
+      # enable pointer trail
       trail: true
+      # keep the pointer trail visible for this many milliseconds
       trailDuration: 250
 
+# configure document execution defaults
 execute:
+  # evaluate executable code cells
   eval: true
+  # include executed code in rendered output
   echo: true
+  # suppress code execution warnings
   warning: false
+  # suppress code execution messages
   message: false
+  # disable freezing executable chunks
   freeze: false
 
-metadata-files: 
+# load additional document metadata from these files
+metadata-files:
   - _metadata.yml
 
+# apply these document filters across the whole project
 filters:
+  # use custom filters
   - assets/custom.lua
+  # enable collapsible output blocks
   - collapse-output
+  # add custom slide headers with 2 logos
   - revealjs-header
 
+# load these Reveal.js plugins
 revealjs-plugins:
+  # enable the pointer plugin
   - pointer
 
