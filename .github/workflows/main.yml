@@ -53,7 +53,7 @@ jobs:
       - name: Setup quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.9.35
+          version: 1.10.18
       - run: quarto --version
       - run: quarto add --no-prompt quarto-ext/fontawesome
       - run: quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
@@ -62,6 +62,7 @@ jobs:
       - run: quarto add --no-prompt royfrancis/quarto-accordion
       - run: quarto add --no-prompt royfrancis/quarto-leaflet
       - run: quarto add --no-prompt royfrancis/quarto-team
+      - run: quarto add --no-prompt royfrancis/quarto-toastui
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2

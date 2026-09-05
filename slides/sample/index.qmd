@@ -25,7 +25,7 @@ More content
 
 [Questions?]{.larger}
 
-[{{< meta current_year >}}  • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+[{{< meta current_year >}} • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
 
 :::
 :::

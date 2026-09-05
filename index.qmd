@@ -4,6 +4,7 @@ subtitle: ""
 toc: false
 date: ""
 sidebar: false
+image: "assets/images/seo.webp"
 format:
   html:
     css: "assets/css/home.css"
@@ -30,7 +31,7 @@ For usage instructions and demo examples, see [Contents](home_contents.html)
 ---
 
 ::: small
-Updated: {{< meta current_date >}}  at {{< meta current_time >}} .
+Updated: {{< meta current_date >}} at {{< meta current_time >}}.
 :::
 
 :::

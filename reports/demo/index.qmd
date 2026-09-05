@@ -1,5 +1,5 @@
 ---
-title: "Quarto Basics"
+title: "Quarto"
 author: "Roy Francis"
 description: "This document showcases some of the in-built capabilities of quarto. It also shows the custom theme, style and usage."
 image: "/assets/images/featured.webp"
@@ -65,7 +65,7 @@ Custom character sizes. This is an enhanced feature.
 |`x^2^`|x^2^|
 |`--`|--|
 |`---`|---|
-|`[link](r-project.org)`|[link](r-project.org)|
+|`[link](https://example.com/)`|[link](https://example.com/)|
 |`{{{< kbd Shift-Ctrl-P >}}}`|{{< kbd Shift-Ctrl-P >}}|
 
 ### Blockquote
@@ -237,7 +237,7 @@ Ordered lists are created using numbers.
 2. Point 2
 :::
 
-:::{}
+::: {}
 1. Point 1
 2. Point 2
 :::
@@ -251,7 +251,7 @@ Ordered lists are created using numbers.
 2. Point 2
 :::
 
-:::{}
+::: {}
 1. Point 1
 2. Point 2
 :::
@@ -278,7 +278,7 @@ Ordered lists are created using numbers.
 
 ## Images
 
-Images can be inserted using plain markdown or HTML directly. Plain markdown can be embellished with custom quarto adjustments to modify aspects of the image. Clicking the image opens the image in a lightbox.
+Images can be inserted using plain markdown or HTML directly. Plain markdown can be embellished with custom quarto adjustments to modify aspects of the image. Clicking the image opens the image in a lightbox. This is made possible using the [lightbox](https://github.com/quarto-ext/lightbox) extension.
 
 ### Using Markdown
 
@@ -413,13 +413,13 @@ $$\int_0^{2\pi} \sin x~dx$$
 ::: {.g-col-6}
 
 ```
-$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}$
 ```
 
 :::
 ::: {.g-col-6}
 
-$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}$
 
 :::
 :::
@@ -541,6 +541,10 @@ A table placed in the margin.
 
 More information about [tables](https://quarto.org/docs/authoring/tables.html).
 
+#### Cross referencing
+
+Images and tables can be automatically numbered by using `label` attribute. Image label must start with `fig-` and tables with `tbl-`. Tables and images can also be cross-referenced when using the `label` attribute. For example, the table above can be referenced like `@tbl-mylabel` which renders as @tbl-mylabel.
+
 ## Icons
 
 ### Bootstrap icons
@@ -582,6 +586,8 @@ Icons can be displayed using the HTML `<i>` tag. Note that not all icons may wor
 Here is a <i class='fa fa-calendar'></i> calendar and a <i class='fa fa-couch'></i> couch.
 
 There are many other quarto extensions for icons such as [academicons](https://github.com/schochastics/academicons), [iconify](https://github.com/mcanouil/quarto-iconify) and [lordicons](https://github.com/jmgirard/lordicon).
+
+For full list of icons check out [FontAwesome](https://fontawesome.com/search?m=free).
 
 ## Call-Outs
 
@@ -1035,6 +1041,14 @@ Some of the custom shortcodes added with this template are:
 `{{{< meta current_date >}}}` {{< meta current_date >}}  
 `{{{< meta current_year >}}}` {{< meta current_year >}}  
 `{{{< meta current_time >}}}` {{< meta current_time >}}  
+`{{{< meta output-dir >}}}` {{< meta output-dir >}}  
+`{{{< meta output-dir-path >}}}` {{< meta output-dir-path >}}  
+
+Additional functionality was added to read **website**, **project** and **format** blocks from `_quarto.yml` under the **custom** metadata key.
+
+`{{{< meta custom.website.site-url >}}}` {{< meta custom.website.site-url >}}  
+`{{{< meta custom.project.type >}}}` {{< meta custom.project.type >}}  
+`{{{< meta custom.format.html.quarto-required >}}}` {{< meta custom.format.html.quarto-required >}}  
 
 Shortcodes are documented [here](https://quarto.org/docs/authoring/shortcodes.html).
 
