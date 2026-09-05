@@ -24,13 +24,22 @@ Install required extensions
 ```{bash}
 #| eval: false
 #| filename: bash
+# adds fontawesome icons
 quarto add --no-prompt quarto-ext/fontawesome
+# adds 2 logo header to slides
 quarto add --no-prompt royfrancis/quarto-revealjs-header
+# adds pointer to slides
 quarto add --no-prompt royfrancis/quarto-revealjs-pointer
+# adds code output folding
 quarto add --no-prompt mcanouil/quarto-collapse-output@1.4.0
+# adds collapsible accordion component from bootstrap
 quarto add --no-prompt royfrancis/quarto-accordion
+# adds leaflet maps
 quarto add --no-prompt royfrancis/quarto-leaflet
+# adds profile images layout
 quarto add --no-prompt royfrancis/quarto-team
+# adds toastui schedule component
+quarto add --no-prompt royfrancis/quarto-toastui
 ```
 
 This creates a website template that you can modify as needed. The directory structure is as follows:
@@ -47,6 +56,7 @@ This creates a website template that you can modify as needed. The directory str
 ├── home_schedule.qmd
 ├── home_syllabus.qmd
 ├── index.qmd
+├── schedule.csv
 ├── _metadata.yml
 ├── _quarto.yml
 ├── reports/
@@ -103,9 +113,8 @@ Start by updating the settings. The website/project settings are contained in th
   - Table of contents is enabled (`toc: true`)
   - Sections are automatically numbered (`number-sections: true`)
   - Code wraps down rather than scroll when wider than page width (`code-overflow: wrap`)
-  - When sharing the html, all assets need to be shared as well (`standalone: false`)
   - A default subtitle has been set
-  - Current date is added to pages (`date: last-modified`)
+  - Last modified date is added to pages (`date: last-modified`)
   - A custom image for each report can be set when viewing as listing (`image:`)
   - Images can be clicked to open in a lightbox (`lightbox: auto`)
 - RevealJS slides settings are under **format: revealjs**
@@ -131,6 +140,7 @@ Start by updating the settings. The website/project settings are contained in th
   - Code output folding is enabled through the `quarto-collapse-output` extension. This is documented [here](https://github.com/mcanouil/quarto-collapse-output)
   - Accordions are enabled through the `quarto-accordion` extension. Use the shortcode `{{{< accordion name >}}}` to include an accordion in any qmd file. Accordions are documented [here](https://github.com/royfrancis/quarto-accordion)
   - Leaflet maps are enabled through the `leaflet` extension. Add map information as metadata in `_metadata.yml` and use the shortcode `{{{< leaflet mapname >}}}` to include the map in any qmd file. Leaflet maps are documented [here](https://github.com/royfrancis/quarto-leaflet)
+  - ToastUI schedule is enabled through the `toastui` extension. Add schedule information as metadata in `_metadata.yml` and use the shortcode `{{{< toastui schedule >}}}` to include the schedule in any qmd file. ToastUI schedule is documented [here](https://github.com/royfrancis/quarto-toastui)
   - RevealJS [header with logos](https://github.com/royfrancis/quarto-revealjs-header) and [pointer](https://github.com/royfrancis/quarto-revealjs-pointer) extensions are enabled for slides. Press `q` on slides to show the pointer and `q` again to hide it
   - If the extensions are not used, they can be removed from the project by running `quarto remove extension-name`
 - Add custom css under YAML for individual qmd files if needed: `css: "styles.css"`
@@ -143,9 +153,10 @@ Now you can start adding content.
 
 - The homepage is **index.qmd**
 - Files starting with **home** are essential pages linked in the top navigation menu. Remove or modify them as needed
-- **home_schedule.qmd** contains a simple markdown table.
-- **home_about.qmd** contains profiles of organizers and venue information showcasing maps and includes
-- **home_faq.qmd** contains an accordion example
+- **home_schedule.qmd** contains toastui schedule component which loads data from schedule.csv
+- **home_contents.qmd** contains a markdown table with links to reports and slides
+- **home_about.qmd** contains profiles of organizers and practical information like venue and map
+- **home_faq.qmd** contains an accordion example with frequently asked questions
 - **home_syllabus.qmd** shows tab panels
 - All reports are organised under **reports/** as separate folders
 - All slides are organised under **slides/** as separate folders

@@ -1,0 +1,526 @@
+---
+title: "Quarto with R"
+description: "Executable R features in Quarto Reveal.js presentations"
+author: "Roy Francis"
+image: "/assets/images/featured.webp"
+format: revealjs
+---
+
+## Packages {visibility="hidden"}
+
+```{r}
+#| echo: false
+
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(kableExtra)
+library(formattable)
+library(DT)
+library(reactable)
+library(ggplot2)
+library(htmltools)
+library(highcharter)
+library(plotly)
+library(ggiraph)
+library(networkD3)
+library(leaflet)
+library(crosstalk)
+```
+
+## Introduction
+
+::: {.large}
+This [Quarto](https://quarto.org/) [Reveal.js](https://revealjs.com) presentation demonstrates executable R code, R output, and R-backed interactive content.
+:::
+
+- Render a presentation from R with `quarto::quarto_render()`.
+
+```{r}
+#| eval: false
+quarto::quarto_render("example.qmd")
+```
+
+## Code
+
+Inline R code is evaluated within text content. This text `` `r "\u0060r Sys.Date()\u0060"` `` produces this: `r Sys.Date()`.
+
+R code is executed inside R code chunks.
+
+````
+```{{r}}
+Sys.Date()
+```
+````
+
+Code chunks display their code and output by default.
+
+```{r}
+Sys.Date()
+```
+
+## Hide code or output
+
+Chunk options can control the display of source and results.
+
+::: {.columns}
+::: {.column width="50%"}
+
+Hide source code:
+
+````
+```{{r}}
+#| echo: false
+data(iris)
+```
+````
+
+```{r}
+#| echo: false
+data(iris)
+head(iris[1:3, 1:2])
+```
+
+:::
+::: {.column width="50%"}
+
+Hide output:
+
+````
+```{{r}}
+#| results: "hide"
+Sys.Date()
+```
+````
+
+```{r}
+#| results: "hide"
+Sys.Date()
+```
+
+:::
+:::
+
+::: {.aside}
+Execution options are documented [here](https://quarto.org/docs/computations/execution-options.html){.small}
+:::
+
+## Code folding
+
+::: {.columns}
+::: {.column width="50%"}
+
+Source code can be folded while keeping output visible.
+
+````
+```{{r}}
+#| code-fold: true
+Sys.Date()
+```
+````
+
+```{r}
+#| code-fold: true
+Sys.Date()
+```
+
+:::
+::: {.column width="50%"}
+
+The `mcanouil/collapse-output` extension can be used to fold output.
+
+```{r}
+#| output-fold: true
+Sys.Date()
+```
+
+:::
+:::
+
+## Code sizing
+
+:::: {.columns}
+::: {.column}
+
+**Source code**
+
+```{r}
+#| class-source: small
+Sys.Date()
+```
+
+```{r}
+#| class-source: smaller
+Sys.Date()
+```
+
+:::
+::: {.column}
+
+**Source and output**
+
+```{r}
+#| classes: small
+Sys.Date()
+```
+
+```{r}
+#| classes: smallest
+Sys.Date()
+```
+
+:::
+::::
+
+## Code highlighting
+
+````
+```{{r}}
+#| code-line-numbers: "2-3"
+iris |>
+  head() |>
+  knitr::kable()
+```
+````
+
+```{r}
+#| code-line-numbers: "2-3"
+
+iris |>
+  head() |>
+  knitr::kable()
+```
+
+## Images with knitr
+
+R chunks can use `out-width` to control image dimensions.
+
+````
+```{{r}}
+#| echo: false
+#| out-width: "100px"
+knitr::include_graphics("assets/image.webp")
+```
+````
+
+```{r}
+#| echo: false
+#| out-width: "100px"
+knitr::include_graphics("assets/image.webp")
+```
+
+## Tables • kable
+
+The most simple table using kable from R package knitr.
+
+```{r}
+knitr::kable(head(iris), "html")
+```
+
+## Tables • gt
+
+Tables using the [gt](https://gt.rstudio.com/) package. Grammar of tables with extensive customization options.
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+#| eval: false
+library(gt)
+iris |>
+  group_by(Species) |>
+  slice(1:2) |>
+  gt() |>
+  cols_label(Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width")
+```
+
+:::
+::: {.column width="40%"}
+
+```{r}
+#| echo: false
+library(gt)
+iris |>
+  group_by(Species) |>
+  slice(1:2) |>
+  gt() |>
+  cols_label(Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width")
+```
+
+:::
+::::
+
+## Tables • kableExtra
+
+More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and [`formattable`](https://cran.r-project.org/web/packages/formattable/vignettes/formattable-data-frame.html).
+
+```{r}
+ iris[c(1:2,51:52,105:106),] |>
+  mutate(Sepal.Length=color_bar("lightsteelblue")(Sepal.Length)) |>
+  mutate(Sepal.Width=color_tile("white","orange")(Sepal.Width)) |>
+  mutate(Species=cell_spec(Species,"html",color="white",bold=T,
+    background=c("#8dd3c7","#fb8072","#bebada")[factor(Species)])) |>
+  kable("html",escape=F) |>
+  kable_styling(bootstrap_options=c("striped","hover","responsive"),full_width=F) |>
+  column_spec(5,width="3cm")
+```
+
+## Interactive tables • DT
+
+Interactive table using R package [`DT`](https://rstudio.github.io/DT/).
+
+```{r}
+library(DT)
+DT::datatable(iris[1:20, ], options = list(pageLength = 7))
+```
+
+## Interactive tables • reactable
+
+Interactive tables with [reactable](https://glin.github.io/reactable/index.html).
+
+```{r}
+library(reactable)
+reactable(iris[sample(1:150, 6), ], striped = TRUE, highlight = TRUE, filterable = TRUE)
+```
+
+## Static plots • base R
+
+```{r}
+#| fig-height: 6
+#| fig-width: 6
+
+par(mar = c(5, 5, 0, 0))
+plot(
+  x = iris$Sepal.Length, y = iris$Sepal.Width,
+  col = c("coral", "steelblue", "forestgreen")[iris$Species],
+  xlab = "Sepal Length", ylab = "Sepal Width", pch = 19
+)
+legend("bottomright", legend = levels(iris$Species), col = c("coral", "steelblue", "forestgreen"), pch = 19)
+```
+
+## Static plots • ggplot2
+
+Plotting using [`ggplot2`](http://ggplot2.org/).
+
+```{r}
+#| fig-height: 6
+#| fig-width: 8
+
+iris |>
+  ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
+  geom_point(size = 2) +
+  labs(x = "Sepal Length", y = "Sepal Width") +
+  theme_bw(base_size = 18)
+```
+
+## Interactive time series • `dygraphs`
+
+R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings for javascript library [dygraphs](http://dygraphs.com/) for time series data.
+
+```{r}
+#| fig-height: 4
+#| fig-width: 9
+library(dygraphs)
+lungDeaths <- cbind(ldeaths, mdeaths, fdeaths)
+dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") |>
+  dyOptions(colors=c("#66C2A5","#FC8D62","#8DA0CB"))
+```
+
+## Interactive plots • highcharter
+
+R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
+
+```{r}
+library(highcharter)
+h <- iris |>
+  hchart("scatter", hcaes(x = "Sepal.Length", y = "Sepal.Width", group = "Species")) |>
+  hc_xAxis(title = list(text = "Sepal Length"), crosshair = TRUE) |>
+  hc_yAxis(title = list(text = "Sepal Width"), crosshair = TRUE) |>
+  hc_chart(zoomType = "xy") |>
+  hc_size(height = 300, width = 500)
+htmltools::tagList(h)
+```
+
+## Interactive plots • plotly
+
+R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
+
+```{r}
+library(plotly)
+iris |>
+  plot_ly(x = ~Sepal.Length, y = ~Sepal.Width, color = ~Species, width = 550, height = 400) |>
+  add_markers()
+```
+
+## Interactive plots • plotly • ggplotly
+
+plotly has a function called `ggplotly` which converts a static ggplot2 object into an interactive plot.
+
+```{r}
+library(plotly)
+p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
+  geom_point() +
+  theme_bw(base_size = 12)
+
+plotly::ggplotly(p, width = 460, height = 360)
+```
+
+## Interactive plots • ggiraph
+
+R package [`ggiraph`](https://github.com/davidgohel/ggiraph) converts a static ggplot2 object into an interactive plot.
+
+```{r}
+#| fig-height: 2
+#| fig-width: 6
+library(ggiraph)
+p <- ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+
+      geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=1)+
+  theme_bw()
+tooltip_css <- "background-color:#f8f9f9;padding:10px;border-style:solid;border-width:2px;border-color:#125687;border-radius:5px;"
+girafe(code=print(p), height_svg=1.5, width_svg=3.5,
+  options=list(opts_hover(css="cursor:pointer;stroke:black;fill-opacity:0.3"), opts_zoom(max=5),
+    opts_tooltip(css=tooltip_css,opacity=0.9), opts_sizing(width=0.6)))
+```
+
+## Network graph • networkD3
+
+R package `networkD3` allows the use of interactive network graphs from the [D3.js](https://d3js.org/) javascript library.
+
+```{r}
+library(networkD3)
+data(MisLinks,MisNodes)
+forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
+             Target="target",Value="value",NodeID="name",
+             Group="group",opacity=0.4,
+             height=300,width=500)
+```
+
+## Interactive maps • Leaflet
+
+R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
+
+```{r}
+library(leaflet)
+leaflet(height = 300, width = 800) |>
+  addTiles(
+    urlTemplate = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  ) |>
+  #addProviderTiles(providers$Esri.NatGeoWorldMap) |>
+  addMarkers(lat = 57.639327, lng = 18.288534, popup = "RaukR") |>
+  setView(lat = 57.639327, lng = 18.288534, zoom = 15)
+```
+
+## Linking plots • crosstalk
+
+R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows crosstalk enabled plotting libraries to be linked. Through the shared 'key' variable, data points can be manipulated simultaneously on two independent plots.
+
+```{r}
+library(crosstalk)
+shared_quakes <- SharedData$new(quakes[sample(nrow(quakes), 100),])
+lf <- leaflet(shared_quakes,height=300) |>
+        addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') |>
+        addMarkers()
+py <- plot_ly(shared_quakes,x=~depth,y=~mag,size=~stations,height=300) |> add_markers()
+div(div(lf,style="float:left;width:49%"),div(py,style="float:right;width:49%"))
+```
+
+## ObservableJS
+
+- Quarto supports [ObservableJS](https://observablehq.com/) for interactive visualisations in the browser.
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Pass data from R to OJS
+
+```{r}
+irism <- iris
+colnames(irism) <- gsub("[.]","_",tolower(colnames(irism)))
+ojs_define(ojsd = irism)
+```
+
+```{ojs}
+ojsdata = transpose(ojsd)
+```
+
+:::
+::: {.column width="50%"}
+
+Display as a table
+
+```{ojs}
+viewof filtered_table = Inputs.table(ojsdata)
+```
+
+:::
+::::
+
+## ObservableJS
+
+:::: {.columns}
+::: {.column width="60%"}
+
+Define inputs
+
+```{ojs}
+viewof x = Inputs.select(Object.keys(ojsdata[0]), {
+  value: "sepal_length", multiple: false, label: "X axis"
+  })
+```
+
+```{ojs}
+viewof y = Inputs.select(Object.keys(ojsdata[0]), {
+  value: "sepal_width", multiple: false, label: "Y axis"
+  })
+```
+
+:::
+::: {.column width="40%"}
+
+Display plot
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.dot(ojsdata, {
+      x: x, y: y, fill: "species",
+      title: (d) => `${d.species} \n Petal length: ${d.petal_length} \n Sepal length: ${d.sepal_length}`
+    })
+  ], grid: true
+})
+```
+
+:::
+::::
+
+ObservableJS in quarto [documentation](https://quarto.org/docs/interactive/index.html#observable-js).
+
+## Session
+
+If content overflows a slide vertically, add the `.scrollable` class.
+
+```markdown
+::: {.scrollable}
+<contents>
+:::
+```
+
+::: {.scrollable}
+
+```{r}
+#| echo: false
+sessionInfo()
+```
+
+:::
+
+##  {background-image="../../assets/images/home.webp"}
+
+::: {.v-center .center}
+
+[Thank you!]{.largest}  
+[Questions?]{.larger}
+
+[{{< meta current_year >}} • [Specky](https://github.com/royfrancis/specky)]{.smaller}
+
+:::

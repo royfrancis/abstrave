@@ -249,7 +249,7 @@ Images and tables can be automatically numbered by using `label` attribute. Imag
 
 ````
 ```{{r}}
-#| fig-caption: This table is in the margin.
+#| tbl-cap: This table is in the margin.
 #| column: margin
 
 head(cars)
@@ -257,7 +257,7 @@ head(cars)
 ````
 
 ```{r}
-#| fig-caption: This table is in the margin.
+#| tbl-cap: This table is in the margin.
 #| column: margin
 #| echo: false
 
@@ -280,14 +280,14 @@ Tables using the [gt](https://gt.rstudio.com/) package. A structured approach to
 ```{r}
 library(gt)
 
-iris %>%
-    group_by(Species) %>%
-    slice(1:4) %>%
-    gt() %>%
+iris |>
+    group_by(Species) |>
+    slice(1:4) |>
+    gt() |>
     cols_label(
       Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width",
       Petal.Length = "Petal Length", Petal.Width = "Petal Width"
-    ) %>%
+    ) |>
     tab_source_note(
         source_note = md("Source: Iris data. Anderson, 1936; Fisher, 1936)")
     )
@@ -312,14 +312,14 @@ More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages
 #| tbl-cap: Table using kableextra.
 library(kableExtra)
 
-iris[c(1:4,51:53,105:108),] %>%
-  mutate(Sepal.Length=color_bar("lightsteelblue")(Sepal.Length)) %>%
-  mutate(Sepal.Width=color_tile("white","orange")(Sepal.Width)) %>%
+iris[c(1:4,51:53,105:108),] |>
+  mutate(Sepal.Length=color_bar("lightsteelblue")(Sepal.Length)) |>
+  mutate(Sepal.Width=color_tile("white","orange")(Sepal.Width)) |>
   mutate(Species=cell_spec(Species,"html",color="white",bold=T,
-    background=c("#8dd3c7","#fb8072","#bebada")[factor(.$Species)])) %>%
-  kable("html",escape=F) %>%
+    background=c("#8dd3c7","#fb8072","#bebada")[factor(Species)])) |>
+  kable("html",escape=F) |>
   kable_styling(bootstrap_options=c("striped","hover","responsive"),
-                full_width=F,position="left") %>%
+                full_width=F,position="left") |>
   column_spec(5,width="3cm")
 ```
 
@@ -331,8 +331,8 @@ Interactive table using R package [`DT`](https://rstudio.github.io/DT/).
 #| tbl-cap: Table using datatable.
 library(DT)
 
-iris %>%
-  slice(1:15) %>%
+iris |>
+  slice(1:15) |>
   datatable(options=list(pageLength=7))
 ```
 
@@ -347,7 +347,7 @@ reactable(iris[sample(1:150,10),],
   columns = list(
     Sepal.Length = colDef(name = "Sepal Length"),
     Sepal.Width = colDef(name = "Sepal Width"),
-    Petal.Width = colDef(name = "Petal Width"),
+    Petal.Length = colDef(name = "Petal Length"),
     Petal.Width = colDef(name = "Petal Width")
   ),
   striped = TRUE,
@@ -364,7 +364,7 @@ Quarto chunks can be used to control image display size using the argument `out.
 
 This image below is displayed at a size of 300 pixels.
 
-````         
+````
 ```{{r}}
 #| out-width: 300px
 knitr::include_graphics("assets/image.webp")
@@ -379,7 +379,7 @@ knitr::include_graphics("assets/image.webp")
 
 This image below is displayed at a size of 75 pixels and a caption added.
 
-````         
+````
 ```{{r}}
 #| out-width: 75px
 #| fig-cap: This is a caption
@@ -453,11 +453,13 @@ plot(pressure)
 
 #### Margin plot
 
-```{{{r}}}
+````
+```{{r}}
 #| column: margin
 
 plot(cars)
 ```
+````
 
 ```{r}
 #| column: margin
@@ -472,12 +474,12 @@ R package [`ggplot2`](http://ggplot2.org/) is one of the most versatile and comp
 ```{r}
 #| fig-height: 6
 #| fig-width: 8
-#| label: plot-ggplot
+#| label: fig-ggplot
 #| fig-cap: Static plot using ggplot2.
-#| cap-location: margin
+#| column: margin
 library(ggplot2)
 
-iris %>%
+iris |>
   ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
   geom_point(size=2)+
   labs(x="Sepal Length",y="Sepal Width")+
@@ -491,16 +493,15 @@ iris %>%
 R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
 
 ```{r}
-#| label: plot-highcharter
+#| label: fig-highcharter
 #| fig-cap: Interactive scatterplot using highcharter.
 library(highcharter)
 
-h <- iris %>%
-  hchart(.,"scatter",hcaes(x="Sepal.Length",y="Sepal.Width",group="Species")) %>%
-  hc_xAxis(title=list(text="Sepal Length"),crosshair=TRUE) %>%
-  hc_yAxis(title=list(text="Sepal Width"),crosshair=TRUE) %>%
-  hc_chart(zoomType="xy",inverted=FALSE) %>%
-  hc_legend(verticalAlign="top",align="right") %>%
+h <- hchart(iris,"scatter",hcaes(x="Sepal.Length",y="Sepal.Width",group="Species")) |>
+  hc_xAxis(title=list(text="Sepal Length"),crosshair=TRUE) |>
+  hc_yAxis(title=list(text="Sepal Width"),crosshair=TRUE) |>
+  hc_chart(zoomType="xy",inverted=FALSE) |>
+  hc_legend(verticalAlign="top",align="right") |>
   hc_size(height=400)
 
 htmltools::tagList(list(h))
@@ -511,11 +512,12 @@ htmltools::tagList(list(h))
 R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
 
 ```{r}
+#| label: fig-plotly
 #| fig-cap: Interactive scatterplot using plotly.
 library(plotly)
 
-p <- iris %>%
-  plot_ly(x=~Sepal.Length,y=~Sepal.Width,color=~Species,width=500,height=400) %>%
+p <- iris |>
+  plot_ly(x=~Sepal.Length,y=~Sepal.Width,color=~Species,width=500,height=400) |>
   add_markers()
 p
 ```
@@ -527,10 +529,11 @@ p
 ```{r}
 #| fig-height: 5
 #| fig-width: 7
+#| label: fig-ggplotly
 #| fig-cap: Interactive scatterplot using ggplotly.
 library(plotly)
 
-p <- iris %>%
+p <- iris |>
   ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
   geom_point()+
   labs(x="Sepal Length",y="Sepal Width")+
@@ -546,6 +549,7 @@ ggplotly(p,width=500,height=400)
 ```{r}
 #| fig-height: 5
 #| fig-width: 7
+#| label: fig-ggiraph
 #| fig-cap: Interactive scatterplot using ggiraph.
 library(ggiraph)
 
@@ -571,11 +575,12 @@ R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings f
 ```{r}
 #| fig-height: 5
 #| fig-width: 9
+#| label: fig-dygraphs
 #| fig-cap: Interactive time series plot using dygraph.
 library(dygraphs)
 
 lungDeaths <- cbind(ldeaths, mdeaths, fdeaths)
-dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") %>%
+dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") |>
   dyOptions(colors=c("#66C2A5","#FC8D62","#8DA0CB"))
 ```
 
@@ -584,6 +589,7 @@ dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") %>%
 R package `networkD3` allows the use of interactive network graphs from the [D3.js](https://d3js.org/) javascript library.
 
 ```{r}
+#| label: fig-networkd3
 #| fig-cap: Interactive network plot.
 library(networkD3)
 
@@ -598,13 +604,14 @@ forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
 R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
 
 ```{r}
+#| label: fig-leaflet
 #| fig-cap: Interactive map using leaflet.
 library(leaflet)
 
-leaflet(height=500,width=700) %>%
-  addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
-  #addProviderTiles(providers$Esri.NatGeoWorldMap) %>%
-  addMarkers(lat=57.639327,lng=18.288534,popup="RaukR") %>%
+leaflet(height=500,width=700) |>
+  addTiles(urlTemplate='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') |>
+  #addProviderTiles(providers$Esri.NatGeoWorldMap) |>
+  addMarkers(lat=57.639327,lng=18.288534,popup="RaukR") |>
   setView(lat=57.639327,lng=18.288534,zoom=15)
 ```
 
@@ -614,14 +621,15 @@ R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows `
 
 ```{r}
 #| fig-height: 8
+#| label: fig-crosstalk
 #| fig-cap: Linking independent plots using crosstalk.
 library(crosstalk)
 
 shared_quakes <- SharedData$new(quakes[sample(nrow(quakes), 100),])
-lf <- leaflet(shared_quakes,height=300) %>%
-        addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+lf <- leaflet(shared_quakes,height=300) |>
+        addTiles(urlTemplate='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') |>
         addMarkers()
-py <- plot_ly(shared_quakes,x=~depth,y=~mag,size=~stations,height=300) %>%
+py <- plot_ly(shared_quakes,x=~depth,y=~mag,size=~stations,height=300) |>
         add_markers()
 
 htmltools::div(lf,py)

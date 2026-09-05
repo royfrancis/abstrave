@@ -1,5 +1,6 @@
 ---
-title: "Quarto demo with R"
+title: "Quarto"
+description: "General Quarto and Reveal.js presentation features"
 author: "Roy Francis"
 image: "/assets/images/featured.webp"
 format: revealjs
@@ -7,70 +8,40 @@ accordion:
   - ac-1:
     - header: "**This is a header**"
       body: "This is **bold** and *italic* text"
+leaflet:
+  zoom: 15
+  ucl:
+    markers:
+      - tooltip: Venue
+        icon: "fa-solid fa-briefcase"
+        icon-color: "#E74856"
+        lat: 51.5218
+        lon: -0.1318
+        popup: "Room 309<br>Roberts Building<br>University College London"
 ---
-
-## Packages {visibility="hidden"}
-
-```{r}
-#| echo: false
-
-# data handling
-library(dplyr)
-library(tidyr)
-library(stringr)
-
-# tables
-library(kableExtra) # complete table
-library(formattable) # table with conditional formatting
-library(DT) # interactive table
-
-# graphics
-library(ggplot2) # static graphics
-
-# interactive graphics
-library(htmltools)
-library(highcharter)
-library(plotly)
-library(ggiraph) # convert ggplot to interactive
-library(dygraphs) # time series
-library(networkD3) # network graph
-library(leaflet) # interactive maps
-library(crosstalk) # linking plots
-```
 
 ## Introduction
 
 ::: {.large}
-This is a [Quarto](https://quarto.org/) [revealjs](https://revealjs.com) presentation. This demo showcases the usage and capabilities of this system. Revealjs in Quarto is documented [here](https://quarto.org/docs/presentations/revealjs/).
+This is a [Quarto](https://quarto.org/) [Reveal.js](https://revealjs.com) presentation. This demo showcases general authoring and presentation capabilities. Reveal.js in Quarto is documented [here](https://quarto.org/docs/presentations/revealjs/).
 :::
 
-Press `q` to enable pointer and press `q` again to hide it
+Press {{< kbd q >}} to enable the pointer and press {{< kbd q >}} again to hide it.
 
 ## Getting started
 
-- In RStudio, **File** > **New File** > **Quarto Presentation**
-- Add YAML matter to the top if not already there.
+Add YAML front matter to the top of a `.qmd` file.
 
-```
+```yaml
 ---
 title: "This is a title"
-format:
-  revealjs
+format: revealjs
 ---
 ```
 
-- Click the **Render** button for a rendered preview.
-- Or use `quarto::quarto_render()` in R:
+Render it from a terminal:
 
-```{r}
-#| eval: false
-quarto::quarto_render("slide.qmd")
-```
-
-- Or use `quarto render` in the terminal:
-
-```{sh}
-#| eval: false
+```sh
 quarto render slide.qmd
 ```
 
@@ -78,142 +49,172 @@ quarto render slide.qmd
 
 #### Slide separators
 
-Slides are separated by `##`.
-Incremental content on is separated by `. . .` like below.
+Slides are separated by `##`. They can be with or without a title. Slides can be hidden or not counted in slide numbering.
 
-Hide or not count a slide:
-
-```         
+```markdown
+##
+## Normal title
 ## Slide Title {visibility="hidden"}
 ## Slide Title {visibility="uncounted"}
 ```
 
-. . .
-
 #### Slide notes
 
-Any content inside class `.notes` on a slide are notes. This is only visible in presenter mode (by pressing **s**).
-
-. . .
+Content inside `.notes` is visible only in presenter mode. Press {{< kbd s >}} to enable presenter mode.
 
 #### Keyboard shortcuts
 
 - Press {{< kbd ? >}} for help.
 
 ::: {.notes}
-Here are some slide notes. Press **s** again to exit presenter mode.
+Here are some slide notes. Press {{< kbd s >}} again to exit presenter mode.
 :::
 
-## Layout
+## Incremental content
 
-The slide content can be organized into columns which can be nested if needed.
+Incremental content is separated by `. . .` (three dots with spaces) like seen now
 
-```         
+. . . 
+
+More control is possible with the `.incremental` class and `.fragment` class.
+
 :::{.columns}
-:::{.column width="50%"}
-<div style="background-color:#fdebd0">Left content</div>
-:::
+:::{.column width="50%" .fragment}
 
-:::{.column width="50%"}
-<div style="background-color:#eaf2f8">Right content</div>
-
-:::{.column width="60%"}
-<div style="background-color:#d0ece7">Inner left</div>
-:::
-:::{.column width="40%"}
-<div style="background-color:#f2d7d5">Inner right</div>
-:::
-
-:::
+```markdown
+::: {.incremental}
+- Incremental item 1
+- Incremental item 2
 :::
 ```
 
-:::: {.columns}
+::: {.incremental}
+- Incremental item 1
+- Incremental item 2
+:::
 
-::: {.column width="50%"}
+:::
+:::{.column width="50%" .fragment}
+
+```
+:::
+::: {.fragment}
+Content A
+:::
+::: {.fragment}
+Content B
+:::
+```
+
+::: {.fragment}
+Content A
+:::
+::: {.fragment}
+Content B
+:::
+
+:::
+:::
+
+## Layout content
+
+The slide content can be organized into nested columns.
+
+```markdown
+:::{.columns}
+:::{.column width="50%"}
+
 ::: {style="background-color:#fdebd0"}
 Left content
 :::
-:::
 
-::: {.column width="50%"}
+:::
+:::{.column width="50%"}
+
 ::: {style="background-color:#eaf2f8"}
 Right content
 :::
 
-::: {.column width="60%"}
-::: {style="background-color:#d0ece7"}
-Inner left
+:::
+:::
+```
+
+:::{.columns}
+:::{.column width="50%"}
+
+::: {style="background-color:#fdebd0"}
+Left content
+:::
+
+:::
+:::{.column width="50%"}
+
+::: {style="background-color:#eaf2f8"}
+Right content
+:::
+
 :::
 :::
 
-::: {.column width="40%"}
-::: {style="background-color:#f2d7d5"}
-Inner right
-:::
-:::
-:::
+## Text vertical alignment
 
-::::
-
-## Layout • Vertical align • Top
+::: {.columns}
+::: {.column width="33%"}
 
 ::: {.v-top}
-::: {}
-
-```
+```markdown
 ::: {.v-top}
-::: {}
-- Top aligned
-- content
-:::
+Top-aligned content
 :::
 ```
-
-- Top aligned
-- content
-
-:::
 :::
 
-## Layout • Vertical align • Center
+:::
+::: {.column width="33%"}
 
 ::: {.v-center}
-::: {}
-
-```
+```markdown
 ::: {.v-center}
-::: {}
-- Center aligned
-- content
-:::
+Centered content
 :::
 ```
-
-- Center aligned
-- content
-
-:::
 :::
 
-## Layout • Vertical align • Bottom
+:::
+::: {.column width="33%"}
 
 ::: {.v-bottom}
-::: {}
-
-```
+```markdown
 ::: {.v-bottom}
-::: {}
-- Bottom aligned
-- content
+Bottom-aligned content
 :::
+```
+:::
+
+:::
+:::
+
+## Text horizontal alignment
+
+`[Left aligned text]{.left}`  
+[Left aligned text]{.left}
+
+`[Center aligned text]{.center}`  
+[Center aligned text]{.center}
+
+`[Right aligned text]{.right}`  
+[Right aligned text]{.right}
+
+## Text alignment vertical horizontal center
+
+```markdown
+::: {.v-center .center}
+Centered content
 :::
 ```
 
-- Bottom aligned
-- content
-
-:::
+::: {.v-center .center}
+Centered content
 :::
 
 ## Panel tabs
@@ -222,17 +223,18 @@ Inner right
 
 ### Tab A
 
-Content for `Tab A`
+Content for `Tab A`.
 
 ### Tab B
 
-Content for `Tab B`
+Content for `Tab B`.
 
 :::
 
 ## Text formatting
 
-Rendering of normal text, numbers and symbols.
+::: {.columns}
+::: {.column width="60%"}
 
 ABCDEFGHIJKLMNOPQRSTUYWXYZÅÄÖ
 
@@ -242,116 +244,68 @@ abcdefghijklmnopqrstuvwxyzåäö
 
 !"#%&/()$@*^~<>-:;,_±|?+=
 
-`!"#%&/\()$@*^~<>-:;,_±|?+=`
+`This is **bold**` produces **bold** text
 
-## Text formatting
+`This is *italic*` produces *italic* text
 
-:::: {.columns}
-::: {.column width="50%"}
+`~~Strikethrough~~` produces ~~strikethrough~~ text
 
-Headings can be defined as shown below.
+This is subscript `H~2~O` H~2~O and superscript `2^10^` 2^10^
 
-```         
-## Level 2 heading  
-### Level 3 heading  
-#### Level 4 heading  
-##### Level 5 heading  
-###### Level 6 heading
+```markdown
+::: {.blockquote}
+This line is quoted.
+:::
 ```
 
-### Level 3 heading
-
-#### Level 4 heading
-
-##### Level 5 heading
-
-###### Level 6 heading
-
-Level 1 usage is not recommended. Use level 2 for slide titles. Use level 3 and below for other titles.
+::: {.blockquote}
+This line is quoted.
 :::
 
-::: {.column width="50%"}
-Text scaling classes
+:::
+::: {.column width="40%" .fragment}
 
-```         
+```markdown
 [Largest text]{.largest}
-[Larger text]{.larger}
 [Large text]{.large}
-Normal text.  
+Normal text
 [Small text]{.small}
-[Smaller text]{.smaller}
 [Smallest text]{.smallest}
 ```
 
 [Largest text]{.largest}\
-[Larger text]{.larger}\
 [Large text]{.large}\
 Normal text\
 [Small text]{.small}\
-[Smaller text]{.smaller}\
 [Smallest text]{.smallest}
-:::
-::::
 
-## Text Formatting
-
-:::: {.columns}
-::: {.column width="40%"}
-Horizontal alignment of text can be adjusted as shown below.
-
-```         
-[Left aligned text]{.left}
-[Center aligned text]{.center}
-[Right aligned text]{.right}
-```
-
-[Left aligned text]{.left}  
-[Center aligned text]{.center}  
-[Right aligned text]{.right}
-
-```         
-::: {.blockquote}
-This line is quoted
-:::
-```
-
-::: blockquote
-This line is quoted
-:::
+`This is a [link](https://example.com/)` This is a [link](https://example.com/)
 
 :::
+:::
 
-::: {.column width="60%"}
+## Buttons and badges
 
-A horizontal line can be created using `---`
+`[button]{.btn}`  [button]{.btn}
 
----
+`[button]{.btn .btn-primary}`  [button]{.btn .btn-primary}
 
-`This is **Bold text**`  This is **Bold text**
+`[button]{.btn .btn-secondary}`  [button]{.btn .btn-secondary}
 
-`This is *Italic text*`  This is *Italic text*
-
-`~~Strikethrough~~ text`  ~~Strikethrough~~ text
-
-This is subscript `H~2~O`  H~2~O
-
-This is superscript `2^10^`  2^10^
+`[button]{.btn .btn-tertiary}`  [button]{.btn .btn-tertiary}
 
 `This is a [badge]{.badge .badge-primary}`  
-This is a [badge]{.badge .badge-primary}  
+This is a [badge]{.badge .badge-primary}
 
-`This is a [badge]{.badge .badge-secondary}`  
-This is a [badge]{.badge .badge-secondary}  
+`This is a secondary [badge]{.badge .badge-secondary}`  
+This is a secondary [badge]{.badge .badge-secondary}
 
-`This is a [link](r-project.org)`  This is a [link](r-project.org)
-:::
-::::
+`This is a tertiary [badge]{.badge .badge-tertiary}`  
+This is a tertiary [badge]{.badge .badge-tertiary}
 
-## Text formatting
+## Fit and aside text
 
-Fit text to full width.
-
-```         
+```markdown
 ::: {.r-fit-text}
 Attention
 :::
@@ -361,18 +315,8 @@ Attention
 Attention
 :::
 
-## Text formatting
-
-In reports, `.aside` pushes content into the margin while in revealjs, it is pushed to the bottom.
-
-```
 ::: {.aside}
-Content inside aside.
-:::
-```
-
-::: {.aside}
-Content inside aside.
+In a Reveal.js presentation, `.aside` content is pushed to the bottom.
 :::
 
 ## Lists
@@ -380,9 +324,7 @@ Content inside aside.
 :::: {.columns}
 ::: {.column width="50%"}
 
-**Unordered List**
-
-```         
+```markdown
 - Bullet 1
 - Bullet 2
   - Sub-bullet 2.1
@@ -392,29 +334,44 @@ Content inside aside.
 - Bullet 2
   - Sub-bullet 2.1
 
+```markdown
+:::{.incremental}
+- Bullet 1
+- Bullet 2
+  - Sub-bullet 2.1
+:::
+```
+
+:::{.incremental}
+- Bullet 1
+- Bullet 2
+  - Sub-bullet 2.1
 :::
 
-::: {.column width="50%"}
+:::
+::: {.column width="50%" .fragment}
 
-**Incremental List**
+```markdown
+1. Incremental item 1
+2. Incremental item 2
+```
 
-```         
+1. Incremental item 1
+2. Incremental item 2
+3. Incremental item 3
+
+```markdown
 :::{.incremental}
-1. Incremental Bullet 1
-2. Incremental Bullet 2
-3. Incremental Bullet 3
+1. Incremental item 1
+2. Incremental item 2
 :::
 ```
 
 ::: {.incremental}
-
-1. Incremental Bullet 1
-2. Incremental Bullet 2
-3. Incremental Bullet 3
-
+1. Incremental item 1
+2. Incremental item 2
+3. Incremental item 3
 :::
-
-[For more options, see [here](https://quarto.org/docs/presentations/revealjs/#incremental-lists).]{.small}
 
 :::
 ::::
@@ -422,9 +379,9 @@ Content inside aside.
 ## Custom CSS styling
 
 - You can style text using any custom CSS
-- This is a block level element
+- This is block styling.
 
-```         
+```markdown
 ::: {style="color: red"}
 This paragraph is red.
 :::
@@ -434,13 +391,14 @@ This paragraph is red.
 This paragraph is red.
 :::
 
-- This is a span. ie; A word or one line.
+- This is inline styling.
 
 `[This text is blue]{style="color: blue"}`
 
 [This text is blue]{style="color: blue"}
 
 ## Callouts
+
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -557,37 +515,9 @@ Minimal appearance and a custom title
 :::
 ::::
 
-## Callouts
-
-````
-::: {.callout-note}
-
-This contains code
-
-## Callout with code
-
-```
-Sys.Date()
-```
-
-:::
-````
-
-::: {.callout-note}
-
-## Callout with code
-
-This contains code
-
-```
-Sys.Date()
-```
-
-:::
-
 ## Accordions
 
-Accordion support is provided through the [accordion](https://github.com/royfrancis/accordion) extension.
+Accordion support is provided through the [accordion](https://github.com/royfrancis/quarto-accordion) extension.
 
 Accordion contents can be defined in the YAML header as shown below.
 
@@ -632,98 +562,24 @@ Multiple inline items are defined using JSON.
 
 ## Code formatting
 
-**Inline code**
+**Inline code** can be written with backticks: `` `this` `` looks like `this`.
 
-- Code can be defined inline where `` `this` `` looks like `this`.
-- R code can be executed inline `` `r "\u0060r Sys.Date()\u0060"` `` producing `r Sys.Date()`.
-
-`== != && ++ |> <> <- <= <~ /= |=> ->>`
-
-## Code formatting
-
-:::: {.columns}
-::: {.column width="50%"}
-
-**Code chunks**
-
-Code can also be defined inside chunks.
-
-````         
+```text
+== != && ++ |> <> <- <= <~ /= |=> ->>
 ```
-This is code
+
+Code blocks do not need to execute to be syntax highlighted.
+
+````markdown
+```python
+message = "This is code"
+print(message)
 ```
 ````
 
-```         
-This is code
-```
-
-R code is executed inside code blocks like this
-
-````
-```{{r}}
-Sys.Date()
-```
-````
-
-which shows the code and output.
-
-```{r}
-Sys.Date()
-```
-
-:::
-
-::: {.column width="50%"}
-The code and results can be hidden by
-
-````
-```{{r}}
-#| echo: false
-#| results: hide
-data(iris)
-```
-````
-
-```{r}
-#| echo: true
-data(iris)
-head(iris[1:3,1:2])
-```
-
-[These are called chunk attributes. For more options, see [here](https://quarto.org/docs/computations/execution-options.html) and complete list [here](https://quarto.org/docs/reference/cells/cells-knitr.html).]{.small}
-
-:::
-::::
-
-## Code folding
-
-Source code blocks can be folded to only show the output.
-
-````
-```{{r}}
-#| code-fold: true
-Sys.Date()
-```
-````
-
-```{r}
-#| code-fold: true
-Sys.Date()
-```
-
-Quarto extension [`quarto-collapse-output`](https://github.com/mcanouil/quarto-collapse-output) is used to enable folding of code output.
-
-````
-```{{r}}
-#| output-fold: true
-Sys.Date()
-```
-````
-
-```{r}
-#| output-fold: true
-Sys.Date()
+```python
+message = "This is code"
+print(message)
 ```
 
 ## Code sizing
@@ -793,71 +649,10 @@ Sys.Date()
 :::
 :::
 
-## Code sizing
-
-::: {.columns}
-::: {.column}
-
-**Sizing source code**
-
-```{{r}}
-#| class-source: small
-#| echo: true
-Sys.Date()
-```
-
-```{r}
-#| class-source: small
-#| echo: true
-Sys.Date()
-```
-
-```{r}
-#| class-source: smaller
-#| echo: true
-Sys.Date()
-```
-
-```{r}
-#| class-source: smallest
-#| echo: true
-Sys.Date()
-```
-
-The output can be hidden using `echo: false` or `results: hide`.
-
-:::
-::: {.column}
-
-**Sizing source and output code**
-
-```{{r}}
-#| classes: small
-Sys.Date()
-```
-
-```{r}
-#| classes: small
-Sys.Date()
-```
-
-```{r}
-#| classes: smaller
-Sys.Date()
-```
-
-```{r}
-#| classes: smallest
-Sys.Date()
-```
-
-:::
-:::
-
 ## Code highlighting
 
-:::{.columns}
-:::{.column width="50%"}
+::: {.columns}
+::: {.column width="50%"}
 
 ````
 ```{{r}}
@@ -865,7 +660,7 @@ Sys.Date()
 #| echo: true
 #| code-line-numbers: "2-3"
 
-iris %>%
+iris |>
   ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
   geom_point(size=2)+
   labs(x="Sepal Length",y="Sepal Width")+
@@ -878,7 +673,7 @@ iris %>%
 #| echo: true
 #| code-line-numbers: "2-3"
 
-iris %>%
+iris |>
   ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
   geom_point(size=2)+
   labs(x="Sepal Length",y="Sepal Width")+
@@ -886,7 +681,7 @@ iris %>%
 ```
 
 :::
-:::{.column width="50%"}
+::: {.column width="50%"}
 
 ````
 ```{{r}}
@@ -894,7 +689,7 @@ iris %>%
 #| echo: true
 #| code-line-numbers: "2|3|5"
 
-iris %>%
+iris |>
   ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
   geom_point(size=2)+
   labs(x="Sepal Length",y="Sepal Width")+
@@ -907,7 +702,7 @@ iris %>%
 #| echo: true
 #| code-line-numbers: "2|3|5"
 
-iris %>%
+iris |>
   ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
   geom_point(size=2)+
   labs(x="Sepal Length",y="Sepal Width")+
@@ -916,30 +711,39 @@ iris %>%
 :::
 ::::
 
-[For more code highlighting documentation, see [here](https://quarto.org/docs/presentations/revealjs/#code-blocks).]{.small}
+[For more code highlighting documentation, see [here](https://quarto.org/docs/presentations/revealjs/#code-blocks).]{.smaller}
+
+## Table
+
+Simple markdown table
+
+```markdown
+|Item|Category|Cost|
+|---|:---:|---:|
+|Apple|Food|$10|
+|Bus|Transport|$15|
+```
+
+|Item|Category|Cost|
+|---|:---:|---:|
+|Apple|Food|$10|
+|Bus|Transport|$15|
 
 ## Images • Markdown
 
-**Using Markdown**
-
-::: {.columns}
+:::: {.columns}
 ::: {.column width="50%"}
 
-Using regular markdown.
-
-```         
+```markdown
 ![](assets/image.webp)
 ```
 
 ![](assets/image.webp)
 
-[The dimensions are based on image and/or fill up the entire width.]{.small}
 :::
-
 ::: {.column width="50%"}
-Control image dimensions.
 
-```         
+```markdown
 ![](assets/image.webp){width=50%}
 ![](assets/image.webp){width=20%}
 ```
@@ -947,16 +751,12 @@ Control image dimensions.
 ![](assets/image.webp){width=50%}
 ![](assets/image.webp){width=20%}
 
-[For more image documentation, see [here](https://quarto.org/docs/authoring/figures.html).]{.small}
-
 :::
-:::
+::::
 
-## Images • Markdown • Layout
+## Images • Markdown layout
 
-Figure layout
-
-```         
+```markdown
 ::: {layout-ncol=3}
 ![Caption for figure 1](assets/image.webp){#fig-layout-1}
 
@@ -966,97 +766,57 @@ Figure layout
 :::
 ```
 
-::: {layout-ncol="3"}
+::: {layout-ncol=3}
 ![Caption for figure 1](assets/image.webp){#fig-layout-1}
 
 ![Caption for figure 2](assets/image.webp){#fig-layout-2}
 
 ![Caption for figure 3](assets/image.webp){#fig-layout-3}
-
 :::
 
-## Images • Markdown • Layout
+## Images • Absolute positioning
 
-Absolute positioning
-
-```
+```markdown
 ![](assets/image.webp){.absolute top=250 left=0 height="450"}
 ![](assets/image.webp){.absolute top=200 right=50 height="250"}
 ![](assets/image.webp){.absolute bottom=0 right=200 height="200"}
 ```
 
 ![](assets/image.webp){.absolute top=250 left=0 height="450"}
-
 ![](assets/image.webp){.absolute top=200 right=50 height="250"}
-
 ![](assets/image.webp){.absolute bottom=0 right=200 height="200"}
 
 ## Images • HTML
 
-**Using Raw HTML**
-
-This image is 30% size.
 `<img src="assets/image.webp" style="width:30%;"/>`
 
 <img src="assets/image.webp" style="width:30%;"/>
-
-## Images • R
-
-**Using R**
-
-R chunks in RMarkdown can be used to control image display size using the argument `out.width`.
-
-This image is displayed at a size of 200 pixels.
-
-````
-```{{r}}
-#| out-width: "200px"
-knitr::include_graphics("assets/image.webp")
-```
-````
-
-```{r}
-#| echo: false
-#| out-width: "200px"
-knitr::include_graphics("assets/image.webp")
-```
 
 ## Stacking
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-Stack images and display incrementally
-
-```
+```markdown
 ::: {.r-stack}
 ::: {.fragment}
-
-![](assets/image.webp){style="transform:rotate(-5deg);border:beige 40px solid;"}
-
+![](assets/image.webp)
 :::
 ::: {.fragment}
-
-![](assets/image.webp){style="transform:rotate(5deg);border:beige 40px solid;"}
-
+![](assets/image.webp)
 :::
 :::
 ```
 
 :::
-
 ::: {.column width="50%"}
 
 ::: {.r-stack}
 ::: {.fragment}
-
 ![](assets/image.webp){style="transform:rotate(-5deg);border:beige 40px solid;"}
-
 :::
 ::: {.fragment}
-
 ![](assets/image.webp){style="transform:rotate(5deg);border:beige 40px solid;"}
-
 :::
 :::
 
@@ -1065,9 +825,9 @@ Stack images and display incrementally
 
 ## Stretching
 
-Stretch images to use up remaining space.
+Stretch images to use up remaining space
 
-```
+```markdown
 ![](assets/image.webp){.stretch}
 ```
 
@@ -1075,23 +835,20 @@ Stretch images to use up remaining space.
 
 ## Math expressions
 
-Some examples of rendering equations.
+Some examples of rendering equations
 
 :::: {.columns}
 ::: {.column width="60%"}
 
-```
+```text
 $e^{i\pi} + 1 = 0$
 
 $$\frac{E \times X^2 \prod I}{2+7} = 432$$
 
 $$\sum_{i=1}^n X_i$$
-
-$$\int_0^{2\pi} \sin x~dx$$
 ```
 
 :::
-
 ::: {.column width="40%"}
 
 $e^{i\pi} + 1 = 0$
@@ -1104,13 +861,13 @@ $$\int_0^{2\pi} \sin x~dx$$
 
 ## Math expressions
 
-Some examples of rendering equations.
+Some examples of rendering equations
 
 :::: {.columns}
 ::: {.column width="60%"}
 
 ```
-$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}$
 
 $\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
 
@@ -1121,7 +878,7 @@ $\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\math
 
 ::: {.column width="40%"}
 
-$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n-1)}{2}\right)^2 = \frac{n^2(n-1)^2}{4}$
+$\left( \sum_{i=1}^{n}{i} \right)^2 = \left( \frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}$
 
 $\begin{eqnarray} X & \sim & \mathrm{N}(0,1)\\ Y & \sim & \chi^2_{n-p}\\ R & \equiv & X/Y \sim t_{n-p} \end{eqnarray}$
 
@@ -1130,362 +887,15 @@ $\begin{eqnarray} P(|X-\mu| > k) & = & P(|X-\mu|^2 > k^2)\\ & \leq & \frac{\math
 :::
 ::::
 
-## Tables • `kable`
+## Interactive maps - Leaflet
 
-The most simple table using `kable` from R package `knitr`.
+The [leaflet](https://github.com/royfrancis/quarto-leaflet) extension uses document metadata and a shortcode to create maps.
 
-```{r}
-knitr::kable(head(iris),'html')
-```
-
-## Tables • gt
-
-Tables using the [gt](https://gt.rstudio.com/) package. Grammar of tables with extensive customization options.
-
-:::: {.columns}
-::: {.column width="60%"}
-
-```{r}
-#| eval: false
-library(gt)
-
-iris %>%
-    group_by(Species) %>%
-    slice(1:2) %>%
-    gt() %>%
-    cols_label(
-      Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width",
-      Petal.Length = "Petal Length", Petal.Width = "Petal Width"
-    ) %>%
-    tab_source_note(
-        source_note = md("Source: Iris data. Anderson, 1936; Fisher, 1936)")
-    )
-```
-
-:::
-
-::: {.column width="40%"}
-
-```{r}
-#| echo: false
-library(gt)
-
-iris %>%
-    group_by(Species) %>%
-    slice(1:2) %>%
-    gt() %>%
-    cols_label(
-      Sepal.Length = "Sepal Length", Sepal.Width = "Sepal Width",
-      Petal.Length = "Petal Length", Petal.Width = "Petal Width"
-    ) %>%
-    tab_source_note(
-        source_note = md("Source: Iris data. Anderson, 1936; Fisher, 1936)")
-    )
-```
-
-:::
-::::
-
-## Tables • `kableExtra`
-
-More advanced table using [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and [`formattable`](https://cran.r-project.org/web/packages/formattable/vignettes/formattable-data-frame.html).
-
-```{r}
- iris[c(1:2,51:52,105:106),] %>%
-  mutate(Sepal.Length=color_bar("lightsteelblue")(Sepal.Length)) %>%
-  mutate(Sepal.Width=color_tile("white","orange")(Sepal.Width)) %>%
-  mutate(Species=cell_spec(Species,"html",color="white",bold=T,
-    background=c("#8dd3c7","#fb8072","#bebada")[factor(.$Species)])) %>%
-  kable("html",escape=F) %>%
-  kable_styling(bootstrap_options=c("striped","hover","responsive"),full_width=F) %>%
-  column_spec(5,width="3cm")
-```
-
-## Tables • Interactive • `DT`
-
-Interactive table using R package [`DT`](https://rstudio.github.io/DT/).
-
-```{r}
-library(DT)
-DT::datatable(iris[1:20,],options=list(pageLength=7))
-```
-
-## Tables • Interactive • `reactable`
-
-Interactive tables with [reactable](https://glin.github.io/reactable/index.html).
-
-```{r}
-library(reactable)
-
-reactable(iris[sample(1:150,6),],
-  striped = TRUE, highlight = TRUE, filterable = TRUE
-)
-```
-
-## Static plots • Base Plot
-
-Plots using base R.
-
-```{r}
-#| fig-height: 6
-#| fig-width: 6
-
-{par(mar=c(5,5,0,0))
-  plot(x=iris$Sepal.Length,y=iris$Sepal.Width,
-      col=c("coral","steelblue","forestgreen")[iris$Species],
-      xlab="Sepal Length",ylab="Sepal Width",pch=19)
-  legend(x=7,y=4.47,legend=c("setosa","versicolor","virginica"),
-       col=c("coral","steelblue","forestgreen"),pch=19)}
-```
-
-## Static plots • `ggplot2`
-
-Plotting using [`ggplot2`](http://ggplot2.org/).
-
-```{r}
-#| fig-height: 6
-#| fig-width: 8
-
-iris %>%
-  ggplot(aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
-  geom_point(size=2)+
-  labs(x="Sepal Length",y="Sepal Width")+
-  theme_bw(base_size=18)
-```
-
-## Interactive plots • `highcharter`
-
-R package [`highcharter`](http://jkunst.com/highcharter/) is a wrapper around javascript library [`highcharts`](https://www.highcharts.com/).
-
-```{r}
-library(highcharter)
-h <- iris %>%
-  hchart("scatter",hcaes(x="Sepal.Length",y="Sepal.Width",group="Species")) %>%
-  hc_xAxis(title=list(text="Sepal Length"),crosshair=TRUE) %>%
-  hc_yAxis(title=list(text="Sepal Width"),crosshair=TRUE) %>%
-  hc_chart(zoomType="xy",inverted=FALSE) %>%
-  hc_legend(verticalAlign="top",align="right") %>% hc_size(height=300,width=500)
-htmltools::tagList(list(h))
-```
-
-## Interactive plots • `plotly`
-
-R package [`plotly`](https://plot.ly/r/) provides R binding around javascript plotting library [`plotly`](https://plot.ly).
-
-```{r}
-library(plotly)
-p <- iris %>%
-  plot_ly(x=~Sepal.Length,y=~Sepal.Width,color=~Species,width=550,height=400) %>%
-  add_markers()
-p
-```
-
-## Interactive plots • `ggplotly`
-
-`plotly` also has a function called `ggplotly` which converts a static ggplot2 object into an interactive plot.
-
-```{r}
-#| fig-height: 6
-#| fig-width: 9
-
-library(plotly)
-p <- ggplot(iris,aes(x=Sepal.Length,y=Sepal.Width,col=Species))+
-  geom_point()+
-  labs(x="Sepal Length",y="Sepal Width")+
-  theme_bw(base_size=12)
-
-plotly::ggplotly(p,width=460,height=360)
-```
-
-## Interactive plots • `ggiraph`
-
-R package [`ggiraph`](https://github.com/davidgohel/ggiraph) converts a static ggplot2 object into an interactive plot.
-
-```{r}
-#| fig-height: 2
-#| fig-width: 4
-
-library(ggiraph)
-p <- ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+
-      geom_point_interactive(aes(tooltip=paste0("<b>Petal Length:</b> ",Petal.Length,"\n<b>Sepal Length: </b>",Sepal.Length,"\n<b>Species: </b>",Species)),size=1)+
-  theme_bw()
-tooltip_css <- "background-color:#f8f9f9;padding:10px;border-style:solid;border-width:2px;border-color:#125687;border-radius:5px;"
-girafe(code=print(p), height_svg=2, width_svg=4,
-  options=list(opts_hover(css="cursor:pointer;stroke:black;fill-opacity:0.3"), opts_zoom(max=5),
-    opts_tooltip(css=tooltip_css,opacity=0.9), opts_sizing(width=0.6)))
-```
-
-## Interactive time series • `dygraphs`
-
-R package [`dygraphs`](http://rstudio.github.io/dygraphs/) provides R bindings for javascript library [dygraphs](http://dygraphs.com/) for time series data.
-
-```{r}
-#| fig-height: 4
-#| fig-width: 9
-library(dygraphs)
-lungDeaths <- cbind(ldeaths, mdeaths, fdeaths)
-dygraph(lungDeaths,main="Deaths from Lung Disease (UK)") %>%
-  dyOptions(colors=c("#66C2A5","#FC8D62","#8DA0CB"))
-```
-
-## Network graph
-
-R package `networkD3` allows the use of interactive network graphs from the [D3.js](https://d3js.org/) javascript library.
-
-```{r}
-library(networkD3)
-data(MisLinks,MisNodes)
-forceNetwork(Links=MisLinks,Nodes=MisNodes,Source="source",
-             Target="target",Value="value",NodeID="name",
-             Group="group",opacity=0.4,
-             height=300,width=500)
-```
-
-## Interactive maps • `leaflet`
-
-Quarto extension [leaflet](https://github.com/royfrancis/quarto-leaflet) provides support for [leafletjs](http://leafletjs.com/) maps. Add map information to yaml matter or `_metadata.yml` and use the shortcode `{{< leaflet mapname >}}`.
-
-::: {columns}
-::: {.column width="50%"}
-
-
-```yaml
----
-leaflet:
-  zoom: 15
-  ucl:
-    markers:
-      - tooltip: Venue
-        icon: "fa-solid fa-briefcase"
-        icon-color: "#E74856"
-        lat: 51.5218
-        lon: -0.1318
-        popup: "Room 309<br> Roberts Building<br> University College London<br> Torrington Place<br> London WC1E 7JE<br> United Kingdom"
-      - tooltip: "The Academy Hotel (0.2 km, 3 min walk)"
-        icon: "fa-solid fa-bed"
-        icon-color: "#0078D7"
-        lat: 51.5244
-        lon: -0.1328
-        popup: "21 Gower Street<br> London WC1E 6HG<br> United Kingdom"
-      - tooltip: "The Bloomsbury Hotel (0.5 km, 6 min walk)"
-        icon: "fa-solid fa-bed"
-        icon-color: "#0078D7"
-        lat: 51.5192
-        lon: -0.1265
-        popup: "16-22 Great Russell Street<br> London WC1B 3QD<br> United Kingdom"
----
-
+```lua
 {{{< leaflet ucl >}}}
 ```
 
-:::
-::: {.column width="50%"}
-
 {{< leaflet ucl >}}
-
-:::
-:::
-
-## Interactive maps • `leaflet`
-
-R package [`leaflet`](https://rstudio.github.io/leaflet/) provides R bindings for javascript mapping library; [leafletjs](http://leafletjs.com/).
-
-```{r}
-library(leaflet)
-leaflet(height=300,width=800) %>%
-  addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
-  #addProviderTiles(providers$Esri.NatGeoWorldMap) %>%
-  addMarkers(lat=57.639327,lng=18.288534,popup="RaukR") %>%
-  setView(lat=57.639327,lng=18.288534,zoom=15)
-```
-
-## Linking Plots • `crosstalk`
-
-R package [`crosstalk`](https://rstudio.github.io/crosstalk/index.html) allows crosstalk enabled plotting libraries to be linked. Through the shared 'key' variable, data points can be manipulated simultaneously on two independent plots.
-
-```{r}
-#| message: false
-#| warning: false
-library(crosstalk)
-shared_quakes <- SharedData$new(quakes[sample(nrow(quakes), 100),])
-lf <- leaflet(shared_quakes,height=300) %>%
-        addTiles(urlTemplate='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
-        addMarkers()
-py <- plot_ly(shared_quakes,x=~depth,y=~mag,size=~stations,height=300) %>%
-        add_markers()
-div(div(lf,style="float:left;width:49%"),div(py,style="float:right;width:49%"))
-```
-
-## ObservableJS
-
-- Quarto supports [ObservableJS](https://observablehq.com/) for interactive visualisations in the browser.
-
-:::: {.columns}
-::: {.column width="50%"}
-
-Pass data from R to OJS
-
-```{r}
-irism <- iris
-colnames(irism) <- gsub("[.]","_",tolower(colnames(irism)))
-ojs_define(ojsd = irism)
-```
-
-```{ojs}
-ojsdata = transpose(ojsd)
-```
-
-:::
-::: {.column width="50%"}
-
-Display as a table
-
-```{ojs}
-viewof filtered_table = Inputs.table(ojsdata)
-```
-
-:::
-::::
-
-## ObservableJS
-
-:::: {.columns}
-::: {.column width="60%"}
-
-Define inputs
-
-```{ojs}
-viewof x = Inputs.select(Object.keys(ojsdata[0]), {
-  value: "sepal_length", multiple: false, label: "X axis"
-  })
-```
-
-```{ojs}
-viewof y = Inputs.select(Object.keys(ojsdata[0]), {
-  value: "sepal_width", multiple: false, label: "Y axis"
-  })
-```
-
-:::
-::: {.column width="40%"}
-
-Display plot
-
-```{ojs}
-Plot.plot({
-  marks: [
-    Plot.dot(ojsdata, {
-      x: x, y: y, fill: "species",
-      title: (d) => `${d.species} \n Petal length: ${d.petal_length} \n Sepal length: ${d.sepal_length}`
-    })
-  ], grid: true
-})
-```
-
-:::
-::::
-
-ObservableJS in quarto [documentation](https://quarto.org/docs/interactive/index.html#observable-js).
 
 ## Diagrams
 
@@ -1498,75 +908,46 @@ flowchart LR
   C --> E[Result two]
 ```
 
-::: {.aside}
-Diagram [documentation](https://quarto.org/docs/authoring/diagrams.html).
-:::
-
 ## Colourful {background-color="#ABEBC6"}
 
-This slide has a colourful background
+`## Colourful {background-color="#ABEBC6"}`
 
-```         
-##  Colourful {background-color="#ABEBC6"}
+This slide has a colourful background.
+
+## Big image {background-image="assets/image.webp"}
+
+`## Big image {background-image="assets/image.webp"}`
+
+This slide has a background image.
+
+## Cover slide
+
+Change title slide background image by adjusting the following YAML parameters.
+
 ```
-
-## Big Image {background-image="assets/image.webp"}
-
-This slide has a background image
-
-```         
-##  Big Image {background-image="assets/image.webp"}
+---
+title-slide-attributes:
+  data-background-image: "assets/image.webp"
+  data-background-size: "cover"
+  data-background-opacity: "1"
+---
 ```
 
 ## General tips
 
-- Replace *assets/cover.webp* to change cover slide picture
-- Replace *assets/end.webp* to change end slide picture
-- Add custom css under YAML `css: "styles.css"`
-- Export HTML to PDF using [DeckTape](https://github.com/astefanutti/decktape)
-- Change title slide background image by adjusting the following YAML parameters.
+- Use `##` as the top level heading for each slide
+- Add custom CSS with a `css: "styles.css"` YAML option.
+- Export HTML to PDF using [DeckTape](https://github.com/astefanutti/decktape).
+- Read the complete [Quarto Reveal.js documentation](https://quarto.org/docs/presentations/revealjs/).
 
-  ```
-  ---
-  title-slide-attributes:
-    data-background-image: "assets/cover.webp"
-    data-background-size: "cover"
-    data-background-opacity: "1"
-  ---
-  ```
-
-- For complete Quarto revealjs documentation, click [here](https://quarto.org/docs/presentations/revealjs/)
-
-## Session
-
-- If content overflows the slide in vertical direction, add class `.scrollable`
-
-```
-::: { .scrollable }
-<contents>
-:::
-```
-
-::: { .scrollable }
-
-```{r}
-#| echo: false
-sessionInfo()
-```
-
-:::
-
-##  {background-image="../../assets/images/cover.webp"}
+##  {background-image="../../assets/images/home.webp"}
 
 ::: {.v-center .center}
-::: {}
 
 [Thank you!]{.largest}
 
 [Questions?]{.larger}
 
-[{{< meta current_year >}}  • [Abstrave](https://github.com/royfrancis/abstrave)]{.smaller}
+[{{< meta current_year >}} • [Specky](https://github.com/royfrancis/specky)]{.smaller}
 
 :::
-:::
-

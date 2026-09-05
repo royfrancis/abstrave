@@ -10,21 +10,22 @@ format: html
 
 ## Reports
 
-HTML report using the Quarto format `html`.
+HTML report using the Quarto format `html`. View all reports on the [listing page](reports/).
 
-[Listing page](reports/) for all reports.
-
-- Using Quarto and custom theme [{{< fa file-lines >}}](reports/usage/index.html)
-- Minimal demo [{{< fa file-lines >}}](reports/sample/index.html)
-- Quarto basics [{{< fa file-lines >}}](reports/demo/index.html)
-- Quarto with R [{{< fa file-lines >}}](reports/demo-with-r/index.html)
-- OJS and mermaid [{{< fa file-lines >}}](reports/more/index.html)
+|Topic|Link|
+|---|---|
+|Using Quarto and custom theme|[{{< fa file-lines >}} Report](reports/usage/index.html)|
+|Minimal demo|[{{< fa file-lines >}} Report](reports/sample/index.html)|
+|Quarto demo|[{{< fa file-lines >}} Report](reports/demo/index.html)|
+|Quarto demo with R|[{{< fa file-lines >}} Report](reports/demo-with-r/index.html)|
+|OJS and mermaid|[{{< fa file-lines >}} Report](reports/more/index.html)|
 
 ## Slides
 
-Presentation using the Quarto `revealjs` format.
+Presentation using the Quarto `revealjs` format. View all slides on the [listing page](slides/).
 
-[Listing page](slides/) for all slides.
-
-- Minimal demo [{{< fa file-powerpoint >}}](slides/sample/index.html)
-- Quarto with R [{{< fa file-powerpoint >}}](slides/demo/index.html)
+|Topic|Link|
+|---|---|
+|Minimal demo|[{{< fa file-powerpoint >}} Slides](slides/sample/index.html)|
+|Quarto demo|[{{< fa file-powerpoint >}} Slides](slides/demo/index.html)|
+|Quarto demo with R|[{{< fa file-powerpoint >}} Slides](slides/demo-with-r/index.html)|
